@@ -1,0 +1,15 @@
+configuration {
+    font: "Iosevka Nerd Font 12";
+    show-icons: true;
+    drun-display-format: "{icon} {name}";
+    width: 30;
+    lines: 7;
+    border-radius: 15px;
+    padding: 12px;
+}
+
+@theme "gruvbox-dark"
+
+element-icon {
+    size: 1em;
+}

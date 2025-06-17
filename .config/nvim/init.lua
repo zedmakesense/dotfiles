@@ -372,6 +372,7 @@ require('lazy').setup {
                 sh = { 'shfmt' },
                 javascript = { 'prettier' },
                 javascriptreact = { 'prettier' },
+                css = { 'prettier' },
             },
         },
     },

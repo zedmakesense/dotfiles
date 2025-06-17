@@ -43,6 +43,9 @@ alias grep='grep --color=auto'
 alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias df="df -h"
 
+alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
+alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
+
 alias cp="cp -i"
 
 alias vim="nvim"
