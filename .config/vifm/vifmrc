@@ -174,6 +174,15 @@ command! reload :write | restart full
 
 " Pdf
 filextype *.pdf zathura %f &
+fileviewer *.pdf
+        \ vifm-sixel pdf %pw %ph %c %pd
+        \ %pc
+        \ vifm-sixel clear
+
+fileviewer <font/*>
+        \ vifm-sixel font %pw %ph %c %pd
+        \ %pc
+        \ vifm-sixel clear
 
 " PostScript
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
@@ -216,11 +225,15 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \<video/*>
         \ {Play using mpv}
         \ mpv %f,
-fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx],*.unknown_video},
-          \<video/*>
-         \ ffprobe -hide_banner -pretty %c 2>&1
+"fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+"           \*.fl[icv],*.m2v,*.mov,*.webm,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+"           \*.as[fx],*.unknown_video},
+"          \<video/*>
+"         \ ffprobe -hide_banner -pretty %c 2>&1
+fileviewer <video/*>
+        \ vifm-sixel video %pw %ph %c %pd
+        \ %pc
+        \ vifm-sixel clear
 
 " Web
 filextype {*.xhtml,*.html,*.htm},<text/html>
@@ -265,6 +278,10 @@ filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ swayimg %f &,
 " fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
 "         \ swayimg %f &,
+fileviewer <image/*>
+        \ vifm-sixel draw %pw %ph %c %pd
+        \ %pc
+        \ vifm-sixel clear
 
 " OpenRaster
 filextype *.ora
