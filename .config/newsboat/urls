@@ -4,21 +4,17 @@
 # "query:Linux:tags # \"linux\"" meta
 # "query:Unread:unread = \"yes\"" meta
 
-Blog
 https://archlinux.org/feeds/news/ archlinux
 https://opensourcemusings.com/feed.xml blog
 
-News
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw news     # The Linux Experiment
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0W_BIuwk8D0Bv4THbVZZOQ news     # Surveillance Report
 https://www.youtube.com/feeds/videos.xml?channel_id=UCs6KfncB4OV6Vug4o_bzijg news     # Techlore
 
-Entertain
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZXW8E1__d5tZb-wLFOt8TQ entertain # Bog
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZzfw1NZ40-RLtRPVSNUHOw entertain # A-dn
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ entertain # SomeOrdinaryGamers
 
-Linux
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA linux    # Brodie Robertson
 https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg linux    # The Linux Cast
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw linux    # Penguins Bread
@@ -26,7 +22,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA lin
 https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ linux    # Chris Titus Tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg linux    # DistroTube
 
-Reddit
 https://www.reddit.com/r/archlinux/new.rss reddit content
 https://www.reddit.com/r/linux/new.rss reddit content
 https://www.reddit.com/r/commandline/new.rss reddit content

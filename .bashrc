@@ -47,6 +47,7 @@ alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
 alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 
 alias cp="cp -i"
+alias rm="echo 'USE TRASH-CLI'"
 
 alias vim="nvim"
 alias vi="nvim +VimwikiIndex"
