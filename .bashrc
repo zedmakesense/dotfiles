@@ -48,12 +48,13 @@ alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 
 alias cp="cp -i"
 alias rm="echo 'USE TRASH-CLI'"
+alias mv="mv -i"
+alias trash="trash -v"
 
 alias vim="nvim"
-alias vi="nvim +VimwikiIndex"
+alias vi="nvim"
 alias v="vifm"
 
-alias nr="newsraft"
 alias img="swayimg"
 alias burn="caligula burn"
 

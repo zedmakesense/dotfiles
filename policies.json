@@ -25,6 +25,10 @@
             "languagetool-webextension@languagetool.org": {
                 "installation_mode": "force_installed",
                 "install_url": "https://addons.mozilla.org/firefox/downloads/latest/languagetool/latest.xpi"
+            },
+            "audiocontextsuspender@h43z": {
+                "installation_mode": "force_installed",
+                "install_url": "https://addons.mozilla.org/firefox/downloads/latest/audiocontext-suspender/latest.xpi"
             }
         }
     }
