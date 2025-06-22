@@ -4,6 +4,7 @@ set $browser firefox
 set $fileBrowser pcmanfm
 set $calc calc.sh
 set $emoji rofimoji
+set $network networkmanager_dmenu
 
 set $paste cliphist.sh
 
@@ -30,6 +31,7 @@ bindsym $mod+Shift+n exec $news
 bindsym $mod+p exec $paste
 bindsym $mod+c exec $calc
 bindsym $mod+m exec $emoji
+bindsym $mod+Ctrl+n exec $network
 
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop
