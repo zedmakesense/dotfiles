@@ -98,6 +98,7 @@ bindsym $mod+Shift+p mode "systemctl"
 #     }
 # }
 # bindsym $mod+m bar mode toggle
+exec waybar
 
 font pango: "Iosevka" Regular 9
 
