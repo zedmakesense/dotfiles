@@ -2,13 +2,23 @@
 @ Blog
 https://archlinux.org/feeds/news/ "Arch Linux News"
 https://opensourcemusings.com/feed.xml "Open Source Musings"
+https://githubengineering.com/atom.xml "Github"
+https://feed.alternativeto.net/news/all "Alternative To"
+https://betterdev.link/rss.xml "Better dev links"
+https://betterprogramming.pub/feed "Better Programming pub"
+https://www.producthunt.com/feed "Product Hunt"
 
 # News feeds (YouTube channels)
 @ News
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "The Linux Experiment"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0W_BIuwk8D0Bv4THbVZZOQ "Surveillance Report"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCs6KfncB4OV6Vug4o_bzijg "Techlore"
+
+@ Content
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "Fireship"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdngmbVKX1Tgre699-XLlUA "TechWorld with Nana"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA "Learn Linux TV"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4HiUdMwzyZhBUoNKXenO-A "Engineering with Utsav"
 
 # Entertain feeds (YouTube channels)
 @ Entertain
