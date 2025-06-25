@@ -6,18 +6,104 @@ PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w\033[m \033[1;36m]\033[m \n\[\e[38;
 
 # set -o vi
 
+shopt -s histverify
+
+## GENERAL OPTIONS ##
+
+# Prevent file overwrite on stdout redirection
+# Use `>|` to force redirection to an existing file
+set -o noclobber
+
+# Update window size after every command
 shopt -s checkwinsize
+
+# Automatically trim long paths in the prompt (requires Bash 4.x)
+PROMPT_DIRTRIM=2
+
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+bind Space:magic-space
+
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2>/dev/null
+
+## SMARTER TAB-COMPLETION (Readline bindings) ##
+
+# Perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# Treat hyphens and underscores as equivalent
+bind "set completion-map-case on"
+
+# Display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+bind "set mark-symlinked-directories on"
+
+## SANE HISTORY DEFAULTS ##
+
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-HISTCONTROL=ignoreboth
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
+# Save multi-line commands as one command
+shopt -s cmdhist
 
-export PATH="$PATH:$HOME/.scripts/bin"
+# Record each line as it gets issued
+PROMPT_COMMAND='history -a'
+
+# Huge history. Doesn't appear to slow things down, so why not?
+HISTSIZE=500000
+HISTFILESIZE=100000
+
+# Avoid duplicate entries
+HISTCONTROL="erasedups:ignoreboth"
+
+# Don't record some commands
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
+# Use standard ISO 8601 timestamp
+# %F equivalent to %Y-%m-%d
+# %T equivalent to %H:%M:%S (24-hours format)
+HISTTIMEFORMAT='%F %T '
+
+# Enable incremental history search with up/down arrows (also Readline goodness)
+# Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+## BETTER DIRECTORY NAVIGATION ##
+
+# Prepend cd to directory names automatically
+shopt -s autocd 2>/dev/null
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2>/dev/null
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2>/dev/null
+
+# This defines where cd looks for targets
+# Add the directories you want to have fast access to, separated by colon
+# Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
+CDPATH="."
+
+# This allows you to bookmark your favorite places across the file system
+# Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
+shopt -s cdable_vars
+
+# Examples:
+export projects="$HOME/Documents/projects"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
+
+export HISTFILE="$XDG_STATE_HOME"/bash/history
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.scripts/bin"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GOPATH="$XDG_DATA_HOME"/go
@@ -54,6 +140,8 @@ alias trash="trash -v"
 alias vim="nvim"
 alias vi="nvim"
 alias v="vifm"
+alias vimdiff="nvim -d"
+alias nvimdiff="nvim -d"
 
 alias img="swayimg"
 alias burn="caligula burn"
@@ -62,21 +150,21 @@ alias jrctl="journalctl -p 3 -xb"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 ex() {
-    if [ -f $1 ]; then
-        case $1 in
-        *.tar.bz2) tar xjf $1 ;;
-        *.tar.gz) tar xzf $1 ;;
-        *.tar.xz) tar xf $1 ;;
-        *.bz2) bunzip2 $1 ;;
-        *.rar) unrar x $1 ;;
-        *.gz) gunzip $1 ;;
-        *.tar) tar xf $1 ;;
-        *.tbz2) tar xjf $1 ;;
-        *.tgz) tar xzf $1 ;;
-        *.zip) unzip $1 ;;
-        *.Z) uncompress $1 ;;
-        *.7z) 7z x $1 ;;
-        *) echo "'$1' cannot be extracted via extract()" ;;
+    if [ -f "$1" ]; then
+        case "$1" in
+        *.tar.bz2) tar xjf "$1" ;;
+        *.tar.gz) tar xzf "$1" ;;
+        *.tar.xz) tar xf "$1" ;;
+        *.bz2) bunzip2 "$1" ;;
+        *.rar) unrar x "$1" ;;
+        *.gz) gunzip "$1" ;;
+        *.tar) tar xf "$1" ;;
+        *.tbz2) tar xjf "$1" ;;
+        *.tgz) tar xzf "$1" ;;
+        *.zip) unzip "$1" ;;
+        *.Z) uncompress "$1" ;;
+        *.7z) 7z x "$1" ;;
+        *) echo "'"$1"' cannot be extracted via extract()" ;;
         esac
     else
         echo "'$1' is not a valid file"
