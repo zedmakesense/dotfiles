@@ -83,6 +83,12 @@ ex() {
     fi
 }
 
+f() {
+    local dir="${1:-$HOME}"
+    cd "$dir" || return
+    find . -type f | fzf | xargs -r xdg-open
+}
+
 # batdiff() {
 #     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 # }

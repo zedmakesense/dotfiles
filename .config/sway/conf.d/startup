@@ -4,5 +4,4 @@ exec wl-clip-persist --clipboard both --reconnect-tries 0
 
 exec playerctld daemon
 exec swaync
-exec nm-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
