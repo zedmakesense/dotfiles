@@ -1,7 +1,27 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w\033[m \033[1;36m]\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
+# Function to get git status
+parse_git_branch() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return
+
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+    local status
+    local dirty=""
+    local staged=""
+    local untracked=""
+
+    git diff --quiet || dirty="*"
+    git diff --cached --quiet || staged="+"
+    [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
+
+    status="$branch$staged$dirty$untracked"
+    echo -e " \033[1;33m($status)\033[0m"
+}
+
+# PS1 prompt with Git info
+PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w \033[m\033[1;36m]$(parse_git_branch)\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 
 # set -o vi
@@ -18,7 +38,7 @@ set -o noclobber
 shopt -s checkwinsize
 
 # Automatically trim long paths in the prompt (requires Bash 4.x)
-PROMPT_DIRTRIM=2
+# PROMPT_DIRTRIM=2
 
 # Enable history expansion with space
 # E.g. typing !!<space> will replace the !! with your last command
@@ -133,7 +153,6 @@ alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
 alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 
 alias cp="cp -i"
-alias rm="echo 'USE TRASH-CLI'"
 alias mv="mv -i"
 alias trash="trash -v"
 
@@ -144,7 +163,6 @@ alias vimdiff="nvim -d"
 alias nvimdiff="nvim -d"
 
 alias img="swayimg"
-alias burn="caligula burn"
 
 alias jrctl="journalctl -p 3 -xb"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -155,6 +173,8 @@ ex() {
         *.tar.bz2) tar xjf "$1" ;;
         *.tar.gz) tar xzf "$1" ;;
         *.tar.xz) tar xf "$1" ;;
+        *.tar.zst) tar --use-compress-program=unzstd -xvf "$1" ;;
+        *.xz) unxz "$1" ;;
         *.bz2) bunzip2 "$1" ;;
         *.rar) unrar x "$1" ;;
         *.gz) gunzip "$1" ;;
@@ -171,16 +191,11 @@ ex() {
     fi
 }
 
-f() {
-    local dir="${1:-$HOME}"
-    cd "$dir" || return
-    find . -type f | fzf | xargs -r xdg-open
-}
-
+#
 # batdiff() {
 #     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 # }
 
 source /usr/share/wikiman/widgets/widget.bash
-eval "$(fzf --bash)"
+# eval "$(fzf --bash)"
 # eval "$(batman --export-env)"

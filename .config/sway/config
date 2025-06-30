@@ -97,7 +97,7 @@ bar {
         urgent_workspace #ea6962 #ea6962 #282828
     }
 }
-bindsym $mod+shift+m bar mode toggle
+bindsym $mod+m bar mode toggle
 # exec waybar
 
 font pango: "Iosevka" Regular 9

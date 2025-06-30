@@ -2,10 +2,12 @@ set $term foot
 set $menu fuzzel --placeholder "Search ..."
 set $browser firefox
 set $fileBrowser pcmanfm
+
 set $calc calc.sh
 set $emoji rofimoji
 set $network networkmanager_dmenu
 
+set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 set $paste cliphist.sh
 
 set $SS grim - | wl-copy && notify-send "Screenshot" "Full screen screenshot copied to clipboard"
@@ -17,6 +19,7 @@ set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
 set $wiki '$term --title="float" -e nvim +VimwikiIndex'
 set $diary '$term --title="float" -e nvim +VimwikiMakeDiaryNote'
+set $diaryIndex '$term --title="float" -e nvim +VimwikiDiaryIndex'
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term
@@ -24,14 +27,21 @@ bindsym $mod+space exec $menu
 bindsym $mod+e exec $fileBrowser
 
 bindsym $mod+Shift+Return exec $browser
-bindsym $mod+Shift+v exec $wiki
+mode "index" {
+    bindsym w exec $wiki; mode default
+    bindsym d exec $diaryIndex; mode default
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+i mode "index"
 bindsym $mod+Shift+d exec $diary
 bindsym $mod+Shift+n exec $news
 
 bindsym $mod+p exec $paste
+bindsym $mod+x exec $text
 bindsym $mod+c exec $calc
-bindsym $mod+m exec $emoji
-bindsym $mod+Ctrl+n exec $network
+bindsym $mod+period exec $emoji
+bindsym $mod+Shift+m exec $network
 
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop
@@ -40,6 +50,6 @@ bindsym $mod+n exec swaync-client -t -sw
 bindsym Ctrl+Delete exec swaync-client --hide-latest
 
 bindsym Print exec $SS
-bindsym Ctrl+Print exec $SSselect
-bindsym Ctrl+Shift+Print exec $SSedit
+bindsym $mod+Shift+S exec $SSselect
+bindsym Ctrl+Print exec $SSedit
 bindsym Ctrl+Shift+p exec $color

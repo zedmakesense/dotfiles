@@ -14,7 +14,7 @@ vim.g.have_nerd_font = true
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 vim.g.gruvbox_material_enable_italic = 1
-vim.g.gruvbox_material_transparent_background = 1
+-- vim.g.gruvbox_material_transparent_background = 1
 
 -- Editor Options
 vim.opt.number = true
@@ -54,14 +54,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+-- restore cursor to file position in previous editing session
+vim.api.nvim_create_autocmd('BufReadPost', {
+    callback = function(args)
+        local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+        local line_count = vim.api.nvim_buf_line_count(args.buf)
+        if mark[1] > 0 and mark[1] <= line_count then
+            vim.api.nvim_buf_call(args.buf, function()
+                vim.cmd 'normal! g`"zz'
+            end)
+        end
+    end,
+})
+
 -- Keybindings
 vim.keymap.set('n', '<Leader>bi', '<cmd>ls<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>bd', '<cmd>bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>bn', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>bp', '<cmd>bp<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', "'", '`', { noremap = true })
-vim.keymap.set('n', '`', "'", { noremap = true })
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { noremap = true, silent = true })
@@ -86,6 +97,7 @@ require('lazy').setup {
                     'bash',
                     'python',
                     'c',
+                    'cpp',
                     'diff',
                     'html',
                     'lua',
@@ -116,10 +128,26 @@ require('lazy').setup {
     {
         'neovim/nvim-lspconfig',
         config = function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            vim.lsp.config('jsonls', {
+                capabilities = capabilities,
+            })
+            vim.lsp.config('html', {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config('cssls', {
+                capabilities = capabilities,
+            })
+            vim.lsp.enable 'cssls'
             vim.lsp.enable 'pyright'
+            vim.lsp.enable 'html'
+            vim.lsp.enable 'jsonls'
             vim.lsp.enable 'ts_ls'
             vim.lsp.enable 'bashls'
             vim.lsp.enable 'lua_ls'
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
                 callback = function(event)
@@ -149,33 +177,13 @@ require('lazy').setup {
                         require('fzf-lua').lsp_typedefs()
                     end, '[G]oto [T]ype Definition')
 
-                    -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-                    ---@param client vim.lsp.Client
-                    ---@param method vim.lsp.protocol.Method
-                    ---@param bufnr? integer some lsp support methods only in specific files
-                    ---@return boolean
-                    local function client_supports_method(client, method, bufnr)
-                        if vim.fn.has 'nvim-0.11' == 1 then
-                            return client:supports_method(method, bufnr)
-                        else
-                            return client.supports_method(method, { bufnr = bufnr })
-                        end
-                    end
-
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
                     --    See `:help CursorHold` for information about when this is executed
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if
-                        client
-                        and client_supports_method(
-                            client,
-                            vim.lsp.protocol.Methods.textDocument_documentHighlight,
-                            event.buf
-                        )
-                    then
+                    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
                         local highlight_augroup =
                             vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
                         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -203,10 +211,7 @@ require('lazy').setup {
                     -- code, if the language server you are using supports them
                     --
                     -- This may be unwanted, since they displace some of your code
-                    if
-                        client
-                        and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-                    then
+                    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
                         map('<leader>th', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
                         end, '[T]oggle Inlay [H]ints')

@@ -2,5 +2,6 @@
 .config/GIMP/3.0/backups
 .config/GIMP/3.0/CrashLog
 .config/vifm/vifminfo.json
+.config/vifm/vifminfo.json_2040
 
 lazy-lock.json
