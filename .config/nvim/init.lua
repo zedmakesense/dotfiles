@@ -1,3 +1,4 @@
+vim.loader.enable()
 -- Leader Key Setup
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
@@ -107,7 +108,6 @@ require('lazy').setup {
                     'vimdoc',
                 },
                 auto_install = true,
-                highlight = { enable = true, additional_vim_regex_highlighting = false, disable = { 'vimwiki' } },
                 indent = { enable = true },
             }
         end,
@@ -128,6 +128,7 @@ require('lazy').setup {
         config = function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
+            require('cmp_nvim_lsp').default_capabilities(capabilities)
             vim.lsp.config('jsonls', {
                 capabilities = capabilities,
             })
@@ -136,6 +137,9 @@ require('lazy').setup {
             })
 
             vim.lsp.config('cssls', {
+                capabilities = capabilities,
+            })
+            vim.lsp.config('pyright', {
                 capabilities = capabilities,
             })
             vim.lsp.enable 'cssls'
@@ -247,6 +251,74 @@ require('lazy').setup {
         end,
     },
 
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'rafamadriz/friendly-snippets',
+        },
+        event = 'InsertEnter',
+        config = function()
+            local cmp = require 'cmp'
+            local luasnip = require 'luasnip'
+
+            require('luasnip.loaders.from_vscode').lazy_load()
+
+            cmp.setup {
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert {
+                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-e>'] = cmp.mapping.abort(),
+                    ['<CR>'] = cmp.mapping.confirm { select = true },
+                    ['<Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { 'i', 's' }),
+                    ['<S-Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { 'i', 's' }),
+                },
+                sources = cmp.config.sources {
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                    { name = 'buffer' },
+                    { name = 'path' },
+                },
+            }
+
+            -- Cmdline completion
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'path' },
+                    { name = 'cmdline' },
+                },
+            })
+        end,
+    },
+
     -- Gruvbox Material
     {
         'sainnhe/gruvbox-material',
@@ -255,43 +327,6 @@ require('lazy').setup {
         config = function()
             vim.g.gruvbox_material_enable_italic = true
             vim.cmd.colorscheme 'gruvbox-material'
-        end,
-    },
-
-    {
-        'vimwiki/vimwiki',
-        init = function()
-            vim.g.vimwiki_list = {
-                {
-                    path = '~/vimwiki/',
-                    syntax = 'markdown',
-                    ext = 'md',
-                },
-            }
-            vim.g.vimwiki_global_ext = 1
-            vim.g.vimwiki_ext2syntax = { ['.md'] = 'markdown' }
-        end,
-        event = 'BufEnter *.md',
-        cmd = { 'VimwikiIndex', 'VimwikiDiaryIndex', 'VimwikiMakeDiaryNote' },
-        keys = { '<leader>ww', '<leader>wi', '<Leader>w<Leader>w' },
-    },
-
-    -- mini.completion
-    {
-        'echasnovski/mini.completion',
-        version = false,
-        config = function()
-            require('mini.completion').setup()
-        end,
-    },
-
-    -- mini.snippets
-    {
-        'echasnovski/mini.snippets',
-        version = false,
-        config = function()
-            require('mini.snippets').setup()
-            -- Optional: Define your snippets here or in a separate Lua file
         end,
     },
 
@@ -415,8 +450,7 @@ require('lazy').setup {
             { '<leader>sd', function() require('fzf-lua').diagnostics_document() end, desc = '[S]earch [D]iagnostics' },
             { '<leader>s.', function() require('fzf-lua').oldfiles() end, desc = '[S]earch Recent Files ("." for repeat)' },
             { '<leader><leader>', function() require('fzf-lua').buffers() end, desc = '[ ] Find existing buffers' },
-            { '<leader>sv', function() require('fzf-lua').live_grep({ cwd = '~/vimwiki' }) end, desc = '[S]earch [V]imwiki' }
+            { '<leader>sv', function() require('fzf-lua').live_grep({ cwd = '~/wiki' }) end, desc = '[S]earch [V]imwiki' }
         },
     },
 }
--- require("luasnip").filetype_extend("vimwiki", {"markdown"})

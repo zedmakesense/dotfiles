@@ -17,9 +17,9 @@ set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
-set $wiki '$term --title="float" -e nvim +VimwikiIndex'
-set $diary '$term --title="float" -e nvim +VimwikiMakeDiaryNote'
-set $diaryIndex '$term --title="float" -e nvim +VimwikiDiaryIndex'
+set $index '$term --title="float" -e nvim ~/wiki/index.md'
+set $wiki '$term --title="float" -e wiki.sh'
+set $search $term --title="float" -e sh -c 'fd . ~/wiki | fzf | xargs -r nvim'
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term
@@ -29,16 +29,16 @@ bindsym $mod+e exec $fileBrowser
 bindsym $mod+Shift+Return exec $browser
 mode "index" {
     bindsym w exec $wiki; mode default
-    bindsym d exec $diaryIndex; mode default
+    bindsym i exec $index; mode default
+    bindsym s exec $search; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+i mode "index"
-bindsym $mod+Shift+d exec $diary
 bindsym $mod+Shift+n exec $news
 
 bindsym $mod+p exec $paste
-bindsym $mod+x exec $text
+bindsym $mod+x exec --no-startup-id $text
 bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
 bindsym $mod+Shift+m exec $network
