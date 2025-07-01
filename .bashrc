@@ -24,8 +24,8 @@ parse_git_branch() {
         local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
         local ahead=$(git rev-list --count HEAD.."$upstream" 2>/dev/null)
         local behind=$(git rev-list --count "$upstream"..HEAD 2>/dev/null)
-        [[ $behind -gt 0 ]] && ahead_behind="↑$behind"
-        [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓$ahead"
+        [[ $behind -gt 0 ]] && ahead_behind="↑ $behind"
+        [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓ $ahead"
     fi
 
     status="$ahead_behind$branch$staged$dirty$untracked"
