@@ -10,8 +10,8 @@ set $network networkmanager_dmenu
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 set $paste cliphist.sh
 
-set $SS grim - | wl-copy && notify-send "Screenshot" "Full screen screenshot copied to clipboard"
-set $SSselect grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Region screenshot copied to clipboard"
+set $SS grim - | wl-copy
+set $SSselect grim -g "$(slurp)" - | wl-copy
 set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png
 
 set $htop '$term -a htop htop'

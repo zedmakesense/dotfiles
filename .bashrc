@@ -7,17 +7,29 @@ parse_git_branch() {
 
     local branch
     branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
-    local status
+
+    local status=""
     local dirty=""
     local staged=""
     local untracked=""
 
+    # Status indicators
     git diff --quiet || dirty="*"
     git diff --cached --quiet || staged="+"
     [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
 
-    status="$branch$staged$dirty$untracked"
-    echo -e " \033[1;33m($status)\033[0m"
+    # Ahead/behind info
+    local ahead_behind=""
+    if git rev-parse @{u} &>/dev/null; then
+        local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+        local ahead=$(git rev-list --count HEAD.."$upstream" 2>/dev/null)
+        local behind=$(git rev-list --count "$upstream"..HEAD 2>/dev/null)
+        [[ $behind -gt 0 ]] && ahead_behind="↑$behind"
+        [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓$ahead"
+    fi
+
+    status="$ahead_behind$branch$staged$dirty$untracked"
+    echo -e " \033[1;33m(${status})\033[0m"
 }
 
 # PS1 prompt with Git info
