@@ -74,6 +74,8 @@ vim.keymap.set('n', '<Leader>bd', '<cmd>bd<CR>', { noremap = true, silent = true
 vim.keymap.set('n', '<Leader>bn', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>bp', '<cmd>bp<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { noremap = true, silent = true })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Exit terminal mode' })
 
@@ -124,31 +126,57 @@ require('lazy').setup {
     },
 
     {
+        'williamboman/mason.nvim',
+        build = ':MasonUpdate',
+        config = true,
+    },
+
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = { 'williamboman/mason.nvim' },
+        config = function()
+            require('mason-lspconfig').setup {
+                ensure_installed = {
+                    'pyright',
+                    'bashls',
+                    'html',
+                    'jsonls',
+                    'cssls',
+                    'ts_ls',
+                    'lua_ls',
+                },
+                automatic_installation = true,
+            }
+        end,
+    },
+    {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            'hrsh7th/cmp-nvim-lsp',
+        },
         config = function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
             require('cmp_nvim_lsp').default_capabilities(capabilities)
-            vim.lsp.config('jsonls', {
-                capabilities = capabilities,
-            })
-            vim.lsp.config('html', {
-                capabilities = capabilities,
-            })
 
-            vim.lsp.config('cssls', {
-                capabilities = capabilities,
-            })
-            vim.lsp.config('pyright', {
-                capabilities = capabilities,
-            })
-            vim.lsp.enable 'cssls'
-            vim.lsp.enable 'pyright'
-            vim.lsp.enable 'html'
-            vim.lsp.enable 'jsonls'
-            vim.lsp.enable 'ts_ls'
-            vim.lsp.enable 'bashls'
-            vim.lsp.enable 'lua_ls'
+            local lsps = {
+                'jsonls',
+                'html',
+                'cssls',
+                'pyright',
+                'ts_ls',
+                'bashls',
+                'lua_ls',
+            }
+
+            for _, lsp in ipairs(lsps) do
+                vim.lsp.config(lsp, {
+                    capabilities = capabilities,
+                })
+                vim.lsp.enable(lsp)
+            end
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -251,6 +279,21 @@ require('lazy').setup {
         end,
     },
 
+    {
+        'MagicDuck/grug-far.nvim',
+        cmd = { 'GrugFar', 'GrugFarResume' },
+        keys = {
+            { '<leader>fr', '<cmd>GrugFar<cr>', desc = 'Grug Find & Replace' },
+        },
+    },
+
+    { 'mbbill/undotree' },
+    {
+        'rmagatti/goto-preview',
+        dependencies = { 'rmagatti/logger.nvim' },
+        event = 'BufEnter',
+        config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+    },
     {
         'hrsh7th/nvim-cmp',
         dependencies = {

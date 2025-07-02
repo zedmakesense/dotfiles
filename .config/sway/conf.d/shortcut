@@ -28,13 +28,13 @@ bindsym $mod+e exec $fileBrowser
 
 bindsym $mod+Shift+Return exec $browser
 mode "index" {
-    bindsym w exec $wiki; mode default
+    bindsym c exec $wiki; mode default
     bindsym i exec $index; mode default
     bindsym s exec $search; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+i mode "index"
+bindsym $mod+w mode "index"
 bindsym $mod+Shift+n exec $news
 
 bindsym $mod+p exec $paste
