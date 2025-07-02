@@ -130,7 +130,6 @@ require('lazy').setup {
         build = ':MasonUpdate',
         config = true,
     },
-
     {
         'williamboman/mason-lspconfig.nvim',
         dependencies = { 'williamboman/mason.nvim' },
@@ -144,6 +143,24 @@ require('lazy').setup {
                     'cssls',
                     'ts_ls',
                     'lua_ls',
+                    'marksman',
+                },
+            }
+        end,
+    },
+
+    {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        dependencies = { 'williamboman/mason.nvim' },
+        config = function()
+            require('mason-tool-installer').setup {
+                ensure_installed = {
+                    'ruff',
+                    'stylua',
+                    'prettier',
+                    'prettierd',
+                    'shfmt',
+                    'markdownlint',
                 },
                 automatic_installation = true,
             }
@@ -169,6 +186,7 @@ require('lazy').setup {
                 'ts_ls',
                 'bashls',
                 'lua_ls',
+                'marksman',
             }
 
             for _, lsp in ipairs(lsps) do
