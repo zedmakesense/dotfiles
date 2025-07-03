@@ -18,6 +18,8 @@ return {
                     'ts_ls',
                     'lua_ls',
                     'marksman',
+                    'texlab',
+                    'ltex_plus',
                 },
             }
         end,

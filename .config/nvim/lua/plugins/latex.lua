@@ -11,7 +11,6 @@ return {
                     '-pdf',
                     '-interaction=nonstopmode',
                     '-synctex=1',
-                    '-shell-escape',
                 },
             }
             -- Optional: Do not open quickfix automatically
