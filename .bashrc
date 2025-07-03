@@ -203,6 +203,29 @@ ex() {
     fi
 }
 
+docx2pdf() {
+    if [[ "$1" == "" ]]; then
+        echo "Usage: docx2pdf <file.docx>"
+        return 1
+    fi
+
+    input="$1"
+
+    if [[ ! -f "$input" ]]; then
+        echo "Error: File '$input' does not exist."
+        return 1
+    fi
+
+    if [[ "${input##*.}" != "docx" ]]; then
+        echo "Error: Input file must have a .docx extension."
+        return 1
+    fi
+
+    output="${input%.docx}.pdf"
+
+    pandoc "$input" -o "$output" --pdf-engine=pdflatex
+}
+
 #
 # batdiff() {
 #     git diff --name-only --relative --diff-filter=d | xargs bat --diff
