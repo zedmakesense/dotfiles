@@ -31,40 +31,50 @@ return {
         end
 
         -- texlab LSP
-        vim.lsp.start {
-            name = 'texlab',
-            cmd = { 'texlab' },
-            root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
-            settings = {
-                texlab = {
-                    build = {
-                        executable = 'latexmk',
-                        args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                        onSave = true,
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'tex',
+            callback = function()
+                vim.lsp.start {
+                    name = 'texlab',
+                    cmd = { 'texlab' },
+                    root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
+                    settings = {
+                        texlab = {
+                            build = {
+                                executable = 'latexmk',
+                                args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
+                                onSave = true,
+                            },
+                            forwardSearch = {
+                                executable = 'zathura',
+                                args = { '--synctex-forward', '%l:1:%f', '%p' },
+                            },
+                        },
                     },
-                    forwardSearch = {
-                        executable = 'zathura',
-                        args = { '--synctex-forward', '%l:1:%f', '%p' },
-                    },
-                },
-            },
-        }
+                }
+            end,
+        })
 
         -- ltex-ls-plus LSP (grammar + spell check)
-        vim.lsp.start {
-            name = 'ltex_plus',
-            cmd = { 'ltex_plus' },
-            root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
-            settings = {
-                ltex = {
-                    language = 'en',
-                    additionalRules = {
-                        enablePickyRules = true,
-                        motherTongue = 'en',
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'tex',
+            callback = function()
+                vim.lsp.start {
+                    name = 'ltex_plus',
+                    cmd = { 'ltex-ls-plus' },
+                    root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
+                    settings = {
+                        ltex = {
+                            language = 'en',
+                            additionalRules = {
+                                enablePickyRules = true,
+                                motherTongue = 'en',
+                            },
+                        },
                     },
-                },
-            },
-        }
+                }
+            end,
+        })
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

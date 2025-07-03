@@ -37,6 +37,10 @@ return {
                     'prettierd',
                     'shfmt',
                     'markdownlint',
+                    'luacheck',
+                    'shellcheck',
+                    'eslint_d',
+                    'stylelint',
                 },
                 automatic_installation = true,
             }
