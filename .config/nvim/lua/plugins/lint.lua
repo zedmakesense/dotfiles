@@ -6,10 +6,10 @@ return {
 
         lint.linters_by_ft = {
             python = { 'ruff' },
-            lua = { 'luacheck' }, -- or 'selene' if preferred
+            lua = { 'luacheck' },
             sh = { 'shellcheck' },
             markdown = { 'markdownlint' },
-            javascript = { 'eslint_d' }, -- or 'eslint'
+            javascript = { 'eslint_d' },
             typescript = { 'eslint_d' },
             css = { 'stylelint' },
         }

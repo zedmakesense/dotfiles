@@ -13,8 +13,6 @@ vim.g.netrw_liststyle = 3
 vim.g.have_nerd_font = true
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
-vim.g.gruvbox_material_enable_italic = 1
--- vim.g.gruvbox_material_transparent_background = 1
 
 -- Editor Options
 vim.opt.number = true

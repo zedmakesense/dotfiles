@@ -1,5 +1,6 @@
 return {
     'neovim/nvim-lspconfig',
+    event = 'VeryLazy',
     dependencies = {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
@@ -8,7 +9,7 @@ return {
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
-        require('cmp_nvim_lsp').default_capabilities(capabilities)
+        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
         local lsps = {
             'jsonls',
@@ -20,7 +21,6 @@ return {
             'lua_ls',
             'marksman',
             'texlab',
-            'ltex_plus',
         }
 
         for _, lsp in ipairs(lsps) do
@@ -31,58 +31,37 @@ return {
         end
 
         -- texlab LSP
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = 'tex',
-            callback = function()
-                vim.lsp.start {
-                    name = 'texlab',
-                    cmd = { 'texlab' },
-                    root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
-                    settings = {
-                        texlab = {
-                            build = {
-                                executable = 'latexmk',
-                                args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                                onSave = true,
-                            },
-                            forwardSearch = {
-                                executable = 'zathura',
-                                args = { '--synctex-forward', '%l:1:%f', '%p' },
-                            },
-                        },
+        vim.lsp.config('texlab', {
+            settings = {
+                texlab = {
+                    build = {
+                        executable = 'latexmk',
+                        args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
+                        onSave = true,
                     },
-                }
-            end,
-        })
-
-        -- ltex-ls-plus LSP (grammar + spell check)
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = 'tex',
-            callback = function()
-                vim.lsp.start {
-                    name = 'ltex_plus',
-                    cmd = { 'ltex-ls-plus' },
-                    root_dir = vim.fs.dirname(vim.fs.find({ 'main.tex', '.git' }, { upward = true })[1]),
-                    settings = {
-                        ltex = {
-                            language = 'en',
-                            additionalRules = {
-                                enablePickyRules = true,
-                                motherTongue = 'en',
-                            },
-                        },
+                    forwardSearch = {
+                        executable = 'zathura',
+                        args = { '--synctex-forward', '%l:1:%f', '%p' },
                     },
-                }
-            end,
+                    latexFormatter = 'tex-fmt',
+                    bibtexFormatter = 'tex-fmt',
+                },
+            },
+            capabilities = capabilities,
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+            group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
             callback = function(event)
                 local map = function(keys, func, desc, mode)
                     mode = mode or 'n'
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
+
+                map('<leader>e', vim.diagnostic.open_float, 'Show diagnostics float')
+                map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
+                map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
+                map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
                 map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
                 map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
                 map('grr', function()
