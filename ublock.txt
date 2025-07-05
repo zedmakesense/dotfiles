@@ -1,5 +1,5 @@
 {
-  "timeStamp": 1751547594197,
+  "timeStamp": 1751638071222,
   "version": "1.64.0",
   "userSettings": {
     "externalLists": "https://nsfw.oisd.nl/\nhttps://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
@@ -38,6 +38,7 @@
     "adguard-other-annoyances",
     "adguard-popup-overlays",
     "adguard-widgets",
+    "ublock-annoyances",
     "IND-0",
     "https://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
     "https://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt",

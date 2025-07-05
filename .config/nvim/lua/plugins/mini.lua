@@ -2,6 +2,7 @@ return {
     {
         'echasnovski/mini.statusline',
         version = false,
+        event = 'VimEnter',
         config = function()
             local statusline = require 'mini.statusline'
             statusline.setup { use_icons = vim.g.have_nerd_font }
@@ -17,18 +18,10 @@ return {
     -- mini.icons
     {
         'echasnovski/mini.icons',
+        lazy = true,
         version = false,
         config = function()
             require('mini.icons').setup()
-        end,
-    },
-
-    -- mini.move
-    {
-        'echasnovski/mini.move',
-        version = false,
-        config = function()
-            require('mini.move').setup()
         end,
     },
 

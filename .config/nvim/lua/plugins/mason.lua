@@ -5,40 +5,23 @@ return {
         build = ':MasonUpdate',
         config = true,
     },
-    {
-        'williamboman/mason-lspconfig.nvim',
-        event = 'VeryLazy',
-        dependencies = { 'williamboman/mason.nvim' },
-        config = function()
-            vim.api.nvim_create_autocmd('User', {
-                pattern = 'VeryLazy',
-                callback = function()
-                    require('mason-lspconfig').setup {
-                        automatic_installation = false,
-                        ensure_installed = {
-                            'pyright',
-                            'bashls',
-                            'html',
-                            'jsonls',
-                            'cssls',
-                            'ts_ls',
-                            'lua_ls',
-                            'marksman',
-                            'texlab',
-                        },
-                    }
-                end,
-            })
-        end,
-    },
 
     {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-        cmd = { 'MasonToolsInstall', 'MasonToolsUpdate' },
+        cmd = { 'MasonToolsInstall' },
         dependencies = { 'williamboman/mason.nvim' },
         config = function()
             require('mason-tool-installer').setup {
                 ensure_installed = {
+                    'pyright',
+                    'bash-language-server',
+                    'html-lsp',
+                    'json-lsp',
+                    'css-lsp',
+                    'typescript-language-server',
+                    'lua-language-server',
+                    'marksman',
+                    'texlab',
                     'ruff',
                     'black',
                     'stylua',

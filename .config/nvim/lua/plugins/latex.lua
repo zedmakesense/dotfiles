@@ -1,7 +1,7 @@
 return {
     {
         'lervag/vimtex',
-        lazy = false,
+        ft = { 'tex', 'plaintex' },
         init = function()
             vim.g.vimtex_view_method = 'zathura'
             vim.g.vimtex_compiler_method = 'latexmk'
@@ -13,7 +13,7 @@ return {
                     '-synctex=1',
                 },
             }
-            -- Optional: Do not open quickfix automatically
+            -- Do not open quickfix automatically
             vim.g.vimtex_quickfix_mode = 0
         end,
     },

@@ -3,7 +3,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
         'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
         'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
@@ -63,24 +62,24 @@ return {
                 map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
                 map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
                 map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-                map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-                map('grr', function()
+                map('gca', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+                map('gfr', function()
                     require('fzf-lua').lsp_references()
                 end, '[G]oto [R]eferences')
-                map('gri', function()
+                map('gi', function()
                     require('fzf-lua').lsp_implementations()
                 end, '[G]oto [I]mplementation')
-                map('grd', function()
+                map('gd', function()
                     require('fzf-lua').lsp_definitions()
                 end, '[G]oto [D]efinition')
-                map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                 map('gO', function()
                     require('fzf-lua').lsp_document_symbols()
                 end, 'Open Document Symbols')
                 map('gW', function()
                     require('fzf-lua').lsp_workspace_symbols()
                 end, 'Open Workspace Symbols')
-                map('grt', function()
+                map('gt', function()
                     require('fzf-lua').lsp_typedefs()
                 end, '[G]oto [T]ype Definition')
 
@@ -91,7 +90,7 @@ return {
                 -- When you move your cursor, the highlights will be cleared (the second autocommand).
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
                 if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                    local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+                    local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
                         group = highlight_augroup,
@@ -105,23 +104,14 @@ return {
                     })
 
                     vim.api.nvim_create_autocmd('LspDetach', {
-                        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+                        group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
                         callback = function(event2)
                             vim.lsp.buf.clear_references()
-                            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                            vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
                         end,
                     })
                 end
 
-                -- The following code creates a keymap to toggle inlay hints in your
-                -- code, if the language server you are using supports them
-                --
-                -- This may be unwanted, since they displace some of your code
-                if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-                    map('<leader>th', function()
-                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                    end, '[T]oggle Inlay [H]ints')
-                end
                 vim.diagnostic.config {
                     severity_sort = true,
                     float = { border = 'rounded', source = 'if_many' },
@@ -134,19 +124,7 @@ return {
                             [vim.diagnostic.severity.HINT] = '󰌶 ',
                         },
                     } or {},
-                    virtual_text = {
-                        source = 'if_many',
-                        spacing = 2,
-                        format = function(diagnostic)
-                            local diagnostic_message = {
-                                [vim.diagnostic.severity.ERROR] = diagnostic.message,
-                                [vim.diagnostic.severity.WARN] = diagnostic.message,
-                                [vim.diagnostic.severity.INFO] = diagnostic.message,
-                                [vim.diagnostic.severity.HINT] = diagnostic.message,
-                            }
-                            return diagnostic_message[diagnostic.severity]
-                        end,
-                    },
+                    virtual_text = false,
                 }
             end,
         })

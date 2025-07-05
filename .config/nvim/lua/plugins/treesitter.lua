@@ -2,31 +2,28 @@ return {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufReadPost',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
     config = function()
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'VeryLazy',
-            callback = function()
-                require('nvim-treesitter.configs').setup {
-                    ensure_installed = {
-                        'bash',
-                        'python',
-                        'c',
-                        'cpp',
-                        'diff',
-                        'html',
-                        'lua',
-                        'luadoc',
-                        'markdown',
-                        'markdown_inline',
-                        'query',
-                        'vim',
-                        'vimdoc',
-                    },
-                    auto_install = true,
-                    indent = { enable = true },
-                }
-            end,
-        })
+        require('nvim-treesitter.configs').setup {
+            ensure_installed = {
+                'bash',
+                'python',
+                'c',
+                'cpp',
+                'diff',
+                'html',
+                'lua',
+                'luadoc',
+                'markdown',
+                'markdown_inline',
+                'query',
+                'vim',
+                'vimdoc',
+            },
+            sync_install = false,
+            auto_install = true,
+            ignore_install = {},
+            highlight = { enable = true },
+            indent = { enable = true },
+        }
     end,
 }

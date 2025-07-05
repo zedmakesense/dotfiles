@@ -8,11 +8,13 @@ return {
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
+        'onsails/lspkind.nvim',
     },
     event = 'InsertEnter',
     config = function()
         local cmp = require 'cmp'
         local luasnip = require 'luasnip'
+        local lspkind = require 'lspkind'
 
         require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -52,6 +54,19 @@ return {
                 { name = 'luasnip' },
                 { name = 'buffer' },
                 { name = 'path' },
+            },
+            formatting = {
+                format = lspkind.cmp_format {
+                    mode = 'symbol_text', -- 'symbol' for icons only, 'symbol_text' for icons + text
+                    maxwidth = 50,
+                    ellipsis_char = '...',
+                    menu = {
+                        buffer = '[Buf]',
+                        nvim_lsp = '[LSP]',
+                        luasnip = '[Snip]',
+                        path = '[Path]',
+                    },
+                },
             },
         }
 
