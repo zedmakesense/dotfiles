@@ -168,6 +168,7 @@ alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 alias cp="cp -i"
 alias mv="mv -i"
 alias trash="trash -v"
+alias cd="z"
 
 alias c="clear"
 alias x="exit"
@@ -236,5 +237,6 @@ docx2pdf() {
 # }
 
 source /usr/share/wikiman/widgets/widget.bash
+eval "$(zoxide init bash)"
 # eval "$(fzf --bash)"
 # eval "$(batman --export-env)"
