@@ -1,3 +1,5 @@
+# vim: ft=swayconfig
+set $systemd systemd-run --user --scope
 set $term foot
 set $menu fuzzel --placeholder "Search ..."
 set $browser firefox

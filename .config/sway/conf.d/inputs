@@ -1,3 +1,4 @@
+# vim: ft=swayconfig
 ### Input Configuration
 # Example for configuring input devices
 # input "2:14:SynPS/2_Synaptics_TouchPad" {
