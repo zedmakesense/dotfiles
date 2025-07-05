@@ -1,6 +1,12 @@
 .config/tmux/plugins
 .config/GIMP/3.0/backups
 .config/GIMP/3.0/CrashLog
+.config/GIMP/3.0/action-history
+.config/GIMP/3.0/devicerc
+.config/GIMP/3.0/pluginrc
+.config/GIMP/3.0/sessionrc
+.config/GIMP/3.0/shortcutsrc
+.config/GIMP/3.0/tags.xml
 .config/vifm/vifminfo.json
 .config/vifm/vifminfo.json_2040
 
