@@ -10,7 +10,7 @@ return {
             { '<leader>sg', function() require('fzf-lua').live_grep() end, desc = '[S]earch by [G]rep' },
             { '<leader>s.', function() require('fzf-lua').oldfiles() end, desc = '[S]earch Recent Files ("." for repeat)' },
             { '<leader>sb', function() require('fzf-lua').buffers() end, desc = '[ ] Find existing buffers' },
-            { '<leader>sv', function() require('fzf-lua').live_grep({ cwd = '~/.wiki' }) end, desc = '[S]earch [V]imwiki' },
+            -- { '<leader>sv', function() require('fzf-lua').live_grep({ cwd = '~/.wiki' }) end, desc = '[S]earch [V]imwiki' },
         },
     },
 
