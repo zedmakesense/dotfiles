@@ -21,7 +21,7 @@ set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
 set $index '$term --title="float" -e nvim ~/.wiki/index.md'
 set $wiki '$term --title="float" -e wiki.sh'
-set $search $term --title="float" -e sh -c 'fd . ~/wiki | fzf | xargs -r nvim'
+set $search $term --title="float" -e sh -c 'fd . ~/.wiki | fzf | xargs -r nvim'
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term
