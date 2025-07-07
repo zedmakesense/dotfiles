@@ -1,5 +1,5 @@
 {
-  "timeStamp": 1751638071222,
+  "timeStamp": 1751864252278,
   "version": "1.64.0",
   "userSettings": {
     "externalLists": "https://nsfw.oisd.nl/\nhttps://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
@@ -11,10 +11,14 @@
   },
   "selectedFilterLists": [
     "user-filters",
+    "ublock-filters",
     "ublock-badware",
     "ublock-privacy",
     "ublock-quick-fixes",
     "ublock-unbreak",
+    "easylist",
+    "adguard-generic",
+    "adguard-mobile",
     "easyprivacy",
     "adguard-spyware",
     "adguard-spyware-url",
