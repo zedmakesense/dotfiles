@@ -25,6 +25,7 @@ set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --colo
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+f exec '$term --title="float"'
 bindsym $mod+space exec $menu
 bindsym $mod+e exec $fileBrowser
 
@@ -52,6 +53,6 @@ bindsym $mod+n exec swaync-client -t -sw
 bindsym Ctrl+Delete exec swaync-client --hide-latest
 
 bindsym Print exec $SS
-bindsym $mod+Shift+S exec $SSselect
-bindsym Ctrl+Print exec $SSedit
+bindsym $mod+S exec $SSselect
+bindsym $mod+Shift+S exec $SSedit
 bindsym Ctrl+Shift+p exec $color
