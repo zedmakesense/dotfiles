@@ -124,9 +124,6 @@ CDPATH="."
 # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
 shopt -s cdable_vars
 
-# Examples:
-export projects="$HOME/Documents/projects"
-
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -184,59 +181,5 @@ alias img="swayimg"
 alias jrctl="journalctl -p 3 -xb"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
-ex() {
-    if [ -f "$1" ]; then
-        case "$1" in
-        *.tar.bz2) tar xjf "$1" ;;
-        *.tar.gz) tar xzf "$1" ;;
-        *.tar.xz) tar xf "$1" ;;
-        *.tar.zst) tar --use-compress-program=unzstd -xvf "$1" ;;
-        *.xz) unxz "$1" ;;
-        *.bz2) bunzip2 "$1" ;;
-        *.rar) unrar x "$1" ;;
-        *.gz) gunzip "$1" ;;
-        *.tar) tar xf "$1" ;;
-        *.tbz2) tar xjf "$1" ;;
-        *.tgz) tar xzf "$1" ;;
-        *.zip) unzip "$1" ;;
-        *.Z) uncompress "$1" ;;
-        *.7z) 7z x "$1" ;;
-        *) echo "'"$1"' cannot be extracted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
-
-docx2pdf() {
-    if [[ "$1" == "" ]]; then
-        echo "Usage: docx2pdf <file.docx>"
-        return 1
-    fi
-
-    input="$1"
-
-    if [[ ! -f "$input" ]]; then
-        echo "Error: File '$input' does not exist."
-        return 1
-    fi
-
-    if [[ "${input##*.}" != "docx" ]]; then
-        echo "Error: Input file must have a .docx extension."
-        return 1
-    fi
-
-    output="${input%.docx}.pdf"
-
-    pandoc "$input" -o "$output" --pdf-engine=pdflatex
-}
-
-#
-# batdiff() {
-#     git diff --name-only --relative --diff-filter=d | xargs bat --diff
-# }
-
 source /usr/share/wikiman/widgets/widget.bash
 eval "$(zoxide init bash)"
-# eval "$(fzf --bash)"
-# eval "$(batman --export-env)"
