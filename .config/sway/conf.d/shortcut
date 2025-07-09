@@ -5,7 +5,7 @@ set $menu fuzzel --placeholder "Search ..."
 set $browser firefox
 set $fileBrowser pcmanfm
 
-set $calc calc.sh
+set $calc qalculate-gtk
 set $emoji bemoji
 set $network networkmanager_dmenu
 

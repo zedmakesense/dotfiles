@@ -17,6 +17,7 @@ for_window [app_id="nvtop"] floating enable, resize set 1366 ppt 768 ppt
 for_window [app_id="foot" title="float"] floating enable
 for_window [app_id="org.gnome.FileRoller"] floating enable
 for_window [app_id="kvantummanager"] floating enable
+for_window [app_id="qalculate-gtk"] floating enable
 
 # assign workspace to specific applications
 # assign [app_id="firefox"] workspace 2
