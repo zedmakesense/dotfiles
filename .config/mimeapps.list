@@ -1,5 +1,5 @@
-
 [Default Applications]
+x-terminal-emulator.desktop=foot.desktop
 application/pdf=org.pwmt.zathura.desktop
 application/x-pdf=org.pwmt.zathura.desktop
 application/fdf=org.pwmt.zathura.desktop
