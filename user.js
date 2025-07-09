@@ -315,9 +315,9 @@ user_pref("network.trr.uri", "https://dns.google/dns-query");
 user_pref("network.trr.bootstrapAddress", "8.8.8.8");
 
 // Simple fox
-user_pref("layers.acceleration.force-enabled", true);
-user_pref("gfx.webrender.all", true);
-user_pref("svg.context-properties.content.enabled", true);
+// user_pref("layers.acceleration.force-enabled", true);
+// user_pref("gfx.webrender.all", true);
+// user_pref("svg.context-properties.content.enabled", true);
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *

@@ -1,17 +1,11 @@
 return {
+    -- mini.pairs
     {
-        'echasnovski/mini.statusline',
+        'echasnovski/mini.pairs',
+        event = 'InsertEnter',
         version = false,
-        event = 'VeryLazy',
         config = function()
-            local statusline = require 'mini.statusline'
-            statusline.setup { use_icons = vim.g.have_nerd_font }
-            ---@diagnostic disable-next-line: duplicate-set-field
-            statusline.section_location = function()
-                local col = vim.fn.col '.'
-                local total_col = vim.fn.col '$' - 1
-                return string.format('%d:%d', col, total_col)
-            end
+            require('mini.pairs').setup()
         end,
     },
 

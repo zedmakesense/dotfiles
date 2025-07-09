@@ -6,7 +6,7 @@ set $browser firefox
 set $fileBrowser pcmanfm
 
 set $calc calc.sh
-set $emoji rofimoji
+set $emoji bemoji
 set $network networkmanager_dmenu
 
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
