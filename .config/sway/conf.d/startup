@@ -4,5 +4,6 @@ exec wl-paste --type image --watch cliphist store
 exec wl-clip-persist --clipboard both --reconnect-tries 0
 
 exec playerctld daemon
+exec sway-audio-idle-inhibit
 exec swaync
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

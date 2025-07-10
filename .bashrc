@@ -70,6 +70,9 @@ bind "set completion-map-case on"
 # Display matches for ambiguous patterns at first tab press
 bind "set show-all-if-ambiguous on"
 
+#This turns off the use of the internal pager when returning long completion lists.
+bind "set page-completions off"
+
 # Immediately add a trailing slash when autocompleting symlinks to directories
 bind "set mark-symlinked-directories on"
 

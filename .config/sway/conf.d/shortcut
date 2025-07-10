@@ -67,4 +67,4 @@ mode "systemctl" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+o mode "systemctl options"
+bindsym $mod+Shift+o mode "systemctl"
