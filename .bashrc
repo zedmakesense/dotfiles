@@ -157,7 +157,6 @@ alias ll="eza -la --icons=always --group-directories-first"
 alias ls='ls --color=auto'
 alias ip='ip -color=auto'
 alias grep='grep --color=auto'
-alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias df="df -h"
 
 alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
