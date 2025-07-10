@@ -5,11 +5,12 @@ vim.g.maplocalleader = ' '
 
 -- Statusline
 vim.o.statusline = table.concat {
-  "%#Normal#",
-  " %F",
-  " %m",
-  "%=",
-  " [%p%%]",
+    '%#Normal#',
+    ' %F',
+    ' %m',
+    " %{&readonly ? '[RO]' : ''}",
+    '%=',
+    ' [%p%%]',
 }
 
 -- Netrw Configuration
