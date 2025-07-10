@@ -7,7 +7,7 @@ set $right l
 
 floating_modifier $mod normal
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes' 'swaymsg exit' 'sleep 1 && swaymsg exit'
 
 bindsym $mod+$left focus left
@@ -73,16 +73,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-mode "systemctl" {
-    bindsym r exec systemctl reboot; mode default
-    bindsym p exec systemctl poweroff; mode default
-    bindsym e exec sway exit; mode default
-    bindsym l exec swaylock -f -c 000000; mode default
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+p mode "systemctl"
 
 bar {
     position bottom

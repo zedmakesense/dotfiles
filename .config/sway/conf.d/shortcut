@@ -53,6 +53,18 @@ bindsym $mod+n exec swaync-client -t -sw
 bindsym Ctrl+Delete exec swaync-client --hide-latest
 
 bindsym Print exec $SS
-bindsym $mod+S exec $SSselect
-bindsym $mod+Shift+S exec $SSedit
-bindsym Ctrl+Shift+p exec $color
+bindsym $mod+s exec $SSselect
+bindsym $mod+Ctrl+s exec $SSedit
+bindsym $mod+Shift+p exec $color
+bindsym $mod+Shift+r exec wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date +'%F_%T').mp4
+bindsym $mod+Shift+s exec pkill -INT wf-recorder
+
+mode "systemctl" {
+    bindsym r exec systemctl reboot; mode default
+    bindsym p exec systemctl poweroff; mode default
+    bindsym e exec sway exit; mode default
+    bindsym l exec swaylock -f -c 000000; mode default
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+o mode "systemctl options"
