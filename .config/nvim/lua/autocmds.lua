@@ -1,21 +1,47 @@
--- Highlight on Yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+-- Basic autocommands
+local augroup = vim.api.nvim_create_augroup("UserConfig", {})
+
+-- Highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
--- restore cursor to file position in previous editing session
-vim.api.nvim_create_autocmd('BufReadPost', {
-    callback = function(args)
-        local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
-        local line_count = vim.api.nvim_buf_line_count(args.buf)
-        if mark[1] > 0 and mark[1] <= line_count then
-            vim.api.nvim_buf_call(args.buf, function()
-                vim.cmd 'normal! g`"zz'
-            end)
-        end
-    end,
+-- Return to last edit position when opening files
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup,
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
 })
+
+-- Set filetype-specific settings
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = { "lua", "python" },
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = { "javascript", "typescript", "json", "html", "css" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
+-- Create undo directory if it doesn't exist
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, "p")
+end

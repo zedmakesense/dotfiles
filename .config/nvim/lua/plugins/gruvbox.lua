@@ -1,7 +1,7 @@
 return {
     'echasnovski/mini.base16',
     version = '*',
-    event = 'BufReadPost',
+    event = { 'BufReadPost', 'BufWritePost' },
     config = function()
         require('mini.base16').setup {
             palette = {
@@ -22,6 +22,7 @@ return {
                 base0E = '#d3869b', -- purple
                 base0F = '#bd6f3e', -- brown
             },
+            use_cterm = true,
         }
         require('gruvbox').apply_highlights()
     end,

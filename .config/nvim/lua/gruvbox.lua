@@ -4,6 +4,7 @@ function M.apply_highlights()
     local hl = vim.api.nvim_set_hl
     local bg = '#282828'
     local alt_bg = '#32302f'
+    local float_bg = '#1d2021' -- distinguishable bg for float
 
     hl(0, 'Comment', { fg = '#928374', italic = true })
 
@@ -12,6 +13,12 @@ function M.apply_highlights()
     hl(0, 'DiagnosticWarn', { fg = '#e78a4e' })
     hl(0, 'DiagnosticInfo', { fg = '#7daea3' })
     hl(0, 'DiagnosticHint', { fg = '#89b482' })
+
+    -- LSP floating diagnostics
+    hl(0, 'DiagnosticFloatingError', { fg = '#fb4934', bg = float_bg })
+    hl(0, 'DiagnosticFloatingWarn', { fg = '#fe8019', bg = float_bg })
+    hl(0, 'DiagnosticFloatingInfo', { fg = '#83a598', bg = float_bg })
+    hl(0, 'DiagnosticFloatingHint', { fg = '#8ec07c', bg = float_bg })
 
     -- GitSigns
     hl(0, 'GitSignsAdd', { fg = '#a9b665' })
@@ -52,9 +59,9 @@ function M.apply_highlights()
     hl(0, 'PmenuThumb', { bg = '#665c54' })
 
     -- Floating windows
-    hl(0, 'NormalFloat', { bg = bg })
-    hl(0, 'FloatBorder', { fg = '#bdae93', bg = bg })
-    hl(0, 'FloatTitle', { fg = '#d8a657', bg = bg })
+    hl(0, 'NormalFloat', { bg = float_bg })
+    hl(0, 'FloatBorder', { fg = '#bdae93', bg = float_bg })
+    hl(0, 'FloatTitle', { fg = '#d8a657', bg = float_bg })
 
     -- Line numbers & side columns
     hl(0, 'LineNr', { fg = '#665c54', bg = bg })
@@ -73,6 +80,23 @@ function M.apply_highlights()
 
     -- Right column
     hl(0, 'ColorColumn', { bg = bg })
+
+    hl(0, 'DiagnosticVirtualTextError', { fg = '#fb4934', bg = bg })
+    hl(0, 'DiagnosticVirtualTextWarn', { fg = '#fe8019', bg = bg })
+    hl(0, 'DiagnosticVirtualTextInfo', { fg = '#83a598', bg = bg })
+    hl(0, 'DiagnosticVirtualTextHint', { fg = '#8ec07c', bg = bg })
+
+    -- Optional: underline styles without changing background
+    hl(0, 'DiagnosticUnderlineError', { undercurl = true, sp = '#fb4934' })
+    hl(0, 'DiagnosticUnderlineWarn', { undercurl = true, sp = '#fe8019' })
+    hl(0, 'DiagnosticUnderlineInfo', { undercurl = true, sp = '#83a598' })
+    hl(0, 'DiagnosticUnderlineHint', { undercurl = true, sp = '#8ec07c' })
+
+    -- SignColumn symbols
+    hl(0, 'DiagnosticSignError', { fg = '#fb4934', bg = bg })
+    hl(0, 'DiagnosticSignWarn', { fg = '#fe8019', bg = bg })
+    hl(0, 'DiagnosticSignInfo', { fg = '#83a598', bg = bg })
+    hl(0, 'DiagnosticSignHint', { fg = '#8ec07c', bg = bg })
 end
 
 return M
