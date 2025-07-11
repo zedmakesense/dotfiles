@@ -10,11 +10,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { noremap = true, silent = t
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Exit terminal mode' })
 
 vim.keymap.set('n', 'j', function()
-  return vim.v.count == 0 and 'gj' or 'j'
+    return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true, silent = true })
 
 vim.keymap.set('n', 'k', function()
-  return vim.v.count == 0 and 'gk' or 'k'
+    return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true, silent = true })
 
 -- Center screen when jumping
@@ -24,5 +24,8 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Half page down (centered)' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
 
 -- Better indenting in visual mode
-vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
+
+-- Navigation
+vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
