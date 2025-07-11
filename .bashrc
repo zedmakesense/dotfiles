@@ -175,7 +175,7 @@ alias x="exit"
 
 alias vim="nvim"
 alias vi="nvim"
-alias v="vifm"
+alias v="nvim +Ex"
 alias vimdiff="nvim -d"
 alias nvimdiff="nvim -d"
 
