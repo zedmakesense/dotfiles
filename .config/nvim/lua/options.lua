@@ -70,3 +70,16 @@ vim.opt.maxmempattern = 20000
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
+
+-- Folding setup
+-- Enable Tree-sitter-based folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Default to all folds open
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
+-- Optional: Customize fold appearance
+-- vim.opt.fillchars = { fold = " ", foldopen = "", foldclose = "", foldsep = " " }
