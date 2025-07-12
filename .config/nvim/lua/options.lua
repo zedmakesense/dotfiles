@@ -14,10 +14,19 @@ vim.o.statusline = table.concat {
 }
 
 -- Netrw Configuration
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+      vim.cmd("Explore")
+    end
+  end
+})
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_liststyle = 3
+vim.g.netrw_keepdir = 1
+vim.g.netrw_localcopydircmd = 'cp -r'
 
 -- UI Configuration
 vim.g.have_nerd_font = true

@@ -146,7 +146,10 @@ export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_STYLE_OVERRIDE=kvantum
+
 export TERMINAL=foot
+# export TERM=tmux-256color
+# export TERMINFO=$HOME/.local/share/terminfo
 
 export EDITOR=nvim
 export VISUAL=nvim
