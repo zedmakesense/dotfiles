@@ -1,0 +1,31 @@
+[general]
+# Start Satty in fullscreen mode
+fullscreen = false
+# Exit directly after copy/save action
+early-exit = true
+# Select the tool on startup
+initial-tool = "brush"
+# Increase or decrease the size of the annotations
+annotation-size-factor = 1
+# Configure the command to be called on copy, for example `wl-copy`
+copy-command = "wl-copy"
+# Action to perform when the Enter key is pressed
+action-on-enter = "save-to-clipboard"
+# After copying the screenshot, save it to a file as well
+save-after-copy = false
+# Hide toolbars by default
+default-hide-toolbars = false
+# The primary highlighter to use, the other is accessible by holding CTRL at the start of a highlight [possible values: block, freehand]
+primary-highlighter = "block"
+disable-notifications = false
+
+# Custom colours for the colour palette
+[color-palette]
+# These will be shown in the toolbar for quick selection
+palette = [
+    "#dc143c",
+    "#00ffff",
+    "#ff1493",
+    "#ffd700",
+    "#008000",
+]

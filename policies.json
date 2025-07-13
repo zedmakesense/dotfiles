@@ -33,10 +33,6 @@
             "{72bd91c9-3dc5-40a8-9b10-dec633c0873f}": {
                 "installation_mode": "force_installed",
                 "install_url": "https://addons.mozilla.org/firefox/downloads/latest/enhanced-github/latest.xpi"
-            },
-            "{b5c9e7c9-8e92-4b1c-8e32-9b2e7a1c9a0f}": {
-                "installation_mode": "force_installed",
-                "install_url": "https://addons.mozilla.org/firefox/downloads/latest/git-history/latest.xpi"
             }
         }
     }
