@@ -14,13 +14,6 @@ vim.o.statusline = table.concat {
 }
 
 -- Netrw Configuration
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function()
-        if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-            vim.cmd 'Explore'
-        end
-    end,
-})
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
@@ -52,7 +45,6 @@ vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.confirm = true
-vim.opt.clipboard = 'unnamedplus'
 vim.opt.lazyredraw = true -- Don't redraw during macros
 vim.opt.path:append '**' -- include subdirectories in search
 

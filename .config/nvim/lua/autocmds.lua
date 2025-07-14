@@ -9,6 +9,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Open netrw if in dir
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+            vim.cmd 'Explore'
+        end
+    end,
+})
+
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup,
