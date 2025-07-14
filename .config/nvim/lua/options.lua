@@ -14,12 +14,12 @@ vim.o.statusline = table.concat {
 }
 
 -- Netrw Configuration
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-      vim.cmd("Explore")
-    end
-  end
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+            vim.cmd 'Explore'
+        end
+    end,
 })
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 4
@@ -82,8 +82,15 @@ vim.g.loaded_node_provider = 0
 
 -- Folding setup
 -- Enable Tree-sitter-based folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'html', 'css' },
+    callback = function()
+        vim.opt_local.foldmethod = 'manual'
+    end,
+})
 
 -- Default to all folds open
 vim.opt.foldlevel = 99

@@ -44,13 +44,13 @@ bindsym $mod+p exec $paste
 bindsym $mod+x exec --no-startup-id $text
 bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
-bindsym $mod+Shift+m exec $network
+bindsym $mod+n exec $network
 
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop
 
-bindsym $mod+n exec swaync-client -t -sw
-bindsym Ctrl+Delete exec swaync-client --hide-latest
+# bindsym $mod+n exec swaync-client -t -sw
+# bindsym Ctrl+Delete exec swaync-client --hide-latest
 
 bindsym Print exec $SS
 bindsym $mod+s exec $SSselect
