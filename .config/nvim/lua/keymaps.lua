@@ -31,11 +31,11 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
 
 -- Copy/paste with system clipboard
-vim.keymap.set({ 'n', 'x', 'v' }, 'gy', '"+y')
-vim.keymap.set('n', 'gp', '"+p')
+-- vim.keymap.set({ 'n', 'x', 'v' }, 'gy', '"+y')
+-- vim.keymap.set('n', 'gp', '"+p')
 
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
-vim.keymap.set('x', 'gp', '"+P')
+-- vim.keymap.set('x', 'gp', '"+P')
 
 -- Movement in insert mode
 vim.keymap.set('i', '<M-h>', '<Left>')

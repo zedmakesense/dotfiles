@@ -19,7 +19,7 @@ set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
-set $index '$term --title="float" -e nvim ~/.wiki/index'
+set $index '$term --title="float" -e nvim ~/.wiki/index.md'
 set $wiki '$term --title="float" -e wiki.sh'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/.wiki | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
 set $news '$term --title="float" -e newsraft'
@@ -51,6 +51,7 @@ bindsym Ctrl+Shift+Escape exec $htop
 
 # bindsym $mod+n exec swaync-client -t -sw
 # bindsym Ctrl+Delete exec swaync-client --hide-latest
+bindsym Ctrl+Delete exec makoctl dismiss
 
 bindsym Print exec $SS
 bindsym $mod+s exec $SSselect

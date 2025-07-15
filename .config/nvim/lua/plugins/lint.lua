@@ -8,7 +8,7 @@ return {
             python = { 'ruff' },
             lua = { 'luacheck' },
             sh = { 'shellcheck' },
-            markdown = { 'markdownlint' },
+            -- markdown = { 'markdownlint' },
             javascript = { 'eslint_d' },
             typescript = { 'eslint_d' },
             css = { 'stylelint' },
