@@ -1,5 +1,6 @@
 vim.loader.enable()
 require 'options'
+require 'functions'
 require 'keymaps'
 require 'autocmds'
 require 'terminal'
