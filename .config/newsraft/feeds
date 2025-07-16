@@ -2,28 +2,14 @@
 @ Blogs
 https://archlinux.org/feeds/news/ "Arch Linux News"
 https://opensourcemusings.com/feed.xml "Open Source Musings"
-https://githubengineering.com/atom.xml "GitHub Engineering"
-https://feed.alternativeto.net/news/all "AlternativeTo News"
-https://betterdev.link/rss.xml "Better Dev Links"
-https://betterprogramming.pub/feed "Better Programming"
+https://lwn.net/headlines/rss "Linux Weekly News"
+https://www.phoronix.com/rss.php "Phoronix"
+https://www.linuxtoday.com/backend/biglt.rss "Linux Today"
 
-# Linux & FOSS News (YouTube)
-@ Linux-News
+@ Youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "The Linux Experiment"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "Brodie Robertson"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg "The Linux Cast"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw "Bread On Penguins"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "DistroTube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "Chris Titus Tech"
-
-# Privacy, Security & Tech Commentary (YouTube)
-@ Privacy-Security
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0W_BIuwk8D0Bv4THbVZZOQ "Surveillance Report"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCs6KfncB4OV6Vug4o_bzijg "Techlore"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "Mental Outlaw"
-
-# Learning & Tutorials (YouTube)
-@ Learning
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "Fireship"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdngmbVKX1Tgre699-XLlUA "TechWorld with Nana"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA "Learn Linux TV"
@@ -35,12 +21,4 @@ https://www.reddit.com/r/archlinux/new.rss "r/archlinux"
 https://www.reddit.com/r/neovim/new.rss "r/neovim"
 https://www.reddit.com/r/swaywm/new.rss "r/swaywm"
 https://www.reddit.com/r/commandline/new.rss "r/commandline"
-https://www.reddit.com/r/ZedEditor/new.rss "r/ZedEditor"
 https://www.reddit.com/r/linux/new.rss "r/linux"
-https://www.reddit.com/r/unixporn/new.rss "r/unixporn"
-
-# Entertainment & Variety (YouTube)
-@ Entertainment
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZXW8E1__d5tZb-wLFOt8TQ "Bog"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZzfw1NZ40-RLtRPVSNUHOw "A-dn"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ "SomeOrdinaryGamers"
