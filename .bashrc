@@ -2,39 +2,45 @@
 [[ $- != *i* ]] && return
 
 # Function to get git status
+
 parse_git_branch() {
-    git rev-parse --is-inside-work-tree &>/dev/null || return
+  git rev-parse --is-inside-work-tree &>/dev/null || return
 
-    local branch
-    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+  # Get branch or tag
+  local branch
+  branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || echo "DETACHED")
 
-    local status=""
-    local dirty=""
-    local staged=""
-    local untracked=""
+  # Get status flags in one go
+  local status_output
+  status_output=$(git status --porcelain=2 --branch 2>/dev/null)
 
-    # Status indicators
-    git diff --quiet || dirty="*"
-    git diff --cached --quiet || staged="+"
-    [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
+  local dirty="" staged="" untracked="" ahead_behind=""
 
+  # Parse status
+  while IFS= read -r line; do
+    case "$line" in
     # Ahead/behind info
-    local ahead_behind=""
-    if git rev-parse @{u} &>/dev/null; then
-        local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
-        local ahead=$(git rev-list --count HEAD.."$upstream" 2>/dev/null)
-        local behind=$(git rev-list --count "$upstream"..HEAD 2>/dev/null)
-        [[ $behind -gt 0 ]] && ahead_behind="↑ $behind"
-        [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓ $ahead"
-    fi
+    "# branch.ab "*)
+      [[ "$line" =~ \+([0-9]+) ]] && ahead_behind+="↓ ${BASH_REMATCH[1]} "
+      [[ "$line" =~ -([0-9]+) ]] && ahead_behind+="↑ ${BASH_REMATCH[1]}"
+      ;;
+    # Staged
+    1\ * | 2\ *) [[ "${line:2:1}" != "." ]] && staged="+" ;;
+    # Dirty
+    1\ * | 2\ *) [[ "${line:3:1}" != "." ]] && dirty="*" ;;
+    # Untracked
+    "? "*)
+      untracked="?"
+      ;;
+    esac
+  done <<<"$status_output"
 
-    status="$ahead_behind $branch$staged$dirty$untracked "
-    echo -e " \033[1;33m(${status})\033[0m"
+  local status="$ahead_behind $branch$staged$dirty$untracked"
+  echo -e " \033[1;33m(${status})\033[0m"
 }
 
 # PS1 prompt with Git info
-PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w \033[m\033[1;36m]$(parse_git_branch)\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+PS1='\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]]$(parse_git_branch)\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] '
 
 # set -o vi
 
@@ -68,7 +74,7 @@ bind "set completion-ignore-case on"
 bind "set completion-map-case on"
 
 # Display matches for ambiguous patterns at first tab press
-bind "set show-all-if-ambiguous on"
+# bind "set show-all-if-ambiguous on"
 
 #This turns off the use of the internal pager when returning long completion lists.
 bind "set page-completions off"
@@ -121,11 +127,11 @@ shopt -s cdspell 2>/dev/null
 # This defines where cd looks for targets
 # Add the directories you want to have fast access to, separated by colon
 # Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
-CDPATH="."
+# CDPATH="."
 
 # This allows you to bookmark your favorite places across the file system
 # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
-shopt -s cdable_vars
+# shopt -s cdable_vars
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -148,8 +154,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_STYLE_OVERRIDE=kvantum
 
 export TERMINAL=foot
-# export TERM=tmux-256color
-# export TERMINFO=$HOME/.local/share/terminfo
+export COLORTERM=truecolor
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -168,8 +173,8 @@ alias df="df -h"
 alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
 alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 
-alias cp="cp -i"
-alias mv="mv -i"
+alias cp='cp -iv'
+alias mv='mv -iv'
 alias trash="trash -v"
 alias cd="z"
 
