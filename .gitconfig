@@ -1,0 +1,28 @@
+[user]
+  name = zedonarch
+  email = zedonix@proton.me
+[init]
+  defaultBranch = main
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential
+[pager]
+  branch = true
+  diff = delta
+  log = delta
+  show = delta
+[core]
+  pager = delta
+  editor = nvim
+[color]
+  ui = auto
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  dark = true
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+[merge]
+  conflictStyle = zdiff3

@@ -25,8 +25,8 @@ parse_git_branch() {
   # Ahead/behind info
   if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
     local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
-    local ahead=$(git rev-list --count "$upstream"..HEAD)
-    local behind=$(git rev-list --count HEAD.."$upstream")
+    [[ $ahead -gt 0 ]] && ahead_behind="↑ $ahead"
+    [[ $behind -gt 0 ]] && ahead_behind="${ahead_behind}↓ $behind"
     [[ $behind -gt 0 ]] && ahead_behind="↑ $behind"
     [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓ $ahead"
   fi
@@ -39,8 +39,6 @@ parse_git_branch() {
 PS1='\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]]$(parse_git_branch)\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] '
 
 # set -o vi
-
-shopt -s histverify
 
 ## GENERAL OPTIONS ##
 
@@ -79,6 +77,9 @@ bind "set page-completions off"
 bind "set mark-symlinked-directories on"
 
 ## SANE HISTORY DEFAULTS ##
+
+# expands the command, but places it in the prompt for confirmation
+shopt -s histverify
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
@@ -156,7 +157,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SYSTEMD_EDITOR=nvim
 export MANPAGER="nvim +Man!"
-export PAGER="nvim -R"
+# export PAGER="nvim -R"
 
 alias l="eza -l --icons=always --group-directories-first"
 alias ll="eza -la --icons=always --group-directories-first"
