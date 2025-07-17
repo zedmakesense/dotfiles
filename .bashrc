@@ -2,40 +2,33 @@
 [[ $- != *i* ]] && return
 
 # Function to get git status
-
 parse_git_branch() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
-  # Get branch or tag
   local branch
-  branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || echo "DETACHED")
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
 
-  # Get status flags in one go
-  local status_output
-  status_output=$(git status --porcelain=2 --branch 2>/dev/null)
+  local status=""
+  local dirty=""
+  local staged=""
+  local untracked=""
 
-  local dirty="" staged="" untracked="" ahead_behind=""
+  # Status indicators
+  git diff --quiet HEAD -- || dirty="*"
+  git diff --cached --quiet || staged="+"
+  [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
 
-  # Parse status
-  while IFS= read -r line; do
-    case "$line" in
-    # Ahead/behind info
-    "# branch.ab "*)
-      [[ "$line" =~ \+([0-9]+) ]] && ahead_behind+="↓ ${BASH_REMATCH[1]} "
-      [[ "$line" =~ -([0-9]+) ]] && ahead_behind+="↑ ${BASH_REMATCH[1]}"
-      ;;
-    # Staged
-    1\ * | 2\ *) [[ "${line:2:1}" != "." ]] && staged="+" ;;
-    # Dirty
-    1\ * | 2\ *) [[ "${line:3:1}" != "." ]] && dirty="*" ;;
-    # Untracked
-    "? "*)
-      untracked="?"
-      ;;
-    esac
-  done <<<"$status_output"
+  # Ahead/behind info
+  local ahead_behind=""
+  if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
+    local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+    local ahead=$(git rev-list --count "$upstream"..HEAD)
+    local behind=$(git rev-list --count HEAD.."$upstream")
+    [[ $behind -gt 0 ]] && ahead_behind="↑ $behind"
+    [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓ $ahead"
+  fi
 
-  local status="$ahead_behind $branch$staged$dirty$untracked"
+  status="$ahead_behind $branch$staged$dirty$untracked "
   echo -e " \033[1;33m(${status})\033[0m"
 }
 
