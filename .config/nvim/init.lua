@@ -2,7 +2,6 @@ vim.loader.enable()
 require 'options'
 require 'functions'
 require 'keymaps'
-require 'autocmds'
 require 'terminal'
 require('gruvbox').apply_highlights()
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -12,3 +11,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
+require 'autocmds'
