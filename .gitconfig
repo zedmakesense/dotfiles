@@ -12,6 +12,7 @@
   diff = delta
   log = delta
   show = delta
+  blame = delta
 [core]
   pager = delta
   editor = nvim
@@ -24,5 +25,7 @@
   navigate = true
   line-numbers = true
   side-by-side = true
+  syntax-theme = gruvbox-dark
+  true-color = always
 [merge]
   conflictStyle = zdiff3
