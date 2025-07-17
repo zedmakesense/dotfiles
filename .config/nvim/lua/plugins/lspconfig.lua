@@ -2,8 +2,10 @@ return {
     'neovim/nvim-lspconfig',
     event = 'VeryLazy',
     dependencies = {
-        'williamboman/mason.nvim',
+        { 'mason-org/mason.nvim', opts = {} },
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
         'saghen/blink.cmp',
+        { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
         local capabilities = require('blink.cmp').get_lsp_capabilities()

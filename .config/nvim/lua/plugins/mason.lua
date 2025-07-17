@@ -1,6 +1,6 @@
 return {
     {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         event = 'VeryLazy',
         build = ':MasonUpdate',
         config = true,
@@ -28,7 +28,6 @@ return {
                     'prettierd',
                     'shfmt',
                     'markdownlint',
-                    'luacheck',
                     'shellcheck',
                     'eslint_d',
                     'stylelint',
