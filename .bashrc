@@ -6,20 +6,23 @@ parse_git_branch() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
   local branch
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || echo "DETACHED")
 
-  local status=""
   local dirty=""
   local staged=""
   local untracked=""
+  local ahead_behind=""
 
-  # Status indicators
-  git diff --quiet HEAD -- || dirty="*"
-  git diff --cached --quiet || staged="+"
+  # Detect unstaged changes
+  ! git diff --quiet && dirty="*"
+
+  # Detect staged changes
+  ! git diff --cached --quiet && staged="+"
+
+  # Detect untracked files
   [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
 
   # Ahead/behind info
-  local ahead_behind=""
   if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
     local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
     local ahead=$(git rev-list --count "$upstream"..HEAD)
