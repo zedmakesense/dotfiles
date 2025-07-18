@@ -1,4 +1,3 @@
-# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Function to get git status
@@ -13,16 +12,10 @@ parse_git_branch() {
   local untracked=""
   local ahead_behind=""
 
-  # Detect unstaged changes
   ! git diff --quiet && dirty="*"
-
-  # Detect staged changes
   ! git diff --cached --quiet && staged="+"
-
-  # Detect untracked files
   [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
 
-  # Ahead/behind info
   if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
     local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
     local counts
@@ -39,31 +32,19 @@ parse_git_branch() {
   echo -e " \033[1;33m(${status})\033[0m"
 }
 
-# PS1 prompt with Git info
 PS1='\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]]$(parse_git_branch)\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] '
 
 # set -o vi
 
-## GENERAL OPTIONS ##
-
-# Prevent file overwrite on stdout redirection
-# Use `>|` to force redirection to an existing file
+# Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
 set -o noclobber
-
-# Update window size after every command
 shopt -s checkwinsize
 
-# Automatically trim long paths in the prompt (requires Bash 4.x)
-# PROMPT_DIRTRIM=2
-
-# Enable history expansion with space
-# E.g. typing !!<space> will replace the !! with your last command
+# Enable history expansion with space, typing !!<space> will replace the !! with your last command
 bind Space:magic-space
 
 # Turn on recursive globbing (enables ** to recurse all directories)
 shopt -s globstar 2>/dev/null
-
-## SMARTER TAB-COMPLETION (Readline bindings) ##
 
 # Perform file completion in a case insensitive fashion
 bind "set completion-ignore-case on"
@@ -71,42 +52,25 @@ bind "set completion-ignore-case on"
 # Treat hyphens and underscores as equivalent
 bind "set completion-map-case on"
 
-# Display matches for ambiguous patterns at first tab press
-# bind "set show-all-if-ambiguous on"
-
 #This turns off the use of the internal pager when returning long completion lists.
 bind "set page-completions off"
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
 bind "set mark-symlinked-directories on"
 
-## SANE HISTORY DEFAULTS ##
-
 # expands the command, but places it in the prompt for confirmation
 shopt -s histverify
-
 # Append to the history file, don't overwrite it
 shopt -s histappend
-
 # Save multi-line commands as one command
 shopt -s cmdhist
-
 # Record each line as it gets issued
 PROMPT_COMMAND='history -a'
-
-# Huge history. Doesn't appear to slow things down, so why not?
 HISTSIZE=500000
 HISTFILESIZE=100000
-
 # Avoid duplicate entries
 HISTCONTROL="erasedups:ignoreboth"
-
-# Don't record some commands
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
-
-# Use standard ISO 8601 timestamp
-# %F equivalent to %Y-%m-%d
-# %T equivalent to %H:%M:%S (24-hours format)
 HISTTIMEFORMAT='%F %T '
 
 # Enable incremental history search with up/down arrows (also Readline goodness)
@@ -116,23 +80,12 @@ bind '"\e[B": history-search-forward'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
-## BETTER DIRECTORY NAVIGATION ##
-
 # Prepend cd to directory names automatically
 shopt -s autocd 2>/dev/null
 # Correct spelling errors during tab-completion
 shopt -s dirspell 2>/dev/null
 # Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2>/dev/null
-
-# This defines where cd looks for targets
-# Add the directories you want to have fast access to, separated by colon
-# Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
-# CDPATH="."
-
-# This allows you to bookmark your favorite places across the file system
-# Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
-# shopt -s cdable_vars
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -186,7 +139,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim +Ex"
 alias vimdiff="nvim -d"
-alias nvimdiff="nvim -d"
+alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
+alias diffl='export DELTA_FEATURES=+; git diff'
 
 alias img="swayimg"
 
