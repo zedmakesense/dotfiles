@@ -25,10 +25,14 @@ parse_git_branch() {
   # Ahead/behind info
   if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
     local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
-    [[ $ahead -gt 0 ]] && ahead_behind="↑ $ahead"
-    [[ $behind -gt 0 ]] && ahead_behind="${ahead_behind}↓ $behind"
-    [[ $behind -gt 0 ]] && ahead_behind="↑ $behind"
-    [[ $ahead -gt 0 ]] && ahead_behind="${ahead_behind}↓ $ahead"
+    local counts
+    counts=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null)
+    local ahead=$(echo "$counts" | awk '{print $1}')
+    local behind=$(echo "$counts" | awk '{print $2}')
+
+    [[ $ahead -gt 0 ]] && ahead_behind+="↑ $ahead "
+    [[ $behind -gt 0 ]] && ahead_behind+="↓ $behind"
+    ahead_behind="${ahead_behind%" "}"
   fi
 
   status="$ahead_behind $branch$staged$dirty$untracked "
