@@ -4,7 +4,7 @@ return {
     dependencies = {
         { 'mason-org/mason.nvim', opts = {} },
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-        'saghen/blink.cmp',
+        -- 'saghen/blink.cmp',
         { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
