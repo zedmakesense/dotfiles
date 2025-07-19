@@ -1,6 +1,7 @@
 return {
     {
         'saghen/blink.cmp',
+        build = 'cargo build --release',
         event = { 'InsertEnter', 'CmdlineEnter' },
         dependencies = {
             {
@@ -27,6 +28,8 @@ return {
             },
             'onsails/lspkind.nvim',
         },
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
         opts = {
             keymap = {
                 preset = 'default',
@@ -50,8 +53,8 @@ return {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
             snippets = { preset = 'luasnip' },
-            fuzzy = { implementation = 'lua' },
             signature = { enabled = true },
+            fuzzy = { implementation = 'prefer_rust_with_warning' },
         },
     },
 }

@@ -116,8 +116,8 @@ export SYSTEMD_EDITOR=nvim
 export MANPAGER="nvim +Man!"
 # export PAGER="nvim -R"
 
-alias l="eza -l --icons=always --group-directories-first"
-alias ll="eza -la --icons=always --group-directories-first"
+alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
+alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
 
 alias ls='ls --color=auto'
 alias ip='ip -color=auto'
