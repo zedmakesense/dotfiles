@@ -9,5 +9,5 @@
 # }
 
 input "type:pointer" accel_profile flat
-input "type:keyboard" xkb_options caps:swapescape
+input "type:keyboard" xkb_options ctrl:swapcaps
 bindsym $mod+q exec hide.sh

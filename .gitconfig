@@ -13,13 +13,31 @@
   log = delta
   show = delta
   blame = delta
+[advice]
+  addEmptyPathspec = false
+  pushNonFastForward = false
+  statusHints = false
 [core]
+  preloadindex = true
   pager = delta
   editor = nvim
+[pull]
+    rebase = true
+[alias]
+  lg = log --graph --oneline --decorate --all
+  st = status -s
+  sta = status
+  cm = commit
+  co = checkout
+  rh = reset HEAD
+  aa = add -A
+  br = branch
+  bra = branch -a
 [color]
   ui = auto
 [interactive]
   diffFilter = delta --color-only
+
 [delta]
   dark = true
   navigate = true

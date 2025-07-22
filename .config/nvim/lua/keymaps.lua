@@ -4,8 +4,6 @@ vim.keymap.set('n', '<Leader>bd', '<cmd>bd<CR>', { noremap = true, silent = true
 vim.keymap.set('n', '<Leader>bn', '<cmd>bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>bp', '<cmd>bp<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { noremap = true, silent = true })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Exit terminal mode' })
 
@@ -28,7 +26,7 @@ vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
 -- Navigation
-vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
+-- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
 
 -- Copy/paste with system clipboard
 -- vim.keymap.set({ 'n', 'x', 'v' }, 'gy', '"+y')

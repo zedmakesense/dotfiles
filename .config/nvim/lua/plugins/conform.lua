@@ -22,6 +22,7 @@ return {
             css = { 'prettierd' },
             tex = { 'tex-fmt' },
             plaintex = { 'tex-fmt' },
+            markdown = { 'markdownlint' },
         },
     },
 }

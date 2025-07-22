@@ -19,12 +19,9 @@ for_window [app_id="foot" title="float"] floating enable
 for_window [app_id="org.gnome.FileRoller"] floating enable
 for_window [app_id="kvantummanager"] floating enable
 for_window [app_id="qalculate-gtk"] floating enable
+for_window [app_id="org.qbittorrent.qBittorrent" title="^(?!qBittorrent).*$"] floating enable
+# for_window [app_id="org.qbittorrent.qBittorrent" title=".*"] floating enable
+# for_window [app_id="org.qbittorrent.qBittorrent" title="qBittorrent"] floating disable
 
 # assign workspace to specific applications
-# assign [app_id="firefox"] workspace 2
 assign [class="discord"] workspace 3
-#assign [class="game"] workspace 5
-#assign [class="obsstudio"] workspace 6
-#assign [class="something"] workspace 7
-#assign [class="videditor"] workspace 8
-#assign [class="gimp-3.0"] workspace 9

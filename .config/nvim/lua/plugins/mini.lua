@@ -37,4 +37,16 @@ return {
             require('mini.ai').setup { n_lines = 500 }
         end,
     },
+
+    --mini.pick
+    {
+        'echasnovski/mini.pick',
+        version = '*',
+        config = function()
+            require('mini.pick').setup()
+            vim.keymap.set('n', '<leader>e', function()
+                require('mini.pick').builtin.files()
+            end, {})
+        end,
+    },
 }
