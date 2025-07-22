@@ -7,6 +7,7 @@ application/xdp=org.pwmt.zathura.desktop
 application/xfdf=org.pwmt.zathura.desktop
 application/pdx=org.pwmt.zathura.desktop
 image/jpeg=org.gnome.Loupe.desktop
+image/jpg=org.gnome.Loupe.desktop
 image/svg=org.gnome.Loupe.desktop
 image/png=org.gnome.Loupe.desktop
 image/gif=org.gnome.Loupe.desktop
