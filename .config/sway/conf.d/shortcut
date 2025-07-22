@@ -67,5 +67,6 @@ mode "systemctl" {
     bindsym l exec swaylock -f -c 000000; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym Control+bracketleft mode "default"
 }
 bindsym $mod+Shift+o mode "systemctl"
