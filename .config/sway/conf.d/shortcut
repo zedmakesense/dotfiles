@@ -36,6 +36,7 @@ mode "index" {
     bindsym s exec $search; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym Control+bracketleft mode "default"
 }
 bindsym $mod+w mode "index"
 bindsym $mod+Shift+n exec $news

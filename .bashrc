@@ -95,10 +95,19 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.scripts/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/Documents/scripts/bin"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GOPATH="$XDG_DATA_HOME"/go
+
+prefix=${XDG_DATA_HOME}/npm
+cache=${XDG_CACHE_HOME}/npm
+init_module="${XDG_CONFIG_HOME}/npm/config/npm-init.js"
+logs_dir="${XDG_STATE_HOME}/npm/logs"
+export init_module
+export logs_dir
+export prefix
+export cache
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
