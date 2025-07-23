@@ -19,6 +19,7 @@
   statusHints = false
 [core]
   preloadindex = true
+  fscache = true
   pager = delta
   editor = nvim
 [pull]
