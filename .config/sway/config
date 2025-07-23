@@ -91,7 +91,7 @@ bar {
 bindsym $mod+m bar mode toggle
 # exec waybar
 
-font pango: "Iosevka" Regular 9
+font pango: "JetBrainsMono Nerd Font" Regular 9
 
 # input * {
 #     xkb_layout us
