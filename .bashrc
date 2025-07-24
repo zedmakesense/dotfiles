@@ -28,10 +28,9 @@ parse_git_branch() {
   fi
 
   status="${ahead_behind:+$ahead_behind }$branch$staged$dirty$untracked"
-  echo -e "\033[1;33m(${status})\033[0m"
+  echo -e "\[\e[1;33m\](${status})\[\e[0m\]"
 }
 
-PROMPT_COMMAND='__prompt_command'
 __prompt_command() {
   local git_info=$(parse_git_branch)
   PS1="\n\[\e[1;36m\][ \u@\h | \[\e[1;32m\]\w \[\e[1;36m\]] $git_info\[\e[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
@@ -78,13 +77,6 @@ HISTFILESIZE=100000
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:ls:l:ll:c:bg:fg:history:clear"
 HISTTIMEFORMAT='%F %T '
-
-# Enable incremental history search with up/down arrows (also Readline goodness)
-# Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
 
 # Prepend cd to directory names automatically
 # shopt -s autocd 2>/dev/null
