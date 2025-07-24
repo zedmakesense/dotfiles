@@ -25,7 +25,6 @@ parse_git_branch() {
 
     [[ $ahead -gt 0 ]] && ahead_behind+="↑$ahead"
     [[ $behind -gt 0 ]] && ahead_behind+="↓$behind"
-    ahead_behind="${ahead_behind% }"
   fi
 
   status="${ahead_behind:+$ahead_behind }$branch$staged$dirty$untracked"
@@ -35,7 +34,7 @@ parse_git_branch() {
 PROMPT_COMMAND='__prompt_command'
 __prompt_command() {
   local git_info=$(parse_git_branch)
-  PS1="\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]] $git_info\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
+  PS1="\n\[\e[1;36m\][ \u@\h | \[\e[1;32m\]\w \[\e[1;36m\]] $git_info\[\e[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
 }
 # [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 
@@ -69,13 +68,15 @@ shopt -s histverify
 shopt -s histappend
 # Save multi-line commands as one command
 shopt -s cmdhist
-# Record each line as it gets issued
+
+# Single PROMPT_COMMAND for prompt + history append
 PROMPT_COMMAND='__prompt_command; history -a'
+
+# History configuration
 HISTSIZE=500000
 HISTFILESIZE=100000
-# Avoid duplicate entries
 HISTCONTROL="erasedups:ignoreboth"
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+HISTIGNORE="&:[ ]*:exit:ls:l:ll:c:bg:fg:history:clear"
 HISTTIMEFORMAT='%F %T '
 
 # Enable incremental history search with up/down arrows (also Readline goodness)
