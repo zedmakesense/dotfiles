@@ -7,8 +7,7 @@ vim.g.maplocalleader = ' '
 vim.o.statusline = table.concat {
     '%#Normal#',
     ' %F',
-    ' %m',
-    " %{&readonly ? '[RO]' : ''}",
+    ' %h%w%m%r',
     '%=',
     ' [%p%%]',
 }
