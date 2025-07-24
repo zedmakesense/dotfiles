@@ -23,16 +23,20 @@ parse_git_branch() {
     local ahead=$(echo "$counts" | awk '{print $1}')
     local behind=$(echo "$counts" | awk '{print $2}')
 
-    [[ $ahead -gt 0 ]] && ahead_behind+="↑ $ahead "
-    [[ $behind -gt 0 ]] && ahead_behind+="↓ $behind"
-    ahead_behind="${ahead_behind%" "}"
+    [[ $ahead -gt 0 ]] && ahead_behind+="↑$ahead"
+    [[ $behind -gt 0 ]] && ahead_behind+="↓$behind"
+    ahead_behind="${ahead_behind% }"
   fi
 
-  status="$ahead_behind $branch$staged$dirty$untracked "
-  echo -e " \033[1;33m(${status})\033[0m"
+  status="${ahead_behind:+$ahead_behind }$branch$staged$dirty$untracked"
+  echo -e "\033[1;33m(${status})\033[0m"
 }
 
-PS1='\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]]$(parse_git_branch)\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] '
+PROMPT_COMMAND='__prompt_command'
+__prompt_command() {
+  local git_info=$(parse_git_branch)
+  PS1="\n\[\033[1;36m\][ \u@\h | \[\033[1;32m\]\w \[\033[1;36m\]] $git_info\[\033[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
+}
 # [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 
 # set -o vi
@@ -66,7 +70,7 @@ shopt -s histappend
 # Save multi-line commands as one command
 shopt -s cmdhist
 # Record each line as it gets issued
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='__prompt_command; history -a'
 HISTSIZE=500000
 HISTFILESIZE=100000
 # Avoid duplicate entries
@@ -82,7 +86,7 @@ bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
 # Prepend cd to directory names automatically
-shopt -s autocd 2>/dev/null
+# shopt -s autocd 2>/dev/null
 # Correct spelling errors during tab-completion
 shopt -s dirspell 2>/dev/null
 # Correct spelling errors in arguments supplied to cd
