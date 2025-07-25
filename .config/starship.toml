@@ -1,0 +1,32 @@
+format = """
+[\\[$username@$hostname | $directory\\]](cyan) [($git_branch$git_status)](yellow)
+[>](fg:51) """
+
+[username]
+show_always = true
+style_user = "bold cyan"
+
+[hostname]
+ssh_only = false
+style = "bold cyan"
+
+[directory]
+style = "bold green"
+truncate_to_repo = false
+truncation_length = 0
+home_symbol = "~"
+
+[git_branch]
+format = "$branch"
+style = "bold yellow"
+
+[git_status]
+format = "$conflicted$staged$modified$untracked$ahead_behind"
+conflicted = "*"
+staged = "+"
+modified = "!"
+untracked = "?"
+ahead = "↑"
+behind = "↓"
+diverged = "⇅"
+style = "bold yellow"

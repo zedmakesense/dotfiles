@@ -1,6 +1,31 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export PATH="$PATH:$HOME/.local/bin"
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GOPATH="$XDG_DATA_HOME"/go
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=kvantum
+
+export TERMINAL=foot
+export COLORTERM=truecolor
+
+export EDITOR=nvim
+export VISUAL=nvim
+export SYSTEMD_EDITOR=nvim
+export MANPAGER="nvim +Man!"
+
 [[ $- != *i* ]] && return
 
-# Function to get git status
 parse_git_branch() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
@@ -35,93 +60,33 @@ __prompt_command() {
   local git_info=$(parse_git_branch)
   PS1="\n\[\e[1;36m\][ \u@\h | \[\e[1;32m\]\w \[\e[1;36m\]] $git_info\[\e[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
 }
-# [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
-
-# set -o vi
-
-# Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
-set -o noclobber
-shopt -s checkwinsize
-
-# Enable history expansion with space, typing !!<space> will replace the !! with your last command
-bind Space:magic-space
-
-# Turn on recursive globbing (enables ** to recurse all directories)
-shopt -s globstar 2>/dev/null
-
-# Perform file completion in a case insensitive fashion
-bind "set completion-ignore-case on"
-
-# Treat hyphens and underscores as equivalent
-bind "set completion-map-case on"
-
-#This turns off the use of the internal pager when returning long completion lists.
-bind "set page-completions off"
-
-# Immediately add a trailing slash when autocompleting symlinks to directories
-bind "set mark-symlinked-directories on"
-
-# expands the command, but places it in the prompt for confirmation
-shopt -s histverify
-# Append to the history file, don't overwrite it
-shopt -s histappend
-# Save multi-line commands as one command
-shopt -s cmdhist
-
-# Single PROMPT_COMMAND for prompt + history append
 PROMPT_COMMAND='__prompt_command; history -a'
 
 # History configuration
+shopt -s histverify
+shopt -s histappend
+shopt -s cmdhist
 HISTSIZE=500000
 HISTFILESIZE=100000
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:ls:l:ll:c:bg:fg:history:clear"
 HISTTIMEFORMAT='%F %T '
 
-# Prepend cd to directory names automatically
-# shopt -s autocd 2>/dev/null
-# Correct spelling errors during tab-completion
-shopt -s dirspell 2>/dev/null
-# Correct spelling errors in arguments supplied to cd
-shopt -s cdspell 2>/dev/null
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_STATE_HOME="$HOME/.local/state"
-
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/Documents/scripts/bin"
-
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export GOPATH="$XDG_DATA_HOME"/go
-
-prefix=${XDG_DATA_HOME}/npm
-cache=${XDG_CACHE_HOME}/npm
-init_module="${XDG_CONFIG_HOME}/npm/config/npm-init.js"
-logs_dir="${XDG_STATE_HOME}/npm/logs"
-export init_module
-export logs_dir
-export prefix
-export cache
-
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_STYLE_OVERRIDE=kvantum
-
-export TERMINAL=foot
-export COLORTERM=truecolor
-
-export EDITOR=nvim
-export VISUAL=nvim
-export SYSTEMD_EDITOR=nvim
-export MANPAGER="nvim +Man!"
-# export PAGER="nvim -R"
+# set -o vi
+# Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
+set -o noclobber
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2>/dev/null
+shopt -s checkwinsize
+shopt -s dirspell 2>/dev/null
+shopt -s cdspell 2>/dev/null
+bind "set completion-ignore-case on"
+bind "set completion-map-case on"
+bind "set page-completions off"
+bind "set mark-symlinked-directories on"
 
 # alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
 # alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
