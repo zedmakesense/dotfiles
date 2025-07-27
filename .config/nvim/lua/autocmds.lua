@@ -21,26 +21,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
--- Set filetype-specific settings
-vim.api.nvim_create_autocmd('FileType', {
-    group = augroup,
-    pattern = { 'lua', 'python' },
-    callback = function()
-        vim.opt_local.tabstop = 4
-        vim.opt_local.shiftwidth = 4
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.softtabstop = 2
-    vim.opt_local.expandtab = true
-  end,
-})
-
 -- Create undo directory if it doesn't exist
 local undodir = vim.fn.expand '~/Templates/vim/undodir'
 if vim.fn.isdirectory(undodir) == 0 then

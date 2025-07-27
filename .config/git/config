@@ -1,49 +1,58 @@
 [user]
-  name = zedonarch
-  email = zedonix@proton.me
+    name = zedonarch
+    email = zedonix@proton.me
 [init]
-  defaultBranch = main
+    defaultBranch = main
 [credential "https://github.com"]
-  helper = !/usr/bin/gh auth git-credential
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-  helper = !/usr/bin/gh auth git-credential
+    helper = !/usr/bin/gh auth git-credential
+[branch]
+    sort = -committerdate
+[tag]
+    sort = -version:refname
 [pager]
-  branch = true
-  diff = delta
-  log = delta
-  show = delta
-  blame = delta
+    branch = true
+    diff = delta
+    log = delta
+    show = delta
+    blame = delta
 [advice]
-  addEmptyPathspec = false
-  pushNonFastForward = false
-  statusHints = false
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
 [core]
-  preloadindex = true
-  fscache = true
-  pager = delta
-  editor = nvim
+    preloadindex = true
+    compression = 9
+    fscache = true
+    pager = delta
+    editor = nvim
+[status]
+    branch = true
 [pull]
     rebase = true
+[push]
+    autoSetupRemote = true
+[column]
+    ui = auto
+[maintenance]
+    auto = true
+    strategy = incremental
 [alias]
-  lg = log --graph --oneline --decorate --all
-  st = status -s
-  sta = status
-  cm = commit
-  co = checkout
-  rh = reset HEAD
-  aa = add -A
-  br = branch
-  bra = branch -a
+    graph = log --all --graph --decorate --oneline
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [color]
-  ui = auto
+    ui = auto
+[help]
+    autocorrect = prompt
 [interactive]
-  diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [delta]
-  dark = true
-  navigate = true
-  line-numbers = true
-  syntax-theme = gruvbox-dark
-  true-color = always
+    dark = true
+    navigate = true
+    line-numbers = true
+    syntax-theme = gruvbox-dark
+    true-color = always
 [merge]
-  conflictStyle = zdiff3
+    conflictStyle = zdiff3
