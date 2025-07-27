@@ -1,11 +1,19 @@
 # Tech & Programming Blogs
 @ Blogs
 https://archlinux.org/feeds/news/ "Arch Linux News"
+https://archlinux.org/feeds/packages/ "Arch Linux Packages"
 https://opensourcemusings.com/feed.xml "Open Source Musings"
 https://lwn.net/headlines/rss "Linux Weekly News"
 https://www.phoronix.com/rss.php "Phoronix"
 https://www.linuxtoday.com/backend/biglt.rss "Linux Today"
-https://xkcd.com/atom.xml "xkcd"
+https://itsfoss.com/feed/ "It's FOSS"
+https://hnrss.org/newest?q=open+source "Hacker News - Open Source"
+https://hnrss.org/newest?q=linux+OR+india "Hacker News - Linux in India"
+
+@ India
+https://www.thehindu.com/news/national/feeder/default.rss "The Hindu - National News"
+https://indianexpress.com/section/technology/feed/ "Indian Express - Technology"
+https://feeds.feedburner.com/Medianama "Medianama - Digital India & Policy"
 
 @ Youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "The Linux Experiment"

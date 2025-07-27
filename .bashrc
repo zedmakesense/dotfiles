@@ -16,6 +16,13 @@ export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_STYLE_OVERRIDE=kvantum
 
+export MOZ_ENABLE_WAYLAND=1
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+# export GTK_IM_MODULE=wayland
+# export QT_IM_MODULE=wayland
+export XMODIFIERS="@im=wayland"
+
 export TERMINAL=foot
 export COLORTERM=truecolor
 
