@@ -117,6 +117,9 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim +Ex"
 alias vimdiff="nvim -d"
+
+alias tns="tmux new-session -s"
+
 alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
 alias diffl='export DELTA_FEATURES=+; git diff'
 
