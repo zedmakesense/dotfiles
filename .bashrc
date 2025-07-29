@@ -6,6 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/.local/bin"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
 export GOPATH="$XDG_DATA_HOME"/go
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
@@ -21,7 +22,7 @@ export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 # export GTK_IM_MODULE=wayland
 # export QT_IM_MODULE=wayland
-export XMODIFIERS="@im=wayland"
+# export XMODIFIERS="@im=wayland"
 
 export TERMINAL=foot
 export COLORTERM=truecolor
