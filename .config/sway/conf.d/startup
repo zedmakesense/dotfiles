@@ -7,4 +7,3 @@ exec playerctld daemon
 exec sway-audio-idle-inhibit
 exec mako
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec /usr/libexec/policykit-1-lxqt
