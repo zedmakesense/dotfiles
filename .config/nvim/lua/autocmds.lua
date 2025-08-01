@@ -26,3 +26,13 @@ local undodir = vim.fn.expand '~/Templates/vim/undodir'
 if vim.fn.isdirectory(undodir) == 0 then
     vim.fn.mkdir(undodir, 'p')
 end
+
+-- Set filetype-specific settings
+vim.api.nvim_create_autocmd('FileType', {
+    group = augroup,
+    pattern = { 'lua', 'python' },
+    callback = function()
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+    end,
+})

@@ -2,7 +2,7 @@ vim.loader.enable()
 require 'options'
 require 'functions'
 require 'keymaps'
-require 'terminal'
+-- require 'terminal'
 require('gruvbox').apply_highlights()
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
