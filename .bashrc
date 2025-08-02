@@ -113,6 +113,7 @@ alias trash="trash -v"
 alias cd="z"
 
 alias c="clear"
+alias x="exit"
 
 alias vim="nvim"
 alias vi="nvim"
