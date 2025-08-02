@@ -9,5 +9,6 @@
 .config/GIMP/3.0/tags.xml
 .config/vifm/vifminfo.json
 .config/vifm/vifminfo.json_2040
+.config/gh/hosts.yml
 
 lazy-lock.json
