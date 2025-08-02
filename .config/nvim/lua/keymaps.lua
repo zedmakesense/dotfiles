@@ -25,6 +25,9 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
+-- Save
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+
 -- Navigation
 -- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
 
