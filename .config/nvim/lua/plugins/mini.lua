@@ -9,14 +9,14 @@ return {
     },
 
     -- mini.pairs
-    {
-        'echasnovski/mini.pairs',
-        event = 'InsertEnter',
-        version = false,
-        config = function()
-            require('mini.pairs').setup()
-        end,
-    },
+    -- {
+    --     'echasnovski/mini.pairs',
+    --     event = 'InsertEnter',
+    --     version = false,
+    --     config = function()
+    --         require('mini.pairs').setup()
+    --     end,
+    -- },
 
     -- mini.icons
     {
@@ -39,14 +39,14 @@ return {
     },
 
     --mini.pick
-    {
-        'echasnovski/mini.pick',
-        version = '*',
-        config = function()
-            require('mini.pick').setup()
-            vim.keymap.set('n', '<leader>e', function()
-                require('mini.pick').builtin.files()
-            end, {})
-        end,
-    },
+    -- {
+    --     'echasnovski/mini.pick',
+    --     version = '*',
+    --     config = function()
+    --         require('mini.pick').setup()
+    --         vim.keymap.set('n', '<leader>e', function()
+    --             require('mini.pick').builtin.files()
+    --         end, {})
+    --     end,
+    -- },
 }
