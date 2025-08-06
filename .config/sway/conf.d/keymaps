@@ -65,7 +65,7 @@ mode "systemctl" {
     bindsym r exec systemctl reboot; mode default
     bindsym p exec systemctl poweroff; mode default
     bindsym e exec sway exit; mode default
-    bindsym l exec swaylock -f -c 000000; mode default
+    bindsym l exec swaylock --ignore-empty-password --show-failed-attempts -f -c 000000; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Control+bracketleft mode "default"

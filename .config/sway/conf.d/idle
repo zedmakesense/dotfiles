@@ -1,7 +1,7 @@
 # vim: ft=swayconfig
 exec sway-audio-idle-inhibit
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
+    timeout 300 'swaylock --ignore-empty-password --show-failed-attempts -f -c 000000' \
     timeout 300 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -fFe -c 000000'
