@@ -6,6 +6,4 @@ exec wl-clip-persist --clipboard both --reconnect-tries 0
 exec playerctld daemon
 exec sway-audio-idle-inhibit
 exec mako
-# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-# exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

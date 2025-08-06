@@ -121,6 +121,8 @@ alias v="nvim +Ex"
 
 alias tns="tmux new-session -s"
 alias tks="tmux kill-session -t"
+alias tas="tmux attach-session -t"
+alias tls="tmux ls"
 
 alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
 alias diffl='export DELTA_FEATURES=+; git diff'
