@@ -101,4 +101,4 @@ font pango: "IosevkaTerm Nerd Font" Regular 9
 default_border pixel
 hide_edge_borders smart
 
-include ~/.config/sway/conf.d/*
+include ~/.config/sway/config.d/*
