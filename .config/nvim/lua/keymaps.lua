@@ -26,8 +26,8 @@ vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
 -- Save
-vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
-vim.keymap.set('i', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
 
 -- Navigation
 -- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
