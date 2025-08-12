@@ -129,6 +129,7 @@ alias diffl='export DELTA_FEATURES=+; git diff'
 alias img="swayimg"
 
 alias jrctl="journalctl -p 3 -xb"
+alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 source /usr/share/wikiman/widgets/widget.bash
