@@ -33,41 +33,7 @@ export MANPAGER="nvim +Man!"
 
 [[ $- != *i* ]] && return
 
-parse_git_branch() {
-  git rev-parse --is-inside-work-tree &>/dev/null || return
-
-  local branch
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || echo "DETACHED")
-
-  local dirty=""
-  local staged=""
-  local untracked=""
-  local ahead_behind=""
-
-  ! git diff --quiet && dirty="*"
-  ! git diff --cached --quiet && staged="+"
-  [ -n "$(git ls-files --others --exclude-standard)" ] && untracked="?"
-
-  if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
-    local upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
-    local counts
-    counts=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null)
-    local ahead=$(echo "$counts" | awk '{print $1}')
-    local behind=$(echo "$counts" | awk '{print $2}')
-
-    [[ $ahead -gt 0 ]] && ahead_behind+="↑$ahead"
-    [[ $behind -gt 0 ]] && ahead_behind+="↓$behind"
-  fi
-
-  status="${ahead_behind:+$ahead_behind }$branch$staged$dirty$untracked"
-  echo -e "\[\e[1;33m\](${status})\[\e[0m\]"
-}
-
-__prompt_command() {
-  local git_info=$(parse_git_branch)
-  PS1="\n\[\e[1;36m\][ \u@\h | \[\e[1;32m\]\w \[\e[1;36m\]] $git_info\[\e[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] "
-}
-PROMPT_COMMAND='__prompt_command; history -a'
+PROMPT_COMMAND='history -a'
 
 # History configuration
 shopt -s histverify
@@ -133,4 +99,5 @@ alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 source /usr/share/wikiman/widgets/widget.bash
+eval "$(starship init bash)"
 eval "$(zoxide init bash)"
