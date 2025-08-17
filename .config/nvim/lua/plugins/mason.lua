@@ -34,6 +34,9 @@ return {
                     'tex-fmt',
                     'jdtls',
                     'google-java-format',
+                    'gofumpt',
+                    'goimports',
+                    'gopls',
                 },
                 automatic_installation = false,
             }

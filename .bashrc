@@ -9,6 +9,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
 export GOPATH="$XDG_DATA_HOME"/go
+export PATH="$PATH:$GOPATH/bin"
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway

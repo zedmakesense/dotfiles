@@ -23,6 +23,8 @@ return {
             tex = { 'tex-fmt' },
             plaintex = { 'tex-fmt' },
             markdown = { 'markdownlint' },
+            java = { 'google-java-format' },
+            go = { 'gofumpt', 'goimports' },
         },
     },
 }
