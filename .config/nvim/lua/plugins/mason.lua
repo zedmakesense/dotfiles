@@ -32,6 +32,8 @@ return {
                     'eslint_d',
                     'stylelint',
                     'tex-fmt',
+                    'jdtls',
+                    'google-java-format',
                 },
                 automatic_installation = false,
             }

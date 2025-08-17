@@ -6,6 +6,7 @@ set $up k
 set $right l
 
 floating_modifier $mod normal
+bindsym $mod+Shift+u sticky disable
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes' 'swaymsg exit' 'sleep 1 && swaymsg exit'
