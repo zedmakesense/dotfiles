@@ -1,0 +1,40 @@
+# vim: ft=swayconfig
+# Disable all scroll compositor animations
+animations {
+    # make default behaviour: no animation, zero duration
+    default no 0
+
+    # explicit disables for known animation types
+    window_open no 0
+    window_move no 0
+    window_size no 0
+
+    # catch-all: some UI actions may be named differently in older/newer versions
+    # keep these entries if you have them in your config/example
+    # scale_workspace no 0
+    # overview no 0
+    # jump no 0
+}
+
+# 2) Essential Scroll controls (use scrollmsg to send the commands to the compositor)
+# Adjust $mod if your main config sets it differently (your main config uses Mod4).
+bindsym --no-repeat $mod+tab scale_workspace overview
+bindsym --whole-window button8 scale_workspace overview
+bindsym $mod+Shift+Ctrl+period scale_workspace reset
+bindsym $mod+bracketleft fit_size h active proportional
+bindsym $mod+bracketright fit_size v active proportional
+bindsym $mod+Shift+m toggle_size
+
+# 3) Space management (save/load workspace geometry)
+bindsym $mod+Shift+s space save default
+bindsym $mod+Shift+r space load default
+bindsym $mod+Shift+e space list
+
+# 4) Common behaviour rules
+# Prevent screen blanking while fullscreened (good for videos)
+# for_window [class="mpv"] inhibit_idle fullscreen
+# apply inhibit to all fullscreens if you prefer:
+for_window [all] inhibit_idle fullscreen
+
+# 5) Optionally: open new windows tiled by default (example)
+# for_window [all] floating disable
