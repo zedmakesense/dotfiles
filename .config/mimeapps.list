@@ -15,3 +15,4 @@ image/webp=swayimg.desktop
 image/bmp=swayimg.desktop
 image/tiff=swayimg.desktop
 x-scheme-handler/discord-816168432860790794=discord-816168432860790794.desktop
+x-scheme-handler/discord=discord.desktop

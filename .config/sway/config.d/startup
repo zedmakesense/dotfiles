@@ -1,10 +1,10 @@
 # vim: ft=swayconfig
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-exec wl-paste --watch wl-copy
-# exec wl-clip-persist --clipboard both --reconnect-tries 0
+exec wl-clip-persist --clipboard both --reconnect-tries 0
 
+exec poweralertd
+exec mako
 exec playerctld daemon
 exec sway-audio-idle-inhibit
-exec mako
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
