@@ -1,34 +1,13 @@
-# If not running interactively, do nothing
-[[ $- != *i* ]] && return
-
-# Tab-completion
-autoload -Uz compinit
-compinit
-
-# Syntax highlighting (must be last after compinit)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Inline autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# History
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=500000
-SAVEHIST=100000
-setopt hist_ignore_dups share_history append_history extended_history
-
-# Environment
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
 export GOPATH="$XDG_DATA_HOME"/go
-export PATH="$PATH:$GOPATH/bin"
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
@@ -51,6 +30,37 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SYSTEMD_EDITOR=nvim
 export MANPAGER="nvim +Man!"
+
+[[ $- != *i* ]] && return
+
+# Tab-completion
+autoload -Uz compinit
+compinit
+
+# vi mode
+bindkey -v
+
+# Show different cursor shapes in vi modes
+function zle-keymap-select {
+  case $KEYMAP in
+    vicmd)      echo -ne '\e[2 q' ;;  # block cursor
+    viins|main) echo -ne '\e[6 q' ;;  # beam cursor
+  esac
+}
+zle -N zle-keymap-select
+
+# Ensure correct cursor on startup
+echo -ne '\e[6 q'
+
+# Better history search (up/down like in vim)
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+
+# History
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=500000
+SAVEHIST=100000
+setopt hist_ignore_dups share_history append_history extended_history
 
 # Aliases
 alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
@@ -95,3 +105,5 @@ alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 source /usr/share/wikiman/widgets/widget.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
