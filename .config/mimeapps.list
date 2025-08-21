@@ -1,18 +1,35 @@
 [Default Applications]
+# Terminal
 x-terminal-emulator.desktop=foot.desktop
+
+# Documents
 application/pdf=org.pwmt.zathura.desktop
 application/x-pdf=org.pwmt.zathura.desktop
 application/fdf=org.pwmt.zathura.desktop
 application/xdp=org.pwmt.zathura.desktop
 application/xfdf=org.pwmt.zathura.desktop
 application/pdx=org.pwmt.zathura.desktop
+
+# Images
 image/jpeg=swayimg.desktop
 image/jpg=swayimg.desktop
-image/svg=swayimg.desktop
+image/svg+xml=swayimg.desktop
 image/png=swayimg.desktop
 image/gif=swayimg.desktop
 image/webp=swayimg.desktop
 image/bmp=swayimg.desktop
 image/tiff=swayimg.desktop
-x-scheme-handler/discord-816168432860790794=discord-816168432860790794.desktop
+
+# Editors (Neovim)
+text/plain=nvim.desktop
+text/x-csrc=nvim.desktop
+text/x-chdr=nvim.desktop
+text/x-python=nvim.desktop
+text/x-shellscript=nvim.desktop
+application/json=nvim.desktop
+application/x-yaml=nvim.desktop
+text/markdown=nvim.desktop
+
+# Protocols
 x-scheme-handler/discord=discord.desktop
+x-scheme-handler/discord-816168432860790794=discord-816168432860790794.desktop
