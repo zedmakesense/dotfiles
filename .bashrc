@@ -44,7 +44,7 @@ shopt -s cmdhist
 HISTSIZE=500000
 HISTFILESIZE=100000
 HISTCONTROL="erasedups:ignoreboth"
-HISTIGNORE="&:[ ]*:exit:ls:l:ll:c:bg:fg:history:clear"
+HISTIGNORE="&:[ ]*:exit:x:t:ls:l:ll:c:bg:fg:history:clear"
 HISTTIMEFORMAT='%F %T '
 
 export HISTFILE="$XDG_STATE_HOME"/bash/history
@@ -84,7 +84,7 @@ alias x="exit"
 
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim +Ex"
+alias v="nvim ."
 
 alias t="tmux"
 alias tns="tmux new-session -s"
@@ -100,6 +100,16 @@ alias img="swayimg"
 alias jrctl="journalctl -p 3 -xb"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+
+# Use fzf for Ctrl+R reverse search
+__fzf_history__() {
+  local selected=$(history | tac | fzf +s --tac --no-sort --height=40% --reverse --bind=ctrl-r:toggle-sort)
+  if [[ -n "$selected" ]]; then
+    READLINE_LINE=$(echo "$selected" | sed 's/ *[0-9]* *//')
+    READLINE_POINT=${#READLINE_LINE}
+  fi
+}
+bind -x '"\C-r": __fzf_history__'
 
 source /usr/share/wikiman/widgets/widget.bash
 eval "$(starship init bash)"

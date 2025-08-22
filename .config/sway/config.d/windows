@@ -4,7 +4,7 @@ for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] floating enabl
 for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] resize set 800 600
 for_window [title = "About Mozilla Firefox"] floating enable
 for_window [window_role = "About"] floating enable
-for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1
 for_window [title="Revert Bookmarks"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable

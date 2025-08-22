@@ -37,24 +37,25 @@ export MANPAGER="nvim +Man!"
 autoload -Uz compinit
 compinit
 
-# vi mode
-bindkey -v
-
-# Show different cursor shapes in vi modes
-function zle-keymap-select {
-  case $KEYMAP in
-    vicmd)      echo -ne '\e[2 q' ;;  # block cursor
-    viins|main) echo -ne '\e[6 q' ;;  # beam cursor
-  esac
-}
-zle -N zle-keymap-select
+# # vi mode
+# bindkey -v
+#
+# # Show different cursor shapes in vi modes
+# function zle-keymap-select {
+#   case $KEYMAP in
+#     vicmd)      echo -ne '\e[2 q' ;;  # block cursor
+#     viins|main) echo -ne '\e[6 q' ;;  # beam cursor
+#   esac
+# }
+# zle -N zle-keymap-select
 
 # Ensure correct cursor on startup
-echo -ne '\e[6 q'
+# echo -ne '\e[6 q'
 
-# Better history search (up/down like in vim)
+# Better history search
 bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
+bindkey '^R' history-incremental-search-backward
 
 # History
 HISTFILE="$XDG_STATE_HOME/zsh/history"
@@ -84,7 +85,7 @@ alias x="exit"
 
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim +Ex"
+alias v="nvim ."
 
 alias t="tmux"
 alias tns="tmux new-session -s"

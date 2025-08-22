@@ -10,7 +10,5 @@
 .config/vifm/vifminfo.json
 .config/vifm/vifminfo.json_2040
 .config/gh/hosts.yml
-.config/qBittorrent/qBittorrent-data.conf
-.config/qBittorrent/qBittorrent.conf
 
 lazy-lock.json
