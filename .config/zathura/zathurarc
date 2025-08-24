@@ -1,6 +1,7 @@
 set selection-clipboard clipboard
 set database sqlite
 set synctex true
+set mouse-follow-links true
 
 map u scroll half-up
 map d scroll half-down
