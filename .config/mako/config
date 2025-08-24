@@ -19,6 +19,9 @@ anchor=top-right
 margin=10
 icons=1
 
+[actionable=true]
+on-button-right=exec makoctl menu -n "${id}" fuzzel_run.sh dmenu
+
 # Urgency levels
 [urgency=low]
 background-color=#3c3836

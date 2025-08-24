@@ -9,7 +9,7 @@ vim.o.statusline = table.concat {
     ' %F',
     ' %h%w%m%r',
     '%=',
-    ' [%p%%]',
+    '[%l/%L]',
 }
 
 -- Netrw Configuration
@@ -49,10 +49,24 @@ vim.opt.path:append '**' -- include subdirectories in search
 
 -- File handling
 vim.opt.backup = false -- Don't create backup files
-vim.opt.writebackup = false -- Don't create backup before writing
-vim.opt.swapfile = false -- Don't create swap files
-vim.opt.undofile = true -- Persistent undo
-vim.opt.undodir = vim.fn.stdpath 'data' .. '/undo' -- Undo directory
+vim.opt.writebackup = true -- create temporary backup while writing
+vim.opt.swapfile = true -- enable swap files for crash recovery
+
+-- Place swap files in a single state directory (double-slash allows nested filenames)
+local swapdir = vim.fn.stdpath('state') .. '/swap//'
+if vim.fn.isdirectory(swapdir) == 0 then
+  vim.fn.mkdir(swapdir, 'p')
+end
+vim.opt.directory = swapdir
+
+-- Undo
+local undodir = vim.fn.stdpath 'cache' .. '/undo'
+
+if vim.fn.isdirectory(undodir) == 0 then
+    vim.fn.mkdir(undodir, 'p')
+end
+vim.opt.undodir = undodir
+vim.opt.undofile = true
 
 -- Indentation
 vim.opt.tabstop = 2 -- Tab width

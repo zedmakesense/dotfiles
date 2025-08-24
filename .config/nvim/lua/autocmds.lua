@@ -21,12 +21,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
--- Create undo directory if it doesn't exist
-local undodir = vim.fn.expand '~/Templates/vim/undodir'
-if vim.fn.isdirectory(undodir) == 0 then
-    vim.fn.mkdir(undodir, 'p')
-end
-
 -- Set filetype-specific settings
 vim.api.nvim_create_autocmd('FileType', {
     group = augroup,

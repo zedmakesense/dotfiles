@@ -19,10 +19,10 @@ set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
-set $index '$term --title="float" -e nvim ~/Knowledge/wiki/index.md'
+set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.md'
 set $wiki '$term --title="float" -e wiki.sh'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Knowledge/wiki | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
-set $explore $term --title="float" -e sh -c 'fzf <<< "$(ls ~/Knowledge/wiki)" | xargs -r -I {} nvim ~/Knowledge/wiki/{}'
+set $explore $term --title="float" -e sh -c 'fzf <<< "$(ls ~/Knowledge/wiki)" | xargs -r -I {} nvim ~/Documents/personal/wiki/{}'
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term
