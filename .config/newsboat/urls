@@ -1,30 +1,8 @@
-# "query:Reddit:tags # \"content\" or title =~ \"\\[OC\\]\"" meta
-# "query:News:tags # \"news\"" meta
-# "query:Entertainment:tags # \"entertain\"" meta
-# "query:Linux:tags # \"linux\"" meta
-# "query:Unread:unread = \"yes\"" meta
-
-https://archlinux.org/feeds/news/ archlinux
-https://opensourcemusings.com/feed.xml blog
-
-https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw news     # The Linux Experiment
-https://www.youtube.com/feeds/videos.xml?channel_id=UC0W_BIuwk8D0Bv4THbVZZOQ news     # Surveillance Report
-https://www.youtube.com/feeds/videos.xml?channel_id=UCs6KfncB4OV6Vug4o_bzijg news     # Techlore
-
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZXW8E1__d5tZb-wLFOt8TQ entertain # Bog
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZzfw1NZ40-RLtRPVSNUHOw entertain # A-dn
-https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ entertain # SomeOrdinaryGamers
-
-https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA linux    # Brodie Robertson
-https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg linux    # The Linux Cast
-https://www.youtube.com/feeds/videos.xml?channel_id=UCwHwDuNd9lCdA7chyyquDXw linux    # Penguins Bread
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA linux    # Mental Outlaw
-https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ linux    # Chris Titus Tech
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg linux    # DistroTube
-
-https://www.reddit.com/r/archlinux/new.rss reddit content
-https://www.reddit.com/r/linux/new.rss reddit content
-https://www.reddit.com/r/commandline/new.rss reddit content
-https://www.reddit.com/r/unixporn/new.rss reddit
-https://www.reddit.com/r/linuxhardware/new.rss reddit
-https://www.reddit.com/r/swaywm/new.rss reddit
+https://archlinux.org/feeds/news/ "Arch Linux News"
+https://opensourcemusings.com/feed.xml "Open Source Musings"
+https://lwn.net/headlines/rss "Linux Weekly News"
+https://www.phoronix.com/rss.php "Phoronix"
+https://www.linuxtoday.com/backend/biglt.rss "Linux Today"
+https://itsfoss.com/feed/ "It's FOSS"
+https://www.thehindu.com/sci-tech/technology/?service=rss "techologia"
+https://www.thehindu.com/news/national/?service=rss "Hindu News"
