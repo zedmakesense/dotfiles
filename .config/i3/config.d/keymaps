@@ -1,6 +1,5 @@
-# vim: ft=swayconfig
-set $systemd systemd-run --user --scope
-set $term foot
+# vim: ft=i3config
+set $term alacritty
 set $menu fuzzel --placeholder "Search ..."
 set $browser firefox
 set $fileBrowser pcmanfm
@@ -8,13 +7,6 @@ set $fileBrowser pcmanfm
 set $calc qalculate-gtk
 set $emoji bemoji
 set $network networkmanager_dmenu
-
-set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
-set $paste cliphist.sh
-
-set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
-set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
-set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png
 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
@@ -54,22 +46,10 @@ bindsym $mod+n exec $network
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop
 
-# bindsym $mod+n exec swaync-client -t -sw
-# bindsym Ctrl+Delete exec swaync-client --hide-latest
-bindsym Ctrl+Delete exec makoctl dismiss
-
-bindsym Print exec $SS
-bindsym $mod+s exec $SSselect
-bindsym $mod+Shift+s exec $SSedit
-bindsym $mod+Shift+p exec $color
-bindsym $mod+Ctrl+r exec wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date +'%F_%T').mp4
-bindsym $mod+Ctrl+k exec pkill -INT wf-recorder
-
 mode "systemctl" {
     bindsym r exec systemctl reboot; mode default
     bindsym p exec systemctl poweroff; mode default
-    bindsym e exec sway exit; mode default
-    bindsym l exec swaylock --ignore-empty-password --show-failed-attempts -fFec 282828; mode default
+    bindsym e exec i3-msg exit; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Control+bracketleft mode "default"
