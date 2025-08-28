@@ -57,12 +57,24 @@ HISTSIZE=500000
 HISTFILESIZE=100000
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:x:t:ls:l:ll:c:bg:fg:history:clear"
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
 # HISTTIMEFORMAT='%F %T '
 
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
 set -o vi
+# bind stuff
+bind 'set meta-flag on'
+bind 'set input-meta on'
+bind 'set output-meta on'
+bind 'set convert-meta off'
+bind 'set mark-symlinked-directories on'
+bind 'set skip-completed-text on'
+bind 'set colored-stats on'
 # Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
 set -o noclobber
 # Turn on recursive globbing (enables ** to recurse all directories)
@@ -71,6 +83,9 @@ shopt -s checkwinsize
 shopt -s dirspell 2>/dev/null
 shopt -s cdspell 2>/dev/null
 bind "set completion-ignore-case on"
+bind "set show-all-if-unmodified on"
+bind "set show-all-if-ambiguous on"
+bind "set completion-prefix-display-length 2"
 bind "set completion-map-case on"
 bind "set page-completions off"
 bind "set mark-symlinked-directories on"
@@ -78,10 +93,10 @@ bind "set mark-symlinked-directories on"
 alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
 alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
 
-alias ls='ls --color=auto'
-alias ip='ip -color=auto'
-alias grep='grep --color=auto'
-alias df="df -h"
+# alias ls='ls --color=auto'
+# alias ip='ip -color=auto'
+# alias grep='grep --color=auto'
+# alias df="df -h"
 
 alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
 alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
@@ -89,7 +104,20 @@ alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias trash="trash -v"
-alias cd="z"
+alias cd="zd"
+zd() {
+  if [ $# -eq 0 ]; then
+    builtin cd ~ || return
+  elif [ -d "$1" ]; then
+    builtin cd "$1" || return
+  else
+    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+  fi
+}
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias c="clear"
 alias x="exit"
@@ -115,8 +143,8 @@ alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 __fzf_history__() {
   local selected
-  selected=$(history | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]*//' | tac \
-             | fzf --height=40% --reverse --no-sort --bind=ctrl-r:toggle-sort)
+  selected=$(history | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]*//' | tac |
+    fzf --height=40% --reverse --no-sort --bind=ctrl-r:toggle-sort)
 
   if [[ -n $selected ]]; then
     READLINE_LINE=$selected
