@@ -18,7 +18,6 @@ return {
             'ts_ls',
             'bashls',
             'lua_ls',
-            'marksman',
             'texlab',
             'gopls',
         }

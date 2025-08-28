@@ -92,6 +92,8 @@ bind "set mark-symlinked-directories on"
 
 alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
 alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
+alias ltree="l --tree"
+alias lltree="ll --tree"
 
 # alias ls='ls --color=auto'
 # alias ip='ip -color=auto'
