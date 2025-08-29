@@ -1,7 +1,7 @@
 return {
     -- mini.jump
     {
-        'echasnovski/mini.jump',
+        'nvim-mini/mini.jump',
         version = false,
         config = function()
             require('mini.jump').setup()
@@ -10,7 +10,7 @@ return {
 
     -- mini.pairs
     {
-        'echasnovski/mini.pairs',
+        'nvim-mini/mini.pairs',
         event = 'InsertEnter',
         version = false,
         config = function()
@@ -20,7 +20,7 @@ return {
 
     -- mini.icons
     {
-        'echasnovski/mini.icons',
+        'nvim-mini/mini.icons',
         lazy = true,
         version = false,
         config = function()
@@ -30,7 +30,7 @@ return {
 
     -- mini.ai
     {
-        'echasnovski/mini.ai',
+        'nvim-mini/mini.ai',
         event = 'InsertEnter',
         version = false,
         config = function()
@@ -40,7 +40,7 @@ return {
 
     --mini.pick
     -- {
-    --     'echasnovski/mini.pick',
+    --     'nvim-mini/mini.pick',
     --     version = '*',
     --     config = function()
     --         require('mini.pick').setup()
