@@ -1,7 +1,7 @@
 return {
     {
         'ibhagwan/fzf-lua',
-        dependencies = { 'echasnovski/mini.icons' },
+        dependencies = { 'nvim-mini/mini.icons' },
         opts = {},
         -- stylua: ignore
         keys = {
@@ -15,7 +15,7 @@ return {
     },
     {
         'otavioschwanck/fzf-lua-explorer.nvim',
-        dependencies = { 'ibhagwan/fzf-lua', 'echasnovski/mini.icons' },
+        dependencies = { 'ibhagwan/fzf-lua', 'nvim-mini/mini.icons' },
         -- stylua: ignore
         keys = {
             { '<leader>sf', function() require('fzf-lua-explorer').explorer() end, desc = 'Explorer' },
