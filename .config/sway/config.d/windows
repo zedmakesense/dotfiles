@@ -25,6 +25,7 @@ for_window [app_id="foot" title="float"] floating enable
 for_window [app_id="org.gnome.FileRoller"] floating enable
 for_window [app_id="kvantummanager"] floating enable
 for_window [app_id="qalculate-gtk"] floating enable
+for_window [title="Confirm File Replacing"] floating enable
 for_window [app_id="org.qbittorrent.qBittorrent" title="^(?!qBittorrent).*$"] floating enable
 for_window [app_id="com.github.persepolisdm.persepolis" title="^(?!Persepolis Download Manager$).*"] floating enable, resize set 800 600
 # for_window [app_id="org.qbittorrent.qBittorrent" title=".*"] floating enable
