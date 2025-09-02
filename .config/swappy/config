@@ -1,0 +1,9 @@
+[Default]
+save_dir=$HOME/Pictures/Screenshots
+save_filename_format=%Y%m%d-%H%M%S.png
+show_panel=false
+line_size=5
+text_size=20
+paint_mode=brush
+fill_shape=false
+custom_color=rgba(193,125,17,1)

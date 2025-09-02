@@ -160,3 +160,4 @@ bind -x '"\C-r":__fzf_history__'
 source /usr/share/wikiman/widgets/widget.bash
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+eval "$(thefuck --alias)"

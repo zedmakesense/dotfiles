@@ -14,7 +14,7 @@ set $paste cliphist.sh
 
 set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
-set $SSedit grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png
+set $SSedit grim -g "$(slurp)" - | swappy -f -
 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
