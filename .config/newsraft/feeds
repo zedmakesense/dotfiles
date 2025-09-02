@@ -1,10 +1,9 @@
 # @ Blogs
-https://archlinux.org/feeds/news/ "Arch Linux News"
+https://archlinux.org/feeds/planet "Arch Planet"
 https://opensourcemusings.com/feed.xml "Open Source Musings"
-https://www.zdnet.com/news/rss.xml "ZDNet" < item-rule lower(title) LIKE '%linux%' OR lower(title) LIKE '%ubuntu%' OR lower(title) LIKE '%debian%' OR lower(title) LIKE '%fedora%' OR lower(title) LIKE '%red hat%' OR lower(title) LIKE '%kernel%' OR lower(title) LIKE '%gnu%' OR lower(title) LIKE '%open source%' OR lower(content) LIKE '%linux%' OR lower(content) LIKE '%open source%' ; item-limit 250
 https://lwn.net/headlines/rss "Linux Weekly News"
 https://www.phoronix.com/rss.php "Phoronix"
 https://www.linuxtoday.com/backend/biglt.rss "Linux Today"
 https://itsfoss.com/feed/ "It's FOSS"
-https://www.thehindu.com/sci-tech/technology/?service=rss "techologia"
-https://www.thehindu.com/news/national/?service=rss "Hindu News"
+# https://www.thehindu.com/sci-tech/technology/?service=rss "techologia"
+# https://www.thehindu.com/news/national/?service=rss "Hindu News"
