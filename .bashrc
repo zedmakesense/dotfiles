@@ -140,6 +140,7 @@ alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
 alias diffl='export DELTA_FEATURES=+; git diff'
 
 alias img="swayimg"
+alias open="xdg-open"
 
 alias jrctl="journalctl -p 3 -xb"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
