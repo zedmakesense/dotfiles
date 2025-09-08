@@ -64,13 +64,13 @@ return {
                 map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
                 map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
                 map('<leader>ca', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-                map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
-                map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-                map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+                map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+                map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                map('gO', vim.lsp.buf.document_symbol, 'Open Document Symbols')
-                map('gW', vim.lsp.buf.workspace_symbol, 'Open Workspace Symbols')
-                map('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype Definition')
+                map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+                map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+                map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
                 -- The following two autocommands are used to highlight references of the
                 -- word under your cursor when your cursor rests there for a little while.
