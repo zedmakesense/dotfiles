@@ -35,18 +35,11 @@ return {
                     'gofumpt',
                     'goimports',
                     'gopls',
+                    'delve',
+                    'debugpy',
+                    'java-debug-adapter',
+                    'bash-debug-adapter',
                 },
-                automatic_installation = false,
-            }
-        end,
-    },
-    {
-        'jay-babu/mason-nvim-dap.nvim',
-        cmd = { 'DapInstall' },
-        dependencies = { 'williamboman/mason.nvim' },
-        config = function()
-            require('mason-nvim-dap').setup {
-                ensure_installed = { 'delve', 'debugpy', 'java-debug-adapter', 'bash-debug-adapter' },
                 automatic_installation = false,
             }
         end,
