@@ -8,6 +8,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
+export PATH="$HOME/.cargo/bin:$PATH"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME"/go
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
