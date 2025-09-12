@@ -1,11 +1,10 @@
 # @ Blogs
 https://archlinux.org/feeds/planet "Arch Planet"
-https://news.opensuse.org/feed/ "Suse news"
-https://dominique.leuenberger.net/blog/feed/rss/ "tumbleweed news"
+https://news.opensuse.org/feed.xml "Suse news"
+https://dominique.leuenberger.net/blog/feed/rss/ "Tumbleweed news"
 https://opensourcemusings.com/feed.xml "Open Source Musings"
 https://lwn.net/headlines/rss "Linux Weekly News"
 https://www.phoronix.com/rss.php "Phoronix"
-https://www.linuxtoday.com/backend/biglt.rss "Linux Today"
 https://itsfoss.com/feed/ "It's FOSS"
 # https://www.thehindu.com/sci-tech/technology/?service=rss "techologia"
 # https://www.thehindu.com/news/national/?service=rss "Hindu News"
