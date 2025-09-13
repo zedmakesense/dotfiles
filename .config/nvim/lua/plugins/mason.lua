@@ -38,7 +38,6 @@ return {
                     'delve',
                     'debugpy',
                     'java-debug-adapter',
-                    'bash-debug-adapter',
                 },
                 automatic_installation = false,
             }

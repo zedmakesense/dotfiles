@@ -27,6 +27,7 @@ return {
                 opts = {},
             },
             'onsails/lspkind.nvim',
+            'folke/lazydev.nvim',
         },
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
@@ -50,7 +51,10 @@ return {
                 },
             },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+                providers = {
+                    lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+                },
             },
             snippets = { preset = 'luasnip' },
             signature = { enabled = true },

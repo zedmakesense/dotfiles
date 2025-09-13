@@ -63,21 +63,5 @@ return {
         require('dap-go').setup()
         require('dap-python').setup(vim.fn.stdpath 'data' .. '/mason/packages/debugpy/venv/bin/python')
         -- Java handled automatically by nvim-jdtls when project starts
-
-        -- Bash (manual since no plugin exists)
-        dap.adapters.bashdb = {
-            type = 'executable',
-            command = vim.fn.stdpath 'data' .. '/mason/packages/bash-debug-adapter/bash-debug-adapter',
-            name = 'bashdb',
-        }
-        dap.configurations.sh = {
-            {
-                type = 'bashdb',
-                request = 'launch',
-                name = 'Launch file',
-                program = '${file}',
-                cwd = '${workspaceFolder}',
-            },
-        }
     end,
 }
