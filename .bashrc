@@ -24,7 +24,7 @@ export PATH="$PATH:$GOPATH/bin"
 
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
-export PATH="$HOME/.local/share/pnpm:$PATH"
+# export PATH="$HOME/.local/share/pnpm:$PATH"
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
