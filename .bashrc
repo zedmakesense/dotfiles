@@ -159,7 +159,7 @@ __fzf_history__() {
 }
 bind -x '"\C-r":__fzf_history__'
 
-source /usr/share/wikiman/widgets/widget.bash
+source /usr/share/bash-completion/bash_completion
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
