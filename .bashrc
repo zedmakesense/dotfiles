@@ -145,7 +145,7 @@ alias open="xdg-open"
 
 alias jrctl="journalctl -p 3 -xb"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias grub-mkconfig="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 __fzf_history__() {
   local selected
@@ -159,6 +159,7 @@ __fzf_history__() {
 }
 bind -x '"\C-r":__fzf_history__'
 
+source /usr/share/wikiman/widgets/widget.bash
 source /usr/share/bash-completion/bash_completion
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
