@@ -1,12 +1,12 @@
 return {
     'mfussenegger/nvim-dap',
     dependencies = {
-        'rcarriga/nvim-dap-ui',
-        'nvim-neotest/nvim-nio',
+    { 'rcarriga/nvim-dap-ui', lazy = true },
+    { 'nvim-neotest/nvim-nio', lazy = true },
 
-        'leoluz/nvim-dap-go',
-        'mfussenegger/nvim-dap-python',
-        'mfussenegger/nvim-jdtls',
+    { 'leoluz/nvim-dap-go', lazy = true },
+    { 'mfussenegger/nvim-dap-python', lazy = true },
+    { 'mfussenegger/nvim-jdtls', lazy = true },
     },
 
     -- stylua: ignore start
