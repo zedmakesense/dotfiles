@@ -11,6 +11,7 @@ set $network networkmanager_dmenu
 
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 set $paste cliphist.sh
+set $pinned fuzzel --dmenu < ~/Documents/personal/wiki/clipboard.txt | wl-copy
 
 set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
@@ -46,6 +47,7 @@ bindsym $mod+w mode "index"
 bindsym $mod+Shift+n exec $news
 
 bindsym $mod+p exec $paste
+bindsym $mod+Ctrl+p exec $pinned
 bindsym $mod+x exec --no-startup-id $text
 bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
