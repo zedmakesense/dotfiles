@@ -3,8 +3,7 @@ return {
     -- {
     --     'nvim-mini/mini.jump',
     --     version = false,
-    --     config = function()
-    --         require('mini.jump').setup()
+    -- opts = {},
     --     end,
     -- },
 
@@ -13,9 +12,7 @@ return {
         'nvim-mini/mini.pairs',
         event = 'InsertEnter',
         version = false,
-        config = function()
-            require('mini.pairs').setup()
-        end,
+        opts = {},
     },
 
     -- mini.icons
@@ -23,9 +20,7 @@ return {
         'nvim-mini/mini.icons',
         lazy = true,
         version = false,
-        config = function()
-            require('mini.icons').setup()
-        end,
+        opts = {},
     },
 
     -- mini.ai
@@ -33,9 +28,7 @@ return {
         'nvim-mini/mini.ai',
         event = 'InsertEnter',
         version = false,
-        config = function()
-            require('mini.ai').setup { n_lines = 500 }
-        end,
+        opts = {},
     },
 
     --mini.pick
