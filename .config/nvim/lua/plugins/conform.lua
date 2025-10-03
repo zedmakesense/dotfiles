@@ -24,7 +24,7 @@ return {
             plaintex = { 'tex-fmt' },
             markdown = { 'markdownlint' },
             java = { 'google-java-format' },
-            go = { 'gofumpt', 'goimports' },
+            go = { 'goimports', 'gofumpt' },
         },
     },
 }

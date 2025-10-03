@@ -8,12 +8,12 @@ return {
     -- },
 
     -- mini.pairs
-    {
-        'nvim-mini/mini.pairs',
-        event = 'InsertEnter',
-        version = false,
-        opts = {},
-    },
+    -- {
+    --     'nvim-mini/mini.pairs',
+    --     event = 'InsertEnter',
+    --     version = false,
+    --     opts = {},
+    -- },
 
     -- mini.icons
     {
