@@ -34,3 +34,4 @@ for_window [app_id="com.github.persepolisdm.persepolis" title="^(?!Persepolis Do
 
 # assign workspace to specific applications
 # assign [app_id="pcmanfm"] workspace 3
+assign [class="discord"] workspace 3

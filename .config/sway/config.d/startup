@@ -1,8 +1,5 @@
 # vim: ft=swayconfig
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
-exec wl-clip-persist --clipboard both --reconnect-tries 0
-
+exec clipse -listen &
 exec poweralertd
 exec mako
 exec playerctld daemon

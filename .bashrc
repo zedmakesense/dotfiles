@@ -71,6 +71,7 @@ export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
 set -o vi
+
 # bind stuff
 bind 'set meta-flag on'
 bind 'set input-meta on'
