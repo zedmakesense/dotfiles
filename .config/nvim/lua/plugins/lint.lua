@@ -6,7 +6,6 @@ return {
 
         lint.linters_by_ft = {
             python = { 'ruff' },
-            sh = { 'shellcheck' },
             markdown = { 'markdownlint' },
             javascript = { 'eslint_d' },
             typescript = { 'eslint_d' },
@@ -19,12 +18,14 @@ return {
         vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost', 'InsertLeave' }, {
             group = lint_augroup,
             callback = function()
-                -- Only run the linter in buffers that you can modify in order to
-                -- avoid superfluous noise, notably within the handy LSP pop-ups that
-                -- describe the hovered symbol using Markdown.
-                if vim.bo.modifiable then
-                    lint.try_lint()
+                if not vim.bo.modifiable then
+                    return
                 end
+                -- if any LSP client is active for this buffer, skip external linting
+                if next(vim.lsp.get_clients { bufnr = 0 }) ~= nil then
+                    return
+                end
+                require('lint').try_lint()
             end,
         })
     end,

@@ -26,7 +26,6 @@ return {
                     'stylua',
                     'prettierd',
                     'shfmt',
-                    'shellcheck',
                     'eslint_d',
                     'stylelint',
                     'tex-fmt',

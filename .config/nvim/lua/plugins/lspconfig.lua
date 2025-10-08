@@ -20,6 +20,7 @@ return {
             'lua_ls',
             'texlab',
             'gopls',
+            'jdtls',
         }
 
         for _, lsp in ipairs(lsps) do
