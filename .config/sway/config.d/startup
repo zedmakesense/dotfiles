@@ -5,3 +5,4 @@ exec mako
 exec playerctld daemon
 exec wayland-pipewire-idle-inhibit
 exec /usr/bin/lxqt-policykit-agent
+exec /usr/bin/lxpolkit

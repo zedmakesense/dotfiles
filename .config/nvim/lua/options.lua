@@ -12,6 +12,10 @@ vim.o.statusline = table.concat {
     '[%l/%L]',
 }
 
+-- Spelling
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us'}
+
 -- Netrw Configuration
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 4
@@ -53,9 +57,9 @@ vim.opt.writebackup = true -- create temporary backup while writing
 vim.opt.swapfile = true -- enable swap files for crash recovery
 
 -- Place swap files in a single state directory (double-slash allows nested filenames)
-local swapdir = vim.fn.stdpath('state') .. '/swap//'
+local swapdir = vim.fn.stdpath 'state' .. '/swap//'
 if vim.fn.isdirectory(swapdir) == 0 then
-  vim.fn.mkdir(swapdir, 'p')
+    vim.fn.mkdir(swapdir, 'p')
 end
 vim.opt.directory = swapdir
 
