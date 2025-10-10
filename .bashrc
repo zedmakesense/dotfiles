@@ -25,7 +25,7 @@ export PATH="$PATH:$GOPATH/bin"
 
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
-# export PATH="$HOME/.local/share/pnpm:$PATH"
+export PATH="$HOME/.local/share/pnpm:$PATH"
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
@@ -146,7 +146,7 @@ alias img="swayimg"
 alias open="xdg-open"
 
 alias jrctl="journalctl -p 3 -xb"
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+# alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 __fzf_history__() {
