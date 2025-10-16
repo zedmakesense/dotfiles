@@ -15,6 +15,10 @@ vim.keymap.set('n', 'k', function()
     return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true, silent = true })
 
+vim.keymap.set('n', '<leader>td', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = '[T]oggle [D]iagnostics' })
+
 -- Center screen when jumping
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result (centered)' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result (centered)' })
@@ -40,7 +44,5 @@ vim.keymap.set('i', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('x', 'gp', '"+P')
 
 -- Movement in insert mode
-vim.keymap.set('i', '<M-h>', '<Left>')
-vim.keymap.set('i', '<M-j>', '<Down>')
-vim.keymap.set('i', '<M-k>', '<Up>')
-vim.keymap.set('i', '<M-l>', '<Right>')
+vim.keymap.set('i', '<C-h>', '<Left>')
+vim.keymap.set('i', '<C-l>', '<Right>')

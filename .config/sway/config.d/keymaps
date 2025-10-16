@@ -18,8 +18,8 @@ set $SSedit grim -g "$(slurp)" - | swappy -f -
 
 set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
-# set $color hyprpicker | wl-copy
-set $color color.sh
+set $color hyprpicker | wl-copy
+# set $color color.sh
 set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.txt'
 set $wiki '$term --title="float" -e wiki.sh'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
