@@ -1,5 +1,10 @@
 return {
     {
+        'chentoast/marks.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
         'folke/lazydev.nvim',
         ft = 'lua',
         opts = {
