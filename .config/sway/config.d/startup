@@ -1,5 +1,5 @@
 # vim: ft=swayconfig
-exec clipse -listen &
+exec clipse -listen
 exec poweralertd
 exec mako
 exec playerctld daemon
