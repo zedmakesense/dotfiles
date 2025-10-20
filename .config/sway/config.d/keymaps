@@ -51,7 +51,7 @@ bindsym $mod+Ctrl+p exec $pinned
 bindsym $mod+x exec --no-startup-id $text
 bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
-bindsym $mod+n exec $network
+# bindsym $mod+n exec $network
 
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop

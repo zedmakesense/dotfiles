@@ -1,2 +1,2 @@
 # vim: ft=swayconfig
-output * bg ../archLogo.png fill
+output * bg ../debLogo.png fill
