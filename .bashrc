@@ -83,10 +83,10 @@ bind 'set colored-stats on'
 # Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
 set -o noclobber
 # Turn on recursive globbing (enables ** to recurse all directories)
-shopt -s globstar 2>/dev/null
+shopt -s globstar
 shopt -s checkwinsize
-shopt -s dirspell 2>/dev/null
-shopt -s cdspell 2>/dev/null
+shopt -s dirspell
+shopt -s cdspell
 bind "set completion-ignore-case on"
 bind "set show-all-if-unmodified on"
 bind "set show-all-if-ambiguous on"
@@ -146,7 +146,7 @@ alias img="swayimg"
 alias open="xdg-open"
 
 alias jrctl="journalctl -p 3 -xb"
-# alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 __fzf_history__() {

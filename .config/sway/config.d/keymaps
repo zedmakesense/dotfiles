@@ -1,11 +1,11 @@
 # vim: ft=swayconfig
-set $systemd systemd-run --user --scope
+# set $systemd systemd-run --user --scope
 set $term foot
 set $menu fuzzel --placeholder "Search ..."
 set $browser firefox
 set $fileBrowser pcmanfm
 
-set $calc qalculate-gtk
+set $calc '$term --title="float" -e qalc'
 set $emoji bemoji
 set $network networkmanager_dmenu
 
@@ -46,12 +46,11 @@ mode "index" {
 bindsym $mod+w mode "index"
 bindsym $mod+Shift+n exec $news
 
-bindsym $mod+p exec $paste
-bindsym $mod+Ctrl+p exec $pinned
+bindsym $mod+v exec $paste
 bindsym $mod+x exec --no-startup-id $text
 bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
-# bindsym $mod+n exec $network
+bindsym $mod+n exec $network
 
 bindsym Ctrl+Escape exec $nvtop
 bindsym Ctrl+Shift+Escape exec $htop
@@ -63,7 +62,7 @@ bindsym Ctrl+Delete exec makoctl dismiss
 bindsym Print exec $SS
 bindsym $mod+s exec $SSselect
 bindsym $mod+Shift+s exec $SSedit
-bindsym $mod+Shift+p exec $color
+bindsym $mod+p exec $color
 bindsym $mod+Ctrl+r exec wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date +'%F_%T').mp4
 bindsym $mod+Ctrl+s exec pkill -INT wf-recorder
 
