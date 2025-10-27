@@ -9,7 +9,7 @@ vim.o.statusline = table.concat {
     ' %F',
     ' %h%w%m%r',
     '%=',
-    '[%l/%L]',
+    '%l/%L',
 }
 
 -- Spelling
