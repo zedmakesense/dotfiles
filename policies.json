@@ -1,5 +1,23 @@
 {
   "policies": {
+    "SearchEngines": {
+      "Add": [
+        {
+          "Name": "Brave Search",
+          "URLTemplate": "https://search.brave.com/search?q={searchTerms}",
+          "SuggestURLTemplate": "https://search.brave.com/api/suggest?q={searchTerms}",
+          "IconURL": "https://search.brave.com/favicon.ico",
+          "Alias": "brave",
+          "Description": "Private search by Brave",
+          "Method": "GET"
+        }
+      ],
+      "Default": "Brave Search",
+      "PreventInstalls": false
+    },
+    "AppUpdate": {
+      "DisableAppUpdate": true
+    },
     "NoDefaultBookmarks": true,
     "PDFjs": {
       "Enabled": false
