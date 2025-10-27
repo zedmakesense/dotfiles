@@ -2,7 +2,7 @@
 # set $systemd systemd-run --user --scope
 set $term foot
 set $menu fuzzel --placeholder "Search ..."
-set $browser firefox
+set $browser firefox-esr
 set $fileBrowser pcmanfm
 
 set $calc '$term --title="float" -e qalc'

@@ -1,16 +1,11 @@
 [Default Applications]
-# Terminal
 x-terminal-emulator.desktop=foot.desktop
-
-# Documents
 application/pdf=org.pwmt.zathura.desktop
 application/x-pdf=org.pwmt.zathura.desktop
 application/fdf=org.pwmt.zathura.desktop
 application/xdp=org.pwmt.zathura.desktop
 application/xfdf=org.pwmt.zathura.desktop
 application/pdx=org.pwmt.zathura.desktop
-
-# Images
 image/jpeg=swayimg.desktop
 image/jpg=swayimg.desktop
 image/svg+xml=swayimg.desktop
@@ -19,8 +14,6 @@ image/gif=swayimg.desktop
 image/webp=swayimg.desktop
 image/bmp=swayimg.desktop
 image/tiff=swayimg.desktop
-
-# Editors (Neovim)
 text/plain=nvim.desktop
 text/x-csrc=nvim.desktop
 text/x-chdr=nvim.desktop
@@ -29,15 +22,30 @@ text/x-shellscript=nvim.desktop
 application/json=nvim.desktop
 application/x-yaml=nvim.desktop
 text/markdown=nvim.desktop
-
-# Protocols
 x-scheme-handler/discord=discord.desktop
 x-scheme-handler/discord-816168432860790794=discord-816168432860790794.desktop
-text/html=firefox.desktop
-
-# Browser
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+text/html=userapp-Firefox-J3DWE3.desktop
+x-scheme-handler/http=userapp-Firefox-J3DWE3.desktop
+x-scheme-handler/https=userapp-Firefox-J3DWE3.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
 x-scheme-handler/discord-378483863044882443=discord-378483863044882443.desktop
+x-scheme-handler/chrome=userapp-Firefox-J3DWE3.desktop
+application/x-extension-htm=userapp-Firefox-J3DWE3.desktop
+application/x-extension-html=userapp-Firefox-J3DWE3.desktop
+application/x-extension-shtml=userapp-Firefox-J3DWE3.desktop
+application/xhtml+xml=userapp-Firefox-J3DWE3.desktop
+application/x-extension-xhtml=userapp-Firefox-J3DWE3.desktop
+application/x-extension-xht=userapp-Firefox-J3DWE3.desktop
+
+[Added Associations]
+x-scheme-handler/http=userapp-Firefox-J3DWE3.desktop;
+x-scheme-handler/https=userapp-Firefox-J3DWE3.desktop;
+x-scheme-handler/chrome=userapp-Firefox-J3DWE3.desktop;
+text/html=userapp-Firefox-J3DWE3.desktop;
+application/x-extension-htm=userapp-Firefox-J3DWE3.desktop;
+application/x-extension-html=userapp-Firefox-J3DWE3.desktop;
+application/x-extension-shtml=userapp-Firefox-J3DWE3.desktop;
+application/xhtml+xml=userapp-Firefox-J3DWE3.desktop;
+application/x-extension-xhtml=userapp-Firefox-J3DWE3.desktop;
+application/x-extension-xht=userapp-Firefox-J3DWE3.desktop;
