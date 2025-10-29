@@ -133,7 +133,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim ."
 
-alias t="tmux"
+alias t="tmux new"
 alias tns="tmux new-session -s"
 alias tks="tmux kill-session -t"
 alias tas="tmux attach-session -t"
