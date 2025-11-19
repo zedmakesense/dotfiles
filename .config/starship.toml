@@ -17,7 +17,7 @@ style = "bold green"
 truncate_to_repo = false
 truncation_length = 0
 home_symbol = "~"
-read_only = ""
+read_only = " "
 
 [git_branch]
 format = "$branch"

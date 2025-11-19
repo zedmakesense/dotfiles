@@ -76,3 +76,4 @@ mode "systemctl" {
     bindsym Control+bracketleft mode "default"
 }
 bindsym $mod+Shift+o mode "systemctl"
+# bindsym $mod+Shift+o exec systemctl.sh

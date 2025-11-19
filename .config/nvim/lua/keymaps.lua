@@ -19,6 +19,8 @@ vim.keymap.set('n', '<leader>td', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = '[T]oggle [D]iagnostics' })
 
+vim.keymap.set("n", "z=", "<cmd>Telescope spell_suggest<CR>")
+
 -- Center screen when jumping
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result (centered)' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result (centered)' })
@@ -32,6 +34,7 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 -- Save
 vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
+
 
 -- Navigation
 -- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
