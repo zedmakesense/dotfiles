@@ -161,6 +161,14 @@ __fzf_history__() {
 }
 bind -x '"\C-r":__fzf_history__'
 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 source /usr/share/bash-completion/bash_completion
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
