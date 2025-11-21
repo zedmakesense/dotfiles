@@ -7,5 +7,5 @@ exec playerctld daemon
 exec wayland-pipewire-idle-inhibit
 exec /usr/bin/lxqt-policykit-agent
 exec /usr/bin/lxpolkit
-exec flatpak run com.github.wwmm.easyeffects --gapplication-service
+exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode
 exec docker start bento-tools omnitools
