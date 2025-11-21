@@ -121,7 +121,7 @@ return {
     },
     {
         'mikavilpas/yazi.nvim',
-        version = '*', -- use the latest stable version
+        version = '*',
         event = 'VeryLazy',
         dependencies = {
             { 'nvim-lua/plenary.nvim', lazy = true },
@@ -140,18 +140,47 @@ return {
             },
         },
         opts = {
-            -- if you want to open yazi instead of netrw, see below for more info
             open_for_directories = true,
             keymaps = {
                 show_help = '<f1>',
             },
         },
-        -- 👇 if you use `open_for_directories=true`, this is recommended
         init = function()
-            -- mark netrw as loaded so it's not loaded at all.
-            --
-            -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
             vim.g.loaded_netrwPlugin = 1
+        end,
+    },
+
+    {
+        'yazi-rs/plugins',
+        lazy = true,
+        build = function(plugin)
+            local monorepo_dir = plugin.dir
+            local want = { 'full-border.yazi', 'smart-paste.yazi' }
+            for _, sub in ipairs(want) do
+                local sub_plugin = {
+                    name = sub,
+                    dir = monorepo_dir .. '/' .. sub,
+                    repo = 'yazi-rs/plugins:' .. sub,
+                }
+                require('yazi.plugin').build_plugin(sub_plugin)
+            end
+        end,
+    },
+
+    {
+        'dedukun/relative-motions.yazi',
+        lazy = true,
+        build = function(plugin)
+            require('yazi.plugin').build_plugin(plugin)
+        end,
+    },
+
+    {
+        'bennyyip/gruvbox-dark.yazi',
+        name = 'gruvbox-dark.yazi',
+        lazy = true,
+        build = function(spec)
+            require('yazi.plugin').build_flavor(spec, {})
         end,
     },
 }
