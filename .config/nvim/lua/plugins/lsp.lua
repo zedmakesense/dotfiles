@@ -77,11 +77,10 @@ return {
                 'gopls',
                 'jdtls',
             }
-
             for _, lsp in ipairs(lsps) do
                 vim.lsp.config(lsp, {
                     capabilities = capabilities,
-                    on_attach = function(client, bufnr)
+                    on_attach = function(client, _)
                         client.server_capabilities.diagnosticProvider = false
                     end,
                 })
@@ -90,7 +89,7 @@ return {
 
             -- texlab LSP
             vim.lsp.config('texlab', {
-                on_attach = function(client, bufnr)
+                on_attach = function(client, _)
                     client.server_capabilities.diagnosticProvider = true
                 end,
                 settings = {
@@ -119,19 +118,34 @@ return {
                         mode = mode or 'n'
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
+
+                    local safe_del = function(mode, lhs)
+                        pcall(vim.keymap.del, mode, lhs, { buffer = buf })
+                    end
+
+                    safe_del('n', 'grn')
+                    safe_del('n', 'grr')
+                    safe_del('n', 'gri')
+                    safe_del('n', 'grt')
+                    safe_del('n', 'gO')
+                    safe_del({ 'n', 'v' }, 'gra')
+                    safe_del('i', '<C-s>')
+
+                    -- map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
+                    -- map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
                     map('<leader>d', vim.diagnostic.open_float, 'Show diagnostics float')
-                    map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
-                    map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
                     map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
                     map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-                    map('<leader>ca', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+                    map('ga', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
                     map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                    map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
                     map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                    map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
                     map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
                     map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-                    map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+                    -- this sucks cuz gt is for tab
+                    map('gtd', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.

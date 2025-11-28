@@ -101,7 +101,7 @@ alias ltree="l --tree"
 alias lltree="ll --tree"
 
 # alias ls='ls --color=auto'
-# alias ip='ip -color=auto'
+alias ip='ip -color=auto'
 # alias grep='grep --color=auto'
 # alias df="df -h"
 
