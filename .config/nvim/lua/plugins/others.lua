@@ -72,10 +72,26 @@ return {
     --     opts = {},
     -- },
 
+    -- mini.surround
+    {
+        'nvim-mini/mini.surround',
+        event = 'VeryLazy',
+        version = false,
+        opts = {},
+    },
+
     -- mini.icons
     {
         'nvim-mini/mini.icons',
         lazy = true,
+        version = false,
+        opts = {},
+    },
+
+    -- mini.splitjoin
+    {
+        'nvim-mini/mini.splitjoin',
+        event = 'VeryLazy',
         version = false,
         opts = {},
     },

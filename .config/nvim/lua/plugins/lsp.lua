@@ -119,64 +119,23 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
-                    local safe_del = function(mode, lhs)
-                        pcall(vim.keymap.del, mode, lhs, { buffer = buf })
-                    end
-
-                    safe_del('n', 'grn')
-                    safe_del('n', 'grr')
-                    safe_del('n', 'gri')
-                    safe_del('n', 'grt')
-                    safe_del('n', 'gO')
-                    safe_del({ 'n', 'v' }, 'gra')
-                    safe_del('i', '<C-s>')
-
                     -- map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
                     -- map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
                     map('<leader>d', vim.diagnostic.open_float, 'Show diagnostics float')
                     map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
-                    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-                    map('ga', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-                    map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-                    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                    map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+                    map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+                    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+                    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                    map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                    map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                    map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
                     map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
                     map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
                     map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-                    -- this sucks cuz gt is for tab
-                    map('gtd', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-
-                    -- The following two autocommands are used to highlight references of the
-                    -- word under your cursor when your cursor rests there for a little while.
-                    --    See `:help CursorHold` for information about when this is executed
-                    --
-                    -- When you move your cursor, the highlights will be cleared (the second autocommand).
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
-
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-
-                        vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
-                            callback = function(event2)
-                                vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
-                            end,
-                        })
-                    end
 
                     -- vim.diagnostic.enable(false)
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
                     client.server_capabilities.documentFormattingProvider = false
                 end,
             })
