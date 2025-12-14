@@ -15,5 +15,5 @@ exec playerctld daemon &
 exec /usr/bin/lxqt-policykit-agent &
 exec /usr/bin/lxpolkit &
 
-exec easyeffects --hide-window --service-mode &
+exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode
 # exec docker start bento-tools omnitools convertx &

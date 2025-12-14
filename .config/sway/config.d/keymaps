@@ -23,8 +23,8 @@ set $color hyprpicker | wl-copy
 set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.txt'
 set $wiki '$term --title="float" -e wiki.sh'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
-set $explore $term --title="float" -e sh -c 'fzf <<< "$(ls ~/Documents/personal/wiki)" | xargs -r -I {} nvim ~/Documents/personal/wiki/{}'
-set $delete $term --title="float" -e sh -c 'fzf <<< "$(ls ~/Documents/personal/wiki)" | xargs -r -I {} trash ~/Documents/personal/wiki/{}'
+set $explore $term --title="float" -e sh -c 'ls ~/Documents/personal/wiki | fzf | xargs -r -I {} nvim "$HOME/Documents/personal/wiki/{}"'
+set $delete $term --title="float" -e sh -c 'ls "$HOME/Documents/personal/wiki" | fzf | xargs -r -I {} trash "$HOME/Documents/personal/wiki/{}"'
 set $news '$term --title="float" -e newsraft'
 
 bindsym $mod+Return exec $term

@@ -43,10 +43,6 @@
         "installation_mode": "force_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/audiocontext-suspender/latest.xpi"
       },
-      "myallychou@gmail.com": {
-        "installation_mode": "force_installed",
-        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/youtube-recommended-videos/latest.xpi"
-      },
       "7esoorv3@alefvanoon.anonaddy.me": {
         "installation_mode": "force_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi"
