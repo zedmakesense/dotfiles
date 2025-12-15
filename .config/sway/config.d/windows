@@ -35,5 +35,4 @@ for_window [class="net-runelite-client-RuneLite"] floating enable
 # for_window [app_id="org.qbittorrent.qBittorrent" title="qBittorrent"] floating disable
 
 # assign workspace to specific applications
-# assign [app_id="pcmanfm"] workspace 3
-assign [class="discord"] workspace 4
+assign [class="discord"] workspace 3
