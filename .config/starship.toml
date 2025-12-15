@@ -2,6 +2,8 @@ format = """
 [\\[ $username@$hostname | $directory\\]](cyan) [($git_branch$git_status)](yellow)
 [>](fg:51) """
 
+command_timeout = 2000
+
 [username]
 show_always = true
 style_user = "bold cyan"
@@ -22,6 +24,7 @@ read_only = " "
 [git_branch]
 format = "$branch"
 style = "bold yellow"
+only_attached = true
 
 [git_status]
 format = "$conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind"
@@ -36,3 +39,4 @@ ahead = "↑$count"
 behind = "↓$count"
 diverged = "⇅${ahead_count}/${behind_count}"
 style = "bold yellow"
+ignore_submodules = true
