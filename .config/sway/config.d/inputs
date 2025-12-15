@@ -9,7 +9,6 @@
 # }
 
 input "type:pointer" accel_profile flat
-bindsym $mod+q exec hide.sh
 
 # Focus window when cursor enters it
 focus_follows_mouse yes
