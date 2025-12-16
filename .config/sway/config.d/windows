@@ -36,3 +36,4 @@ for_window [class="net-runelite-client-RuneLite"] floating enable
 
 # assign workspace to specific applications
 assign [class="discord"] workspace 3
+assign [app_id="virt-manager"] workspace 4
