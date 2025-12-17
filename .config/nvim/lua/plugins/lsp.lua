@@ -256,9 +256,9 @@ return {
                     nerd_font_variant = 'mono',
                 },
                 completion = {
-                    menu = {
-                        enabled = false,
-                    },
+                    -- menu = {
+                    --     enabled = false,
+                    -- },
                     list = {
                         selection = {
                             preselect = true,
