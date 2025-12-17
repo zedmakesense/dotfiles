@@ -5,6 +5,7 @@ return {
             'windwp/nvim-ts-autotag',
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
+        branch = 'master',
         event = { 'BufReadPre', 'BufNewFile' },
         build = ':TSUpdate',
         config = function()
@@ -13,6 +14,7 @@ return {
                     'bash',
                     'python',
                     'c',
+                    'go',
                     'cpp',
                     'diff',
                     'html',
