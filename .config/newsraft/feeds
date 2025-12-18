@@ -1,8 +1,9 @@
 # @ Blogs
-https://rss.beehiiv.com/feeds/iiTciQgHPG.xml "FOSS Weekly"
+https://www.debian.org/security/dsa "Debian Security Advisories"
 https://www.debian.org/News/news "Debian News"
-https://archlinux.org/feeds/planet "Arch Planet"
+https://rss.beehiiv.com/feeds/iiTciQgHPG.xml "FOSS Weekly"
+# https://archlinux.org/feeds/planet "Arch Planet"
 https://cprss.s3.amazonaws.com/golangweekly.com.xml "Go Weekly"
 https://www.privacyguides.org/articles/feed_rss_created.xml "Privacy articles"
-https://vimtricks.com/feed "Vim tricks"
+# https://vimtricks.com/feed "Vim tricks"
 # https://tldr.tech/api/rss/tech "TLDR tech"

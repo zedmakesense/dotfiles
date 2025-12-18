@@ -6,7 +6,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XCOMPOSEFILE="$HOME/.XCompose"
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"

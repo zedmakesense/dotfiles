@@ -12,8 +12,12 @@ exec mako &
 # exec swaync &
 exec playerctld daemon &
 
-exec /usr/bin/lxqt-policykit-agent &
+# arch
+# exec /usr/bin/lxqt-policykit-agent &
+# deb
 exec /usr/bin/lxpolkit &
+# nix
+exec lxpolkit &
 
 exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode
 # exec docker start bentopdf omni-tools convertx &

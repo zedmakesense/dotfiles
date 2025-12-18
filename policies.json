@@ -30,6 +30,10 @@
         "installation_mode": "force_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/return-youtube-dislikes/latest.xpi"
       },
+      "myallychou@gmail.com": {
+        "installation_mode": "force_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/youtube-recommended-videos/latest.xpi"
+      },
       "savewebpas@jeffersonscher.com": {
         "installation_mode": "force_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/save-webp-as-png-or-jpeg/latest.xpi"
