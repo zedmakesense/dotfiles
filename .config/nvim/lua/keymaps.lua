@@ -35,6 +35,9 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
 
+-- spell check
+vim.keymap.set("n", "<leader>sc", ":setlocal spell spelllang=en_us<CR>")
+
 -- Navigation
 -- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
 

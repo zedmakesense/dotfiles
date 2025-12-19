@@ -13,8 +13,8 @@ vim.o.statusline = table.concat {
 }
 
 -- Spelling
-vim.opt.spell = true
-vim.opt.spelllang = { 'en_us'}
+-- vim.opt.spell = true
+-- vim.opt.spelllang = { 'en_us'}
 
 -- Netrw Configuration
 vim.g.netrw_banner = 0

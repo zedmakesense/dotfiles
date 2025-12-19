@@ -170,6 +170,7 @@ function y() {
 }
 
 source /usr/share/bash-completion/bash_completion
+# source /home/piyush/local/share/cargo/env
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 # eval "$(thefuck --alias)"
