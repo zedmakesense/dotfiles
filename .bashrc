@@ -112,16 +112,6 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias trash="trash -v"
 alias cd="zd"
-zd() {
-  if [ $# -eq 0 ]; then
-    builtin cd ~ || return
-  elif [ -d "$1" ]; then
-    builtin cd "$1" || return
-  else
-    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-  fi
-}
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -169,8 +159,68 @@ function y() {
   rm -f -- "$tmp"
 }
 
+ex() {
+  local archive="$1"
+  local dest="${2:-.}"
+  if [ ! -f "$archive" ]; then
+    echo "'$archive' is not a valid file"
+    return 1
+  fi
+  mkdir -p "$dest"
+  case "$archive" in
+  *.tar.bz2 | *.tbz2)
+    tar -xvjf "$archive" -C "$dest"
+    ;;
+  *.tar.gz | *.tgz)
+    tar -xvzf "$archive" -C "$dest"
+    ;;
+  *.tar.xz)
+    tar -xvJf "$archive" -C "$dest"
+    ;;
+  *.tar.zst)
+    tar --zstd -xvf "$archive" -C "$dest"
+    ;;
+  *.tar)
+    tar -xvf "$archive" -C "$dest"
+    ;;
+  *.bz2)
+    bunzip2 -vk "$archive"
+    ;;
+  *.gz)
+    gunzip -vk "$archive"
+    ;;
+  *.zip)
+    unzip -v "$archive" -d "$dest"
+    ;;
+  *.rar)
+    unrar x -v "$archive" "$dest"
+    ;;
+  *.7z)
+    7z x -bsp1 "$archive" -o"$dest"
+    ;;
+  *.Z)
+    uncompress -v "$archive"
+    ;;
+  *.deb)
+    ar xv "$archive"
+    ;;
+  *)
+    echo "'$archive' cannot be extracted"
+    return 1
+    ;;
+  esac
+}
+
+zd() {
+  if [ $# -eq 0 ]; then
+    builtin cd ~ || return
+  elif [ -d "$1" ]; then
+    builtin cd "$1" || return
+  else
+    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+  fi
+}
+
 source /usr/share/bash-completion/bash_completion
-# source /home/piyush/local/share/cargo/env
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-# eval "$(thefuck --alias)"

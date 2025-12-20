@@ -5,9 +5,64 @@ return {
         build = ':TSUpdate',
         dependencies = {
             'windwp/nvim-ts-autotag',
-            'nvim-treesitter/nvim-treesitter-textobjects',
         },
         init = function()
+            require('nvim-treesitter').setup {
+                -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+                install_dir = vim.fn.stdpath 'data' .. '/site',
+            }
+            require('nvim-treesitter').install {
+                -- core / editor
+                'bash',
+                'lua',
+                'vim',
+                'vimdoc',
+
+                -- data / config
+                'json',
+                'jsonc',
+                'yaml',
+                'toml',
+                'ini',
+                'xml',
+
+                -- markup / docs
+                'markdown',
+                'markdown_inline',
+                'html',
+                'css',
+
+                -- programming languages
+                'c',
+                'cpp',
+                'go',
+                'python',
+                'javascript',
+                'typescript',
+                'tsx',
+                'java',
+                'rust',
+                'nix',
+
+                -- scripting / tooling
+                'regex',
+                'make',
+                'cmake',
+                'dockerfile',
+                'gitignore',
+                'gitcommit',
+                'diff',
+
+                -- shells / terminals
+                'bash',
+                'awk',
+                'printf',
+                'comment',
+
+                -- misc but useful
+                'query',
+                'vimdoc',
+            }
             vim.api.nvim_create_autocmd('FileType', {
                 desc = 'User: enable treesitter highlighting',
                 callback = function(args)
@@ -16,9 +71,9 @@ return {
                     local hasStarted = pcall(vim.treesitter.start) -- errors for filetypes with no parser
 
                     -- large file guard
-                    if vim.api.nvim_buf_line_count(bufnr) > 5000 then
-                        return
-                    end
+                    -- if vim.api.nvim_buf_line_count(bufnr) > 5000 then
+                    --     return
+                    -- end
 
                     -- indent
                     local noIndent = {}
@@ -42,7 +97,7 @@ return {
             vim.g.no_plugin_maps = true
         end,
         config = function()
-            local move = require 'nvim-treesitter.textobjects.move'
+            local move = require 'nvim-treesitter-textobjects.move'
 
             -- next start
             vim.keymap.set({ 'n', 'x', 'o' }, ']a', function()
@@ -124,7 +179,7 @@ return {
                 move.goto_previous_end('@local.scope', 'locals')
             end)
 
-            local select = require 'nvim-treesitter.textobjects.select'
+            local select = require 'nvim-treesitter-textobjects.select'
 
             -- assignments
             vim.keymap.set({ 'x', 'o' }, 'a=', function()
@@ -188,7 +243,7 @@ return {
                 select.select_textobject('@class.inner', 'textobjects')
             end)
 
-            local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+            local ts_repeat_move = require 'nvim-treesitter-textobjects.repeatable_move'
             -- Repeat movement with ; and ,
             -- ensure ; goes forward and , goes backward regardless of the last direction
             -- vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)

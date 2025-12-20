@@ -22,23 +22,23 @@ return {
             { '<leader>u', vim.cmd.UndotreeToggle, desc = 'Toggle Undotree' },
         },
     },
-    {
-        'derektata/lorem.nvim',
-        even = 'InsertEnter',
-        config = function()
-            require('lorem').opts {
-                sentence_length = 'mixed', -- using a default configuration
-                comma_chance = 0.3, -- 30% chance to insert a comma
-                max_commas = 2, -- maximum 2 commas per sentence
-                debounce_ms = 200, -- default debounce time in milliseconds
-            }
-        end,
-    },
-    {
-        'nmac427/guess-indent.nvim',
-        event = 'BufReadPost',
-        opts = {},
-    },
+    -- {
+    --     'derektata/lorem.nvim',
+    --     even = 'InsertEnter',
+    --     config = function()
+    --         require('lorem').opts {
+    --             sentence_length = 'mixed', -- using a default configuration
+    --             comma_chance = 0.3, -- 30% chance to insert a comma
+    --             max_commas = 2, -- maximum 2 commas per sentence
+    --             debounce_ms = 200, -- default debounce time in milliseconds
+    --         }
+    --     end,
+    -- },
+    -- {
+    --     'nmac427/guess-indent.nvim',
+    --     event = 'BufReadPost',
+    --     opts = {},
+    -- },
     {
         'MagicDuck/grug-far.nvim',
         cmd = { 'GrugFar', 'GrugFarResume' },
@@ -138,7 +138,7 @@ return {
     {
         'mikavilpas/yazi.nvim',
         version = '*',
-        event = 'VeryLazy',
+        cmd = { 'Yazi' },
         dependencies = {
             { 'nvim-lua/plenary.nvim', lazy = true },
         },

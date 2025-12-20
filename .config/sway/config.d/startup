@@ -17,13 +17,7 @@ exec playerctld daemon &
 exec /usr/bin/lxpolkit &
 # nix
 exec lxpolkit &
+exec idle.sh
 
 exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode
 # exec docker start bentopdf omni-tools convertx &
-
-exec wayland-pipewire-idle-inhibit --dry-run &
-exec swayidle -w \
-    timeout 180 'swaylock --ignore-empty-password --show-failed-attempts -f -c 000000' \
-    timeout 180 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock --ignore-empty-password --show-failed-attempts -fFec 282828' &

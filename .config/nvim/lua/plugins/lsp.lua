@@ -119,20 +119,25 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
+                    -- Diagnostics
                     -- map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
                     -- map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
                     map('<leader>d', vim.diagnostic.open_float, 'Show diagnostics float')
                     map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
+                    -- LSP actions
                     map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
                     map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-                    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-                    map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                    -- LSP navigation (quickfix / jump)
+                    map('grr', vim.lsp.buf.references, '[G]oto [R]eferences')
+                    map('gri', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+                    map('grd', vim.lsp.buf.definition, '[G]oto [D]efinition')
                     map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                    map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+                    map('grt', vim.lsp.buf.type_definition, '[G]oto [T]ype Definition')
+                    -- Signature help
                     map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
-                    map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-                    map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+                    -- Document / workspace symbols (quickfix alternative)
+                    map('gO', vim.lsp.buf.document_symbol, 'Open Document Symbols')
+                    map('gW', vim.lsp.buf.workspace_symbol, 'Open Workspace Symbols')
 
                     -- vim.diagnostic.enable(false)
                     local client = vim.lsp.get_client_by_id(event.data.client_id)

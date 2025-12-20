@@ -26,6 +26,8 @@ vim.g.netrw_liststyle = 3
 vim.g.have_nerd_font = true
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
+vim.opt.pumheight = 10 -- Maximum number of items in popup menu
+-- vim.opt.cmdheight = 0
 
 -- Editor Options
 vim.opt.number = true
@@ -35,8 +37,12 @@ vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 300
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 500 -- Time (ms) to wait for a mapped sequence to complete
+vim.opt.updatetime = 300 -- Debounce time for completion (default 4000)
+vim.opt.completeopt = { -- Options for Insert mode completion
+    'menuone', -- Show popup even if there is only one match
+    'noselect', -- Do not select a match in the menu automatically
+}
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
@@ -86,14 +92,15 @@ vim.opt.redrawtime = 10000
 vim.opt.maxmempattern = 20000
 
 -- Disabling unused providers
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0 -- Disable Python 2 (Deprecated)
+vim.g.loaded_ruby_provider = 0 -- Disable Ruby
+vim.g.loaded_node_provider = 0 -- Disable Node
+vim.g.loaded_perl_provider = 0 -- Disable Perl
 
 -- Folding setup
 -- Enable Tree-sitter-based folding
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'html', 'css' },

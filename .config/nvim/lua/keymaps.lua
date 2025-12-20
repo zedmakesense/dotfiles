@@ -1,53 +1,69 @@
--- Keybindings
-vim.keymap.set('n', '<Leader>bi', '<cmd>ls<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>bd', '<cmd>bd<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>bn', '<cmd>bn<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>bp', '<cmd>bp<CR>', { noremap = true, silent = true })
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { noremap = true, silent = true })
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { noremap = true, silent = true, desc = 'Exit terminal mode' })
+map('n', '<Leader>qd', function()
+    vim.cmd 'cclose'
+    vim.cmd 'lclose'
+end)
 
-vim.keymap.set('n', 'j', function()
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+map('n', 'j', function()
     return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true, silent = true })
 
-vim.keymap.set('n', 'k', function()
+map('n', 'k', function()
     return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true, silent = true })
 
-vim.keymap.set('n', '<leader>td', function()
+map('n', '<leader>td', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = '[T]oggle [D]iagnostics' })
-
-vim.keymap.set('n', 'z=', '<cmd>Telescope spell_suggest<CR>')
+end)
 
 -- Center screen when jumping
-vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result (centered)' })
-vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result (centered)' })
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Half page down (centered)' })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
 
 -- Better indenting in visual mode
-vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
-vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
 -- Save
-vim.keymap.set('n', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
-vim.keymap.set('i', '<C-s>', '<CMD>w<CR>', { noremap = true, silent = true })
+map('n', '<C-s>', '<CMD>w<CR>')
+map('i', '<C-s>', '<CMD>w<CR>')
 
 -- spell check
-vim.keymap.set("n", "<leader>sc", ":setlocal spell spelllang=en_us<CR>")
+map('n', '<leader>sc', ':setlocal spell spelllang=en_us<CR>')
 
 -- Navigation
--- vim.keymap.set('n', '<leader>e', '<cmd>18Lex<CR>')
+-- map('n', '<leader>e', '<cmd>18Lex<CR>')
 
 -- Copy/paste with system clipboard
--- vim.keymap.set({ 'n', 'x', 'v' }, 'gy', '"+y')
--- vim.keymap.set('n', 'gp', '"+p')
+-- map({ 'n', 'x', 'v' }, 'gy', '"+y')
+-- map('n', 'gp', '"+p')
 
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
--- vim.keymap.set('x', 'gp', '"+P')
+-- map('x', 'gp', '"+P')
 
 -- Movement in insert mode
-vim.keymap.set('i', '<C-h>', '<Left>')
-vim.keymap.set('i', '<C-l>', '<Right>')
+map('i', '<C-h>', '<Left>')
+map('i', '<C-l>', '<Right>')
+map('i', '<C-j>', '<Down>')
+map('i', '<C-k>', '<Up>')
+
+-- Movement b/w windows
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-l>', '<C-w>l')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+
+-- Buffer Management
+map('n', '<S-l>', ':bnext<CR>')
+map('n', '<S-h>', ':bprevious<CR>')
+map('n', '<Leader>bi', '<cmd>ls<CR>')
+map('n', '<Leader>bd', '<cmd>bd<CR>')
+-- map('n', '<Leader>bn', '<cmd>bn<CR>')
+-- map('n', '<Leader>bp', '<cmd>bp<CR>')

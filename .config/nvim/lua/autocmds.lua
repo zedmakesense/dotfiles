@@ -1,9 +1,9 @@
 -- Basic autocommands
-local augroup = vim.api.nvim_create_augroup('UserConfig', {})
+local autocmd = vim.api.nvim_create_augroup('UserConfig', {})
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
-    group = augroup,
+    group = autocmd,
     callback = function()
         vim.hl.on_yank()
     end,
@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd('BufReadPost', {
-    group = augroup,
+    group = autocmd,
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
         local lcount = vim.api.nvim_buf_line_count(0)
@@ -23,10 +23,23 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 -- Set filetype-specific settings
 vim.api.nvim_create_autocmd('FileType', {
-    group = augroup,
+    group = autocmd,
     pattern = { 'lua', 'python' },
     callback = function()
         vim.opt_local.tabstop = 4
         vim.opt_local.shiftwidth = 4
+    end,
+})
+
+-- Large File Optimization
+-- Disables heavy features (Syntax, Treesitter) for files > 20,000 lines.
+vim.api.nvim_create_autocmd('BufEnter', {
+    group = autocmd,
+    pattern = '*',
+    callback = function()
+        if vim.api.nvim_buf_line_count(0) > 20000 then
+            vim.cmd 'syntax off'
+            vim.cmd 'TSDisable' -- Note: Ensure TSDisable command exists or use pcall
+        end
     end,
 })
