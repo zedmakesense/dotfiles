@@ -224,3 +224,4 @@ zd() {
 source /usr/share/bash-completion/bash_completion
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+. "/home/piyush/.local/share/cargo/env"

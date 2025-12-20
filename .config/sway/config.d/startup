@@ -14,10 +14,11 @@ exec playerctld daemon &
 # arch
 # exec /usr/bin/lxqt-policykit-agent &
 # deb
-exec /usr/bin/lxpolkit &
-# nix
-exec lxpolkit &
-exec idle.sh
+# exec /usr/bin/lxpolkit &
+# fed
+exec /usr/libexec/lxqt-policykit-agent &
 
-exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode
+exec idle.sh &
+
+exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode &
 # exec docker start bentopdf omni-tools convertx &
