@@ -73,7 +73,6 @@ return {
                 'ts_ls',
                 'bashls',
                 'lua_ls',
-                'texlab',
                 'gopls',
                 'jdtls',
             }
@@ -110,6 +109,7 @@ return {
                 },
                 capabilities = capabilities,
             })
+            vim.lsp.enable 'texlab'
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),

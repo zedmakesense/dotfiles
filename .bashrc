@@ -137,7 +137,6 @@ alias open="xdg-open"
 
 alias jrctl="journalctl -p 3 -xb"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 __fzf_history__() {
   local selected

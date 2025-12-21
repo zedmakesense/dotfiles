@@ -1,11 +1,12 @@
 {
-  "timeStamp": 1751864252278,
-  "version": "1.64.0",
+  "timeStamp": 1766332258723,
+  "version": "1.68.0",
   "userSettings": {
-    "externalLists": "https://nsfw.oisd.nl/\nhttps://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
+    "externalLists": "https://nsfw.oisd.nl/\nhttps://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt\nhttps://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
     "importedLists": [
       "https://nsfw.oisd.nl/",
       "https://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt",
+      "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt",
       "https://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt"
     ]
   },
@@ -20,7 +21,6 @@
     "adguard-generic",
     "adguard-mobile",
     "easyprivacy",
-    "adguard-spyware",
     "adguard-spyware-url",
     "block-lan",
     "urlhaus-1",
@@ -46,7 +46,8 @@
     "IND-0",
     "https://raw.githubusercontent.com/yokoffing/filterlists/main/click2load.txt",
     "https://raw.githubusercontent.com/iam-py-test/uBlock-combo/main/list.txt",
-    "https://nsfw.oisd.nl/"
+    "https://nsfw.oisd.nl/",
+    "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
   ],
   "hiddenSettings": {},
   "whitelist": [
