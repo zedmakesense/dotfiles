@@ -105,16 +105,21 @@ return {
     },
 
     --mini.pick
-    -- {
-    --     'nvim-mini/mini.pick',
-    --     version = '*',
-    --     config = function()
-    --         require('mini.pick').setup()
-    --         vim.keymap.set('n', '<leader>e', function()
-    --             require('mini.pick').builtin.files()
-    --         end, {})
-    --     end,
-    -- },
+    {
+        'nvim-mini/mini.pick',
+        version = '*',
+        cmd = { 'Pick' },
+        keys = {
+            {
+                '<leader>e',
+                function()
+                    require('mini.pick').builtin.files()
+                end,
+                desc = 'Pick files (mini.pick)',
+            },
+        },
+        opts = {},
+    },
     {
         {
             'lervag/vimtex',
