@@ -47,6 +47,13 @@ return {
         },
     },
 
+    -- mini.pairs
+    -- {
+    --     'nvim-mini/mini.pairs',
+    --     event = 'InsertEnter',
+    --     version = false,
+    --     opts = {},
+    -- },
     -- {
     --     'mluders/comfy-line-numbers.nvim',
     --     event = 'VeryLazy',
@@ -61,13 +68,11 @@ return {
     -- {
     --     'nvim-mini/mini.jump',
     --     version = false,
-    -- opts = {},
-    --     end,
+    --     opts = {},
     -- },
-    -- mini.pairs
+    -- mini.jump2d
     -- {
-    --     'nvim-mini/mini.pairs',
-    --     event = 'InsertEnter',
+    --     'nvim-mini/mini.jump2d',
     --     version = false,
     --     opts = {},
     -- },
