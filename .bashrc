@@ -189,7 +189,7 @@ ex() {
     gunzip -vk "$archive"
     ;;
   *.zip)
-    unzip -v "$archive" -d "$dest"
+    unzip -q "$archive" -d "$dest"
     ;;
   *.rar)
     unrar x -v "$archive" "$dest"

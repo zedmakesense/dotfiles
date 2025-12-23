@@ -25,8 +25,7 @@ set $wiki '$term --title="float" -e wiki.sh'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
 set $explore $term --title="float" -e sh -c 'ls ~/Documents/personal/wiki | fzf | xargs -r -I {} nvim "$HOME/Documents/personal/wiki/{}"'
 set $delete $term --title="float" -e sh -c 'ls "$HOME/Documents/personal/wiki" | fzf | xargs -r -I {} trash "$HOME/Documents/personal/wiki/{}"'
-set $news '$term --title="float" -e newsraft'
-
+set $news '$term --title="float" -e newsboat'
 
 bindsym $mod+q exec sh -c 'set -- $(swaymsg -t get_outputs -r | jq -r ".[]|select(.focused)|.current_mode.width,.current_mode.height"); swaymsg seat "*" cursor set $(($1-1)) $(($2-1))'
 

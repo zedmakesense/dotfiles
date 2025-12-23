@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 map('n', '<Leader>qd', function()
     vim.cmd 'cclose'
@@ -17,7 +17,7 @@ map('n', 'k', function()
     return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true, silent = true })
 
-map('n', '<leader>td', function()
+map('n', '<leader>dt', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end)
 

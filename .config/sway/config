@@ -91,7 +91,6 @@ bar {
     }
 }
 bindsym $mod+m bar mode toggle
-# exec waybar
 
 font pango: "IosevkaTerm Nerd Font" Regular 9
 
