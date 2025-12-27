@@ -2,7 +2,7 @@ unbind-key j k h H L c ,
 
 auto-reload yes
 prepopulate-query-feeds yes
-browser "firefox %u"
+browser "firefox-esr %u"
 macro w set browser "mpv %u" ; open-in-browser ; set browser "firefox %u"
 
 # Bindings

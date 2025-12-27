@@ -62,20 +62,117 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+equal move scratchpad
 bindsym $mod+equal scratchpad show
 
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+bindsym $mod+Ctrl+$left resize shrink width 10px
+bindsym $mod+Ctrl+$down resize grow height 10px
+bindsym $mod+Ctrl+$up resize shrink height 10px
+bindsym $mod+Ctrl+$right resize grow width 10px
+
+set $term foot
+set $menu fuzzel --placeholder "Search ..."
+set $browser firefox-esr
+set $fileBrowser pcmanfm
+
+set $calc '$term --title="float" -e qalc'
+set $emoji bemoji
+set $network networkmanager_dmenu
+
+set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
+set $paste cliphist.sh
+
+set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
+set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
+set $SSedit grim -g "$(slurp)" - | swappy -f -
+
+set $htop '$term -a htop htop'
+set $nvtop '$term -a nvtop nvtop'
+set $color hyprpicker | wl-copy
+# set $color color.sh
+set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.txt'
+set $wiki '$term --title="float" -e wiki.sh'
+set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
+set $explore $term --title="float" -e sh -c 'ls ~/Documents/personal/wiki | fzf | xargs -r -I {} nvim "$HOME/Documents/personal/wiki/{}"'
+set $delete $term --title="float" -e sh -c 'ls "$HOME/Documents/personal/wiki" | fzf | xargs -r -I {} trash "$HOME/Documents/personal/wiki/{}"'
+set $news '$term --title="float" -e newsboat'
+
+bindsym $mod+q exec sh -c 'set -- $(swaymsg -t get_outputs -r | jq -r ".[]|select(.focused)|.current_mode.width,.current_mode.height"); swaymsg seat "*" cursor set $(($1-1)) $(($2-1))'
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+f exec '$term --title="float"'
+bindsym $mod+space exec $menu
+bindsym $mod+e exec $fileBrowser
+
+bindsym $mod+Shift+Return exec $browser
+mode "index" {
+    bindsym c exec $wiki; mode default
+    bindsym i exec $index; mode default
+    bindsym s exec $search; mode default
+    bindsym e exec $explore; mode default
+    bindsym d exec $delete; mode default
     bindsym Return mode "default"
-    bindsym Control+bracketleft mode "default"
     bindsym Escape mode "default"
+    bindsym Control+bracketleft mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+w mode "index"
+bindsym $mod+Shift+n exec $news
+
+bindsym $mod+v exec $paste
+bindsym $mod+x exec --no-startup-id $text
+bindsym $mod+c exec $calc
+bindsym $mod+period exec $emoji
+bindsym $mod+n exec $network
+
+bindsym Ctrl+Escape exec $nvtop
+bindsym Ctrl+Shift+Escape exec $htop
+
+# bindsym $mod+n exec swaync-client -t -sw
+# bindsym Ctrl+Delete exec swaync-client --hide-latest
+bindsym Ctrl+Delete exec makoctl dismiss
+
+bindsym Print exec $SS
+bindsym $mod+s exec $SSselect
+bindsym $mod+Shift+s exec $SSedit
+bindsym $mod+p exec $color
+
+mode "systemctl" {
+    bindsym r exec systemctl reboot; mode default
+    bindsym p exec systemctl poweroff; mode default
+    bindsym e exec sway exit; mode default
+    bindsym l exec swaylock --ignore-empty-password --show-failed-attempts -fFec 282828; mode default
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Control+bracketleft mode "default"
+}
+bindsym $mod+Shift+o mode "systemctl"
+bindsym --locked XF86AudioMute exec sh -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; volume.sh'
+bindsym --locked XF86AudioLowerVolume exec sh -c 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-; volume.sh'
+bindsym --locked XF86AudioRaiseVolume exec sh -c 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+; volume.sh'
+bindsym --locked XF86AudioMicMute exec sh -c 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; volume.sh'
+
+bindsym --locked XF86MonBrightnessDown exec sh -c 'brightnessctl set 5%-; brightness.sh'
+bindsym --locked XF86MonBrightnessUp exec sh -c 'brightnessctl set 5%+; brightness.sh'
+
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioStop exec playerctl stop
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input "type:pointer" accel_profile flat
+
+# Focus window when cursor enters it
+focus_follows_mouse yes
+focus_on_window_activation smart
+
+input "type:keyboard" {
+    xkb_options ctrl:swapcaps,compose:ralt
+}
 
 bar {
     position bottom
@@ -94,11 +191,6 @@ bindsym $mod+m bar mode toggle
 
 font pango: "IosevkaTerm Nerd Font" Regular 9
 
-# input * {
-#     xkb_layout us
-#     xkb_variant colemak
-# }
-
 default_border pixel
 hide_edge_borders smart
 
@@ -112,4 +204,80 @@ client.unfocused        #4b4239 #101010 #c9af82 #574a35  #4b4239
 client.urgent           #d8a657 #101010 #101010 #b8883b  #d8a657
 client.placeholder      #b19565 #101010 #101010 #917a53  #b19565
 
-include ~/.config/sway/config.d/*
+# exec clipse -listen &
+exec wl-paste --type text --watch cliphist store &
+exec wl-paste --type image --watch cliphist store &
+exec wl-clip-persist --clipboard both --reconnect-tries 0 &
+
+exec poweralertd &
+exec mako &
+
+# exec swaync &
+exec playerctld daemon &
+
+# arch
+# exec /usr/bin/lxqt-policykit-agent &
+# deb
+# exec /usr/bin/lxpolkit &
+# fed
+exec /usr/libexec/lxqt-policykit-agent &
+
+exec idle.sh &
+
+exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode &
+# exec docker start bentopdf omni-tools convertx &
+
+for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] floating enable
+for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] resize set 800 600
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1
+for_window [title="Revert Bookmarks"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
+for_window [title="Confirm File Replacing"] floating enable
+
+# set floating mode for specific applications
+for_window [app_id="htop"] floating enable, resize set 1366 ppt 768 ppt
+for_window [app_id="nvtop"] floating enable, resize set 1366 ppt 768 ppt
+for_window [app_id="foot" title="float"] floating enable
+for_window [app_id="org.gnome.FileRoller"] floating enable
+for_window [app_id="kvantummanager"] floating enable
+for_window [app_id="qalculate-gtk"] floating enable
+for_window [app_id="lxqt-policykit-agent"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="org.qbittorrent.qBittorrent" title="^(?!qBittorrent).*$"] floating enable
+for_window [app_id="com.github.persepolisdm.persepolis" title="^(?!Persepolis Download Manager$).*"] floating enable, resize set 800 600
+for_window [class="net-runelite-client-RuneLite"] floating enable
+# for_window [app_id="org.qbittorrent.qBittorrent" title=".*"] floating enable
+# for_window [app_id="org.qbittorrent.qBittorrent" title="qBittorrent"] floating disable
+
+# assign workspace to specific applications
+assign [class="discord"] workspace 3
+assign [app_id="virt-manager"] workspace 4
+
+# sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
+# See FS#63021
+# Adapted from xorg's 50-systemd-user.sh, which achieves a similar goal.
+
+# Upstream refuses to set XDG_CURRENT_DESKTOP so we have to.
+exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment DISPLAY \
+                                         SWAYSOCK \
+                                         WAYLAND_DISPLAY \
+                                         XDG_CURRENT_DESKTOP
+
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY \
+                                                  SWAYSOCK \
+                                                  XDG_CURRENT_DESKTOP=sway \
+                                                  WAYLAND_DISPLAY
