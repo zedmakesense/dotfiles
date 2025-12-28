@@ -17,6 +17,9 @@ map('n', 'k', function()
     return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true, silent = true })
 
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+
 map('n', '<leader>dt', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end)
@@ -51,14 +54,14 @@ map('n', '<leader>sc', ':setlocal spell spelllang=en_us<CR>')
 -- Movement in insert mode
 map('i', '<C-h>', '<Left>')
 map('i', '<C-l>', '<Right>')
-map('i', '<C-j>', '<Down>')
-map('i', '<C-k>', '<Up>')
+-- map('i', '<C-j>', '<Down>')
+-- map('i', '<C-k>', '<Up>')
 
 -- Movement b/w windows
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-l>', '<C-w>l')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
+-- map('n', '<M-h>', '<C-w>h')
+-- map('n', '<M-l>', '<C-w>l')
+-- map('n', '<M-j>', '<C-w>j')
+-- map('n', '<M-k>', '<C-w>k')
 
 -- Buffer Management
 map('n', '<S-l>', ':bnext<CR>')

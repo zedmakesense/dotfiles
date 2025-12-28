@@ -70,7 +70,7 @@ bind '"\e[D": backward-char'
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
-# set -o vi
+set -o vi
 
 # bind stuff
 bind 'set meta-flag on'
@@ -127,6 +127,7 @@ alias t="tmux"
 alias tns="tmux new-session -s"
 alias tks="tmux kill-session -t"
 alias tas="tmux attach-session -t"
+alias ta="tmux attach-session"
 alias tls="tmux ls"
 
 alias diffs='export DELTA_FEATURES=+side-by-side; git diff'

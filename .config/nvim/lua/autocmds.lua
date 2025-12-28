@@ -43,3 +43,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
         end
     end,
 })
+
+-- removes trailing space on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '',
+    command = ':%s/\\s\\+$//e',
+})
