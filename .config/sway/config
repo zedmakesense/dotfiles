@@ -75,6 +75,7 @@ set $fileBrowser pcmanfm
 set $calc '$term --title="float" -e qalc'
 set $emoji bemoji
 set $network networkmanager_dmenu
+set $draw drawing
 
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 set $paste cliphist.sh
@@ -83,15 +84,12 @@ set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/t
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSedit grim -g "$(slurp)" - | swappy -f -
 
-set $htop '$term -a htop htop'
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
 # set $color color.sh
 set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.txt'
-set $wiki '$term --title="float" -e wiki.sh'
-set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
-set $explore $term --title="float" -e sh -c 'ls ~/Documents/personal/wiki | fzf | xargs -r -I {} nvim "$HOME/Documents/personal/wiki/{}"'
-set $delete $term --title="float" -e sh -c 'ls "$HOME/Documents/personal/wiki" | fzf | xargs -r -I {} trash "$HOME/Documents/personal/wiki/{}"'
+set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always --max-depth 1 "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
+set $explore $term --title="float" -e sh -c 'yazi "$HOME/Documents/personal/wiki/{}"'
 set $news '$term --title="float" -e newsboat'
 
 bindsym $mod+q exec sh -c 'set -- $(swaymsg -t get_outputs -r | jq -r ".[]|select(.focused)|.current_mode.width,.current_mode.height"); swaymsg seat "*" cursor set $(($1-1)) $(($2-1))'
@@ -100,14 +98,13 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+f exec '$term --title="float"'
 bindsym $mod+space exec $menu
 bindsym $mod+e exec $fileBrowser
+bindsym $mod+d exec $draw
 
 bindsym $mod+Shift+Return exec $browser
 mode "index" {
-    bindsym c exec $wiki; mode default
     bindsym i exec $index; mode default
     bindsym s exec $search; mode default
-    bindsym e exec $explore; mode default
-    bindsym d exec $delete; mode default
+    bindsym y exec $explore; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Control+bracketleft mode "default"
@@ -121,8 +118,7 @@ bindsym $mod+c exec $calc
 bindsym $mod+period exec $emoji
 bindsym $mod+n exec $network
 
-bindsym Ctrl+Escape exec $nvtop
-bindsym Ctrl+Shift+Escape exec $htop
+bindsym Ctrl+Shift+Escape exec $nvtop
 
 # bindsym $mod+n exec swaync-client -t -sw
 # bindsym Ctrl+Delete exec swaync-client --hide-latest
@@ -247,7 +243,6 @@ for_window [title = "Administrator privileges required"] floating enable
 for_window [title="Confirm File Replacing"] floating enable
 
 # set floating mode for specific applications
-for_window [app_id="htop"] floating enable, resize set 1366 ppt 768 ppt
 for_window [app_id="nvtop"] floating enable, resize set 1366 ppt 768 ppt
 for_window [app_id="foot" title="float"] floating enable
 for_window [app_id="org.gnome.FileRoller"] floating enable
@@ -264,6 +259,7 @@ for_window [class="net-runelite-client-RuneLite"] floating enable
 # assign workspace to specific applications
 assign [class="discord"] workspace 3
 assign [app_id="virt-manager"] workspace 4
+assign [app_id="draw.io"] workspace 9
 
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
 # See FS#63021

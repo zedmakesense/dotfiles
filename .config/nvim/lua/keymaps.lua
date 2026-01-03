@@ -20,7 +20,7 @@ end, { expr = true, silent = true })
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
-map('n', '<leader>dt', function()
+map('n', '<leader>vdt', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end)
 
@@ -66,7 +66,7 @@ map('i', '<C-l>', '<Right>')
 -- Buffer Management
 map('n', '<S-l>', ':bnext<CR>')
 map('n', '<S-h>', ':bprevious<CR>')
-map('n', '<Leader>bi', '<cmd>ls<CR>')
-map('n', '<Leader>bd', '<cmd>bd<CR>')
+-- map('n', '<Leader>bi', '<cmd>ls<CR>')
+-- map('n', '<Leader>bd', '<cmd>bd<CR>')
 -- map('n', '<Leader>bn', '<cmd>bn<CR>')
 -- map('n', '<Leader>bp', '<cmd>bp<CR>')

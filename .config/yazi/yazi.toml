@@ -1,2 +1,12 @@
 [mgr]
 ratio = [2,4,3]
+
+[open]
+prepend_rules = [
+  { url = "*.drawio", use = "drawio" },
+]
+
+[opener]
+drawio = [
+  { run = "drawio %s", orphan = true, desc = "Draw.io", for = "linux" }
+]

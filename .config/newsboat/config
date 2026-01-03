@@ -4,6 +4,7 @@ auto-reload yes
 prepopulate-query-feeds yes
 browser "firefox-esr %u"
 macro w set browser "mpv %u" ; open-in-browser ; set browser "firefox %u"
+cleanup-on-quit yes
 
 # Bindings
 bind-key SPACE macro-prefix

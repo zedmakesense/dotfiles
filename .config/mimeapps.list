@@ -40,8 +40,10 @@ application/x-extension-xht=userapp-Firefox-J3DWE3.desktop
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
 video/mp4=mpv.desktop
+video/mkv=mpv.desktop
 audio/mpeg=mpv.desktop
 audio/mp3=mpv.desktop
+video/x-matroska=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Firefox-J3DWE3.desktop;
@@ -55,3 +57,4 @@ application/xhtml+xml=userapp-Firefox-J3DWE3.desktop;
 application/x-extension-xhtml=userapp-Firefox-J3DWE3.desktop;
 application/x-extension-xht=userapp-Firefox-J3DWE3.desktop;
 audio/x-mod=nvim.desktop;foot.desktop;
+video/x-matroska=mpv.desktop;
