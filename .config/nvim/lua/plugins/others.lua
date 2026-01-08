@@ -207,15 +207,4 @@ return {
             require('yazi.plugin').build_flavor(spec, {})
         end,
     },
-    {
-        'vyfor/cord.nvim',
-        build = ':Cord update',
-        event = 'VeryLazy',
-        opts = {
-            log_level = 'info',
-            display = {
-                theme = 'minecraft',
-            },
-        },
-    },
 }
