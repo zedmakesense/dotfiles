@@ -75,7 +75,6 @@ set $fileBrowser pcmanfm
 set $calc '$term --title="float" -e qalc'
 set $emoji bemoji
 set $network networkmanager_dmenu
-set $draw drawing
 
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
 set $paste cliphist.sh
@@ -98,7 +97,6 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+f exec '$term --title="float"'
 bindsym $mod+space exec $menu
 bindsym $mod+e exec $fileBrowser
-bindsym $mod+d exec $draw
 
 bindsym $mod+Shift+Return exec $browser
 mode "index" {
