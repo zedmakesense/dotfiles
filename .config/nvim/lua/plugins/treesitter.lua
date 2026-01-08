@@ -20,7 +20,6 @@ return {
 
                 -- data / config
                 'json',
-                'jsonc',
                 'yaml',
                 'toml',
                 'ini',
@@ -36,6 +35,8 @@ return {
                 'c',
                 'cpp',
                 'go',
+                'gomod',
+                'gosum',
                 'python',
                 'javascript',
                 'typescript',
@@ -66,7 +67,6 @@ return {
             vim.api.nvim_create_autocmd('FileType', {
                 desc = 'User: enable treesitter highlighting',
                 callback = function(args)
-                    local bufnr = args.buf
                     -- highlights
                     local hasStarted = pcall(vim.treesitter.start) -- errors for filetypes with no parser
 
@@ -79,6 +79,8 @@ return {
                     local noIndent = {}
                     if hasStarted and not vim.list_contains(noIndent, args.match) then
                         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                        vim.wo[0][0].foldmethod = 'expr'
                     end
                 end,
             })

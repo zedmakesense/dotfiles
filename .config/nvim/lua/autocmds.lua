@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
         if vim.api.nvim_buf_line_count(0) > 20000 then
             vim.cmd 'syntax off'
-            vim.cmd 'TSDisable' -- Note: Ensure TSDisable command exists or use pcall
+            vim.cmd 'TSDisable'
         end
     end,
 })

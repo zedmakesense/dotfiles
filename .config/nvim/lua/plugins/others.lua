@@ -47,7 +47,6 @@ return {
         },
     },
 
-    -- mini.pairs
     {
         'nvim-mini/mini.pairs',
         event = 'InsertEnter',
@@ -64,28 +63,29 @@ return {
     --         threshold = 5,
     --     },
     -- },
-    -- mini.jump
     -- {
     --     'nvim-mini/mini.jump',
     --     version = false,
     --     opts = {},
     -- },
-    -- mini.jump2d
     -- {
     --     'nvim-mini/mini.jump2d',
     --     version = false,
     --     opts = {},
     -- },
 
-    -- mini.surround
     {
         'nvim-mini/mini.surround',
-        event = 'VeryLazy',
+        event = 'InsertEnter',
         version = false,
         opts = {},
     },
 
-    -- mini.icons
+    {
+        'tpope/vim-surround',
+        event = 'InsertEnter',
+    },
+
     {
         'nvim-mini/mini.icons',
         lazy = true,
@@ -93,7 +93,6 @@ return {
         opts = {},
     },
 
-    -- mini.splitjoin
     {
         'nvim-mini/mini.splitjoin',
         event = 'VeryLazy',
@@ -101,7 +100,6 @@ return {
         opts = {},
     },
 
-    -- mini.ai
     {
         'nvim-mini/mini.ai',
         event = 'InsertEnter',
@@ -109,7 +107,6 @@ return {
         opts = {},
     },
 
-    --mini.pick
     {
         'nvim-mini/mini.pick',
         version = '*',
@@ -145,6 +142,7 @@ return {
             end,
         },
     },
+
     {
         'mikavilpas/yazi.nvim',
         version = '*',
@@ -208,5 +206,16 @@ return {
         build = function(spec)
             require('yazi.plugin').build_flavor(spec, {})
         end,
+    },
+    {
+        'vyfor/cord.nvim',
+        build = ':Cord update',
+        event = 'VeryLazy',
+        opts = {
+            log_level = 'info',
+            display = {
+                theme = 'minecraft',
+            },
+        },
     },
 }

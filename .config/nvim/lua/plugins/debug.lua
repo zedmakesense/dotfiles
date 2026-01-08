@@ -175,6 +175,6 @@ return {
         require('dap-python').setup(vim.fn.stdpath 'data' .. '/mason/packages/debugpy/venv/bin/python')
         -- Java handled automatically by nvim-jdtls when project starts
 
-        require("nvim-dap-virtual-text").setup()
+        require('nvim-dap-virtual-text').setup()
     end,
 }
