@@ -1,4 +1,9 @@
+# Zoom
+set zoom-step 10
+set adjust-open width
+
 set selection-clipboard clipboard
+set window-title-basename true
 set database sqlite
 set synctex true
 # set mouse-follow-links true
