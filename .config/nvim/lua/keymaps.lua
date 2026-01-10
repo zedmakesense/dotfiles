@@ -52,16 +52,16 @@ map('n', '<leader>sc', ':setlocal spell spelllang=en_us<CR>')
 -- map('x', 'gp', '"+P')
 
 -- Movement in insert mode
-map('i', '<C-h>', '<Left>')
-map('i', '<C-l>', '<Right>')
--- map('i', '<C-j>', '<Down>')
--- map('i', '<C-k>', '<Up>')
+map('i', '<C-b>', '<Left>')
+map('i', '<C-f>', '<Right>')
+-- map('i', '<C-n>', '<Up>')
+-- map('i', '<C-p>', '<Down>')
 
 -- Movement b/w windows
--- map('n', '<M-h>', '<C-w>h')
--- map('n', '<M-l>', '<C-w>l')
--- map('n', '<M-j>', '<C-w>j')
--- map('n', '<M-k>', '<C-w>k')
+map('n', '<M-h>', '<C-w>h')
+map('n', '<M-l>', '<C-w>l')
+map('n', '<M-j>', '<C-w>j')
+map('n', '<M-k>', '<C-w>k')
 
 -- Buffer Management
 map('n', '<S-l>', ':bnext<CR>')
