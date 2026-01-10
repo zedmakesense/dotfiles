@@ -102,7 +102,7 @@ bindsym $mod+Shift+Return exec $browser
 mode "index" {
     bindsym i exec $index; mode default
     bindsym s exec $search; mode default
-    bindsym y exec $explore; mode default
+    bindsym e exec $explore; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Control+bracketleft mode "default"
@@ -259,7 +259,7 @@ for_window [class="net-runelite-client-RuneLite"] floating enable
 # assign workspace to specific applications
 assign [class="discord"] workspace 3
 assign [app_id="virt-manager"] workspace 4
-assign [app_id="draw.io"] workspace 9
+# assign [app_id="draw.io"] workspace 9
 
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
 # See FS#63021
