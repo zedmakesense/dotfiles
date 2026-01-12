@@ -136,8 +136,8 @@ alias diffl='export DELTA_FEATURES=+; git diff'
 alias img="swayimg"
 alias open="xdg-open"
 
-alias jrctl="journalctl -p 3 -xb"
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+# alias jrctl="journalctl -p 3 -xb"
+# alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 
 __fzf_history__() {
   local selected
