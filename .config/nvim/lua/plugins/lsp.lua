@@ -1,64 +1,11 @@
+if vim.loop and vim.loop.getuid and vim.loop.getuid() == 0 then
+    return {}
+end
 return {
-    {
-        'mason-org/mason.nvim',
-        event = 'VeryLazy',
-        build = ':MasonUpdate',
-        config = true,
-    },
-
-    {
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
-        cmd = { 'MasonToolsInstall' },
-        dependencies = { 'williamboman/mason.nvim' },
-        config = function()
-            require('mason-tool-installer').setup {
-                ensure_installed = {
-                    -- language server
-                    'pyright',
-                    'gopls',
-                    'bash-language-server',
-                    'jdtls',
-                    'html-lsp',
-                    'json-lsp',
-                    'css-lsp',
-                    'typescript-language-server',
-                    'lua-language-server',
-                    'texlab',
-                    -- linters
-                    'jsonlint',
-                    'shellcheck',
-                    'markdownlint',
-                    'htmlhint',
-                    'checkstyle',
-                    'luacheck',
-                    'ruff',
-                    'eslint_d',
-                    'stylelint',
-                    'golangci-lint',
-                    -- formatting
-                    'tex-fmt',
-                    'google-java-format',
-                    'gofumpt',
-                    'stylua',
-                    'prettierd',
-                    'shfmt',
-                    -- debugging
-                    'delve',
-                    'debugpy',
-                    'java-debug-adapter',
-                    -- extra
-                    'goimports',
-                },
-                automatic_installation = false,
-            }
-        end,
-    },
     {
         'neovim/nvim-lspconfig',
         event = 'VeryLazy',
         dependencies = {
-            { 'mason-org/mason.nvim', opts = {} },
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
             -- 'saghen/blink.cmp',
             { 'j-hui/fidget.nvim', opts = {} },
         },
@@ -69,7 +16,7 @@ return {
                 'jsonls',
                 'html',
                 'cssls',
-                'pyright',
+                'ruff',
                 'ts_ls',
                 'bashls',
                 'lua_ls',
@@ -158,7 +105,7 @@ return {
 
             lint.linters_by_ft = {
                 markdown = { 'markdownlint' },
-                json = { 'jsonlint' },
+                -- json = { 'jsonlint' },
                 sh = { 'shellcheck' },
                 javascript = { 'eslint_d' },
                 typescript = { 'eslint_d' },

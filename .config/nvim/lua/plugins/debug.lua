@@ -1,3 +1,6 @@
+if vim.loop and vim.loop.getuid and vim.loop.getuid() == 0 then
+    return {}
+end
 return {
     'mfussenegger/nvim-dap',
     dependencies = {
