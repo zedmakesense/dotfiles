@@ -107,21 +107,21 @@ return {
         opts = {},
     },
 
-    {
-        'nvim-mini/mini.pick',
-        version = '*',
-        cmd = { 'Pick' },
-        keys = {
-            {
-                '<leader>e',
-                function()
-                    require('mini.pick').builtin.files()
-                end,
-                desc = 'Pick files (mini.pick)',
-            },
-        },
-        opts = {},
-    },
+    -- {
+    --     'nvim-mini/mini.pick',
+    --     version = '*',
+    --     cmd = { 'Pick' },
+    --     keys = {
+    --         {
+    --             '<leader>e',
+    --             function()
+    --                 require('mini.pick').builtin.files()
+    --             end,
+    --             desc = 'Pick files (mini.pick)',
+    --         },
+    --     },
+    --     opts = {},
+    -- },
     {
         {
             'lervag/vimtex',
@@ -161,12 +161,6 @@ return {
                 '<leader>-',
                 '<cmd>Yazi cwd<cr>',
                 desc = "Open the file manager in nvim's working directory",
-            },
-        },
-        opts = {
-            open_for_directories = true,
-            keymaps = {
-                show_help = '<f1>',
             },
         },
         init = function()
