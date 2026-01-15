@@ -41,7 +41,7 @@ return {
     -- },
     {
         'MagicDuck/grug-far.nvim',
-        cmd = { 'GrugFar', 'GrugFarResume' },
+        cmd = { 'GrugFar' },
         keys = {
             { '<leader>gf', '<cmd>GrugFar<cr>', desc = 'Grug Find & Replace' },
         },
