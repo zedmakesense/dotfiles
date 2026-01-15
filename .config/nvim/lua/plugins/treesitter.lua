@@ -55,14 +55,12 @@ return {
                 'diff',
 
                 -- shells / terminals
-                'bash',
                 'awk',
                 'printf',
                 'comment',
 
                 -- misc but useful
                 'query',
-                'vimdoc',
             }
             vim.api.nvim_create_autocmd('FileType', {
                 desc = 'User: enable treesitter highlighting',

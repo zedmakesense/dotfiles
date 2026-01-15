@@ -73,13 +73,13 @@ return {
     --     version = false,
     --     opts = {},
     -- },
-
-    {
-        'nvim-mini/mini.surround',
-        event = 'InsertEnter',
-        version = false,
-        opts = {},
-    },
+    --
+    -- {
+    --     'nvim-mini/mini.surround',
+    --     event = 'InsertEnter',
+    --     version = false,
+    --     opts = {},
+    -- },
 
     {
         'tpope/vim-surround',
