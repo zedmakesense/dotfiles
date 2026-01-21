@@ -259,6 +259,7 @@ for_window [class="org-springframework-boot-loader-PropertiesLauncher"] floating
 
 # assign workspace to specific applications
 assign [class="discord"] workspace 3
+assign [app_id="vesktop"] workspace 3
 assign [app_id="virt-manager"] workspace 4
 # assign [app_id="draw.io"] workspace 9
 
