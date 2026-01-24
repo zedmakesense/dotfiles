@@ -52,7 +52,7 @@ export MANPAGER="nvim +Man!"
 
 [[ $- != *i* ]] && return
 
-# PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w\033[m \033[1;36m]\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
+PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w\033[m \033[1;36m]\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
 
 PROMPT_COMMAND='history -a'
 
@@ -225,6 +225,6 @@ zd() {
 }
 
 source /usr/share/bash-completion/bash_completion
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 . "/home/piyush/.local/share/cargo/env"
