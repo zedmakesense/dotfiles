@@ -81,7 +81,7 @@ set $paste cliphist.sh
 
 set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
-set $SSedit grim -g "$(slurp)" - | swappy -f -
+set $SSedit wayscriber --active
 
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
@@ -125,6 +125,7 @@ bindsym Ctrl+Delete exec makoctl dismiss
 bindsym Print exec $SS
 bindsym $mod+s exec $SSselect
 bindsym $mod+Shift+s exec $SSedit
+bindsym $mod+d exec wayscriber --active --no-resume-session
 bindsym $mod+p exec $color
 
 mode "systemctl" {
