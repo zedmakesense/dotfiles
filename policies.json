@@ -12,7 +12,7 @@
           "Method": "GET"
         }
       ],
-      "Default": "Brave Search",
+      "Default": "duckduckgo",
       "PreventInstalls": false
     },
     "AppUpdate": {

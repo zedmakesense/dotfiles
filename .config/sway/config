@@ -219,10 +219,10 @@ exec /usr/libexec/lxqt-policykit-agent &
 
 # exec idle.sh &
 
-exec flatpak run com.github.wwmm.easyeffects --hide-window --service-mode &
-exec docker start excalidraw &
-# exec docker start bentopdf omni-tools &
-# exec docker start convertx &
+exec easyeffects --hide-window --gapplication-service &
+exec podman start excalidraw &
+# exec podman start bentopdf omni-tools &
+# exec podman start convertx &
 
 for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] floating enable
 for_window [title="(?:Open|Save|File) (?:File|Folder|As|Upload)"] resize set 800 600
