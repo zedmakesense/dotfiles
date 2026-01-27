@@ -77,7 +77,7 @@ set $emoji bemoji
 set $network networkmanager_dmenu
 
 set $text grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy
-set $paste cliphist.sh
+set $paste clipvault_fuzzel.sh
 
 set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
@@ -201,9 +201,11 @@ client.urgent           #d8a657 #101010 #101010 #b8883b  #d8a657
 client.placeholder      #b19565 #101010 #101010 #917a53  #b19565
 
 # exec clipse -listen &
-exec wl-paste --type text --watch cliphist store &
-exec wl-paste --type image --watch cliphist store &
+# exec wl-paste --type text --watch cliphist store &
+# exec wl-paste --type image --watch cliphist store &
 exec wl-clip-persist --clipboard both --reconnect-tries 0 &
+exec wl-paste --type text --watch clipvault store # Forward text data
+exec wl-paste --type image --watch clipvault store # Forward raw image data
 
 exec poweralertd &
 exec mako &
