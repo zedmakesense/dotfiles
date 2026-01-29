@@ -21,7 +21,6 @@ return {
                 'bashls',
                 'lua_ls',
                 'gopls',
-                'jdtls',
             }
             for _, lsp in ipairs(lsps) do
                 vim.lsp.config(lsp, {

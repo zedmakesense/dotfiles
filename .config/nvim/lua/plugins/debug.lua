@@ -173,10 +173,8 @@ return {
         dap.listeners.before.event_terminated['dapui_config'] = dapui.close
         dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-        -- Language-specific setup
         require('dap-go').setup()
         require('dap-python').setup(vim.fn.stdpath 'data' .. '/mason/packages/debugpy/venv/bin/python')
-        -- Java handled automatically by nvim-jdtls when project starts
 
         require('nvim-dap-virtual-text').setup()
     end,

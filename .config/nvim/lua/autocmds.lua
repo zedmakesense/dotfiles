@@ -21,16 +21,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
--- Set filetype-specific settings
-vim.api.nvim_create_autocmd('FileType', {
-    group = autocmd,
-    pattern = { 'lua', 'python' },
-    callback = function()
-        vim.opt_local.tabstop = 4
-        vim.opt_local.shiftwidth = 4
-    end,
-})
-
 -- Large File Optimization
 -- Disables heavy features (Syntax, Treesitter) for files > 20,000 lines.
 vim.api.nvim_create_autocmd('BufEnter', {
