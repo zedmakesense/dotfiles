@@ -173,7 +173,7 @@ return {
         lazy = true,
         build = function(plugin)
             local monorepo_dir = plugin.dir
-            local want = { 'full-border.yazi', 'smart-paste.yazi' }
+            local want = { 'full-border.yazi', 'smart-paste.yazi', 'jump-to-char.yazi', 'zoom.yazi' }
             for _, sub in ipairs(want) do
                 local sub_plugin = {
                     name = sub,

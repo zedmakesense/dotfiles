@@ -39,3 +39,30 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '',
     command = ':%s/\\s\\+$//e',
 })
+
+-- custom function for install yazi plugins
+vim.api.nvim_create_user_command('YaziPluginsInstall', function()
+    local lazy = require 'lazy.core.config'
+    local plugin = lazy.plugins['plugins']
+
+    if not plugin then
+        vim.notify('yazi-rs/plugins is not installed', vim.log.levels.ERROR)
+        return
+    end
+
+    local monorepo_dir = plugin.dir
+    local want = {
+        'full-border.yazi',
+        'smart-paste.yazi',
+        'jump-to-char.yazi',
+        'zoom.yazi',
+    }
+
+    for _, sub in ipairs(want) do
+        require('yazi.plugin').build_plugin {
+            name = sub,
+            dir = monorepo_dir .. '/' .. sub,
+            repo = 'yazi-rs/plugins:' .. sub,
+        }
+    end
+end, {})
