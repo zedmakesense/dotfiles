@@ -12,7 +12,7 @@
           "Method": "GET"
         }
       ],
-      "Default": "duckduckgo",
+      "Default": "DuckDuckGo",
       "PreventInstalls": false
     },
     "AppUpdate": {

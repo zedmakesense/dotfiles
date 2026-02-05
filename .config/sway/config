@@ -81,7 +81,7 @@ set $paste clipvault.sh
 
 set $SS grim - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
 set $SSselect grim -g "$(slurp)" - | wl-copy && wl-paste --type image/png > ~/Pictures/Screenshots/temp/$(date +'%Y-%m-%d-%H%M%S').png
-set $SSedit wayscriber --active
+set $SSedit grim -g "$(slurp)" - | swappy -f -
 
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
