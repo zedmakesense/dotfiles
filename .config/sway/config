@@ -125,7 +125,7 @@ bindsym Ctrl+Delete exec makoctl dismiss
 bindsym Print exec $SS
 bindsym $mod+s exec $SSselect
 bindsym $mod+Shift+s exec $SSedit
-bindsym $mod+d exec wayscriber --active --no-resume-session
+bindsym $mod+d exec wayscriber --active
 bindsym $mod+p exec $color
 
 mode "systemctl" {
