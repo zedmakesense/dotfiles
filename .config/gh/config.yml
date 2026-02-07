@@ -16,7 +16,7 @@ aliases:
 # The path to a unix socket through which to send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
-browser: firefox
+browser: firefox-esr
 # Whether to display labels using their RGB hex color codes in terminals that support truecolor. Supported values: enabled, disabled
 color_labels: disabled
 # Whether customizable, 4-bit accessible colors should be used. Supported values: enabled, disabled
