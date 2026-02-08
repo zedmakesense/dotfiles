@@ -14,8 +14,6 @@ return {
 
             local lsps = {
                 'jsonls',
-                'html',
-                'cssls',
                 'ruff',
                 'ts_ls',
                 'bashls',
@@ -108,8 +106,6 @@ return {
                 sh = { 'shellcheck' },
                 javascript = { 'eslint_d' },
                 typescript = { 'eslint_d' },
-                html = { 'htmlhint' },
-                css = { 'stylelint' },
                 lua = { 'luacheck' },
                 python = { 'ruff' },
                 java = { 'checkstyle' },
