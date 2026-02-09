@@ -169,6 +169,7 @@ focus_on_window_activation smart
 
 input "type:keyboard" {
     xkb_options ctrl:swapcaps,compose:ralt
+    # xkb_layout br
 }
 
 bar {
