@@ -216,6 +216,9 @@ user_pref("browser.uidensity", 1);
 user_pref("browser.tabs.inTitlebar", 0);
 user_pref("media.videocontrols.picture-in-picture.enabled", false);
 
+// Disable service workers entirely
+dom.serviceWorkers.enabled = false
+
 // allow websites to ask you for your location
 // allow websites to ask you to receive site notifications
 user_pref("permissions.default.geo", 0);

@@ -24,6 +24,7 @@ return {
                 'toml',
                 'ini',
                 'xml',
+                'sql',
 
                 -- markup / docs
                 'markdown',

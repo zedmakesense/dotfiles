@@ -74,17 +74,17 @@ return {
     --     opts = {},
     -- },
     --
-    -- {
-    --     'nvim-mini/mini.surround',
-    --     event = 'InsertEnter',
-    --     version = false,
-    --     opts = {},
-    -- },
-
     {
-        'tpope/vim-surround',
+        'nvim-mini/mini.surround',
         event = 'InsertEnter',
+        version = false,
+        opts = {},
     },
+
+    -- {
+    --     'tpope/vim-surround',
+    --     event = 'InsertEnter',
+    -- },
 
     {
         'nvim-mini/mini.icons',
@@ -185,25 +185,11 @@ return {
         'mikavilpas/yazi.nvim',
         version = '*',
         cmd = { 'Yazi' },
-        dependencies = {
-            { 'nvim-lua/plenary.nvim', lazy = true },
-        },
+        dependencies = { 'nvim-lua/plenary.nvim' },
         keys = {
-            {
-                '<leader>n',
-                mode = { 'n', 'v' },
-                '<cmd>Yazi<cr>',
-                desc = 'Open yazi at the current file',
-            },
-            {
-                '<leader>-',
-                '<cmd>Yazi cwd<cr>',
-                desc = "Open the file manager in nvim's working directory",
-            },
+            { '<leader>n', '<cmd>Yazi<cr>', desc = 'Open Yazi' },
+            { '<leader>-', '<cmd>Yazi cwd<cr>', desc = 'Open Yazi cwd' },
         },
-        init = function()
-            vim.g.loaded_netrwPlugin = 1
-        end,
     },
 
     {

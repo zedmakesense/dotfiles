@@ -227,7 +227,7 @@ exec /usr/libexec/lxqt-policykit-agent &
 # exec idle.sh &
 
 exec easyeffects --hide-window --gapplication-service &
-exec podman start excalidraw &
+# exec podman start excalidraw &
 # exec podman start bentopdf omni-tools &
 # exec podman start convertx &
 
