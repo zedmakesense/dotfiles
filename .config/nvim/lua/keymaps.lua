@@ -1,11 +1,6 @@
 local map = vim.keymap.set
 -- local opts = { noremap = true, silent = true }
 
-map('n', '<Leader>qd', function()
-    vim.cmd 'cclose'
-    vim.cmd 'lclose'
-end)
-
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
 
@@ -19,10 +14,6 @@ end, { expr = true, silent = true })
 
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
-
-map('n', '<leader>vdt', function()
-    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end)
 
 -- Center screen when jumping
 map('n', 'n', 'nzzzv')
@@ -54,14 +45,6 @@ map('n', '<leader>sc', ':setlocal spell spelllang=en_us<CR>')
 -- Movement in insert mode
 map('i', '<C-b>', '<Left>')
 map('i', '<C-f>', '<Right>')
--- map('i', '<C-n>', '<Up>')
--- map('i', '<C-p>', '<Down>')
-
--- Movement b/w windows
-map('n', '<M-h>', '<C-w>h')
-map('n', '<M-l>', '<C-w>l')
-map('n', '<M-j>', '<C-w>j')
-map('n', '<M-k>', '<C-w>k')
 
 -- Buffer Management
 map('n', '<S-l>', ':bnext<CR>')
