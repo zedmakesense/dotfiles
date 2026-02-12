@@ -86,9 +86,10 @@ set $SSedit grim -g "$(slurp)" - | swappy -f -
 set $nvtop '$term -a nvtop nvtop'
 set $color hyprpicker | wl-copy
 # set $color color.sh
-set $index '$term --title="float" -e nvim ~/Documents/personal/wiki/index.txt'
+set $todo '$term --title="float" -e nvim ~/Documents/personal/wiki/todo.txt'
 set $search $term --title="float" -e sh -c 'rg --no-heading --line-number --color=always --max-depth 1 "" ~/Documents/personal/wiki/ | fzf --ansi | cut -d: -f1 | uniq | xargs -r nvim'
 set $explore $term --title="float" -e sh -c 'yazi "$HOME/Documents/personal/wiki/{}"'
+set $pasteHere '$term --title="float" -e nvim ~/Documents/personal/wiki/paste.txt'
 set $news '$term --title="float" -e newsboat'
 
 bindsym $mod+q exec sh -c 'set -- $(swaymsg -t get_outputs -r | jq -r ".[]|select(.focused)|.current_mode.width,.current_mode.height"); swaymsg seat "*" cursor set $(($1-1)) $(($2-1))'
@@ -100,9 +101,10 @@ bindsym $mod+e exec $fileBrowser
 
 bindsym $mod+Shift+Return exec $browser
 mode "index" {
-    bindsym i exec $index; mode default
+    bindsym i exec $todo; mode default
     bindsym s exec $search; mode default
     bindsym e exec $explore; mode default
+    bindsym p exec $pasteHere; mode default
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Control+bracketleft mode "default"
