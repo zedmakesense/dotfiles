@@ -272,8 +272,9 @@ for_window [class="org-springframework-boot-loader-PropertiesLauncher"] floating
 # for_window [app_id="org.qbittorrent.qBittorrent" title="qBittorrent"] floating disable
 
 # assign workspace to specific applications
-assign [class="discord"] workspace 3
-assign [app_id="virt-manager"] workspace 4
+assign [app_id="dev.zed.Zed"] workspace 3
+assign [class="discord"] workspace 4
+assign [app_id="virt-manager"] workspace 5
 # assign [app_id="draw.io"] workspace 9
 
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment

@@ -4,3 +4,5 @@
 .config/gh/hosts.yml
 
 .config/nvim/lazy-lock.json
+.config/yazi/flavours
+.config/yazi/plugins

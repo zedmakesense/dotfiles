@@ -1,121 +1,98 @@
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "vertical_scroll_margin": 10,
-  "cursor_blink": false,
-
-  "toolbar": {
-    "breadcrumbs": true,
-    "quick_actions": false
+  "disable_ai": true,
+  "calls": {
+    "mute_on_join": true,
   },
-
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+  "window_decorations": "server",
+  "title_bar": {
+    "show_user_picture": false,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
   },
-  "session": {
-    "trust_all_worktrees": true
+  "search": {
+    "regex": true,
   },
-
-  "vim_mode": true,
-  "vim": {
-    "enable_vim_sneak": true
+  "use_smartcase_search": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
   },
-  "relative_line_numbers": true,
-
-  "tab_bar": {
-    "show": true
+  "prettier": {
+    "allowed": true,
   },
-  "scrollbar": {
-    "show": "never"
+  "middle_click_paste": false,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
   },
-  "base_keymap": "Emacs",
+  "ui_font_family": "IosevkaTerm Nerd Font",
+  "theme": "Gruvbox Dark",
   "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
   "buffer_font_size": 15,
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "Gruvbox Dark"
-  },
-  "git_panel": {
-    "dock": "right"
-  },
-  // Finder model width
-  "file_finder": {
-    "modal_width": "medium"
-  },
   "buffer_font_family": "IosevkaTerm Nerd Font",
-  // Only show error on tab
+
+  "vertical_scroll_margin": 10,
+  "cursor_blink": false,
+  "relative_line_numbers": "enabled",
+  "tab_size": 2,
+  "base_keymap": "Emacs",
+
+  "vim_mode": true,
+  "vim": {
+    "gdefault": true,
+    "use_smartcase_find": true,
+    "use_system_clipboard": "on_yank",
+    "highlight_on_yank_duration": 150,
+  },
+
+  "tab_bar": {
+    "show": false,
+  },
   "tabs": {
-    "show_diagnostics": "errors"
+    "show_diagnostics": "errors",
   },
-  // Indentation, rainbow indentation
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "indent_aware"
+  "scrollbar": {
+    "show": "never",
   },
-  // NOTE: Zen mode, refer https://github.com/zed-industries/zed/issues/4382 when it's resolved
-  "centered_layout": {
-    "left_padding": 0.15,
-    "right_padding": 0.15
-  },
-  // Uncomment below to use local AI with Ollama, refer https://zed.dev/docs/language-model-integration?highlight=ollama#using-ollama-on-macos
-  // "assistant": {
-  //   "default_model": {
-  //     "provider": "ollama",
-  //     "model": "llama3.1:latest"
-  //   },
-  //   "version": "2",
-  //   "provider": null
+
+  // "centered_layout": {
+  //   "left_padding": 0.15,
+  //   "right_padding": 0.15
   // },
-  "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434"
-    }
+
+  "toolbar": {
+    "code_actions": true,
+    "breadcrumbs": false,
+    "quick_actions": true,
   },
-  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
-  "inlay_hints": {
-    "enabled": true
+
+  "git_panel": {
+    "dock": "right",
   },
-  "lsp": {
-    "tailwindcss-language-server": {
-      "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"]
-      }
-    }
+
+  "project_panel": {
+    "button": true,
+    "dock": "right",
+    "git_status": true,
   },
-  "languages": {
-    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
-    "TypeScript": {
-      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-      "inlay_hints": {
-        "enabled": true,
-        "show_parameter_hints": false,
-        "show_other_hints": true,
-        "show_type_hints": true
-      }
-    },
-    "Python": {
-      "format_on_save": { "language_server": { "name": "ruff" } },
-      "formatter": { "language_server": { "name": "ruff" } },
-      "language_servers": ["pyright", "ruff"]
-    }
+  "outline_panel": {
+    "dock": "right",
   },
-  // Use zed commit editor
-  "terminal": {
-    "font_family": "Iosevka",
-    "env": {
-      "EDITOR": "zed --wait"
-    }
+  "collaboration_panel": {
+    "dock": "left",
   },
-  // File syntax highlighting
+  "notification_panel": {
+    "dock": "left",
+  },
+
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "JSON": ["json", "jsonc", "*.code-snippets"],
   },
-  // File scan exclusions, hide on the file explorer and search
+
   "file_scan_exclusions": [
     "**/.git",
     "**/.svn",
@@ -125,7 +102,6 @@
     "**/Thumbs.db",
     "**/.classpath",
     "**/.settings",
-    // above is default from Zed
     "**/out",
     "**/dist",
     "**/.husky",
@@ -137,26 +113,97 @@
     "**/.tap",
     "**/.nyc_output",
     "**/report",
-    "**/node_modules"
+    "**/node_modules",
   ],
-  // Move all panel to the right
-  "project_panel": {
-    "button": true,
-    "dock": "right",
-    "git_status": true
+
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
   },
-  "outline_panel": {
-    "dock": "right"
+
+  "terminal": {
+    "button": false,
+    "font_family": "IosevkaTerm Nerd Font",
+    "env": {
+      "EDITOR": "zed --wait",
+    },
   },
-  "collaboration_panel": {
-    "dock": "left"
+
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+    },
   },
-  // Move some unnecessary panels to the left
-  "notification_panel": {
-    "dock": "left"
+
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "default_model": {
+      "provider": "ollama",
+      "model": "llama3.1:latest",
+    },
   },
-  "chat_panel": {
-    "dock": "left"
+
+  "inlay_hints": {
+    "enabled": true,
   },
-  "tab_size": 2
+
+  "lsp": {
+    "snippet-completion-server": {
+      "settings": {
+        "feature_paths": true,
+      },
+    },
+  },
+
+  "languages": {
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "Python": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
+      "language_servers": ["ruff"],
+    },
+    "Go": {
+      "formatter": {
+        "external": {
+          "command": "goimports",
+        },
+      },
+      "format_on_save": "on",
+    },
+    "jdtls": {
+      "settings": {
+        // "java_home": "/path/to/your/JDK21+",
+        "jdk_auto_download": true,
+        "check_updates": "always",
+        // "java_debug_jar": "/path/to/your/com.microsoft.java.debug.plugin.jar",
+      },
+    },
+  },
+
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+
+  "session": {
+    "trust_all_worktrees": true,
+  },
+
+  "auto_install_extensions": {
+    "html": true,
+    "dockerfile": true,
+    "java": true,
+  },
 }
