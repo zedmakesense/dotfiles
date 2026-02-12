@@ -52,7 +52,6 @@ vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.confirm = true
-vim.opt.clipboard = 'unnamedplus'
 vim.opt.lazyredraw = true -- Don't redraw during macros
 vim.opt.path:append '**' -- include subdirectories in search
 
