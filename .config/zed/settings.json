@@ -2,6 +2,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vertical_scroll_margin": 10,
+  "cursor_blink": false,
+
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
+
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -38,7 +46,7 @@
   "file_finder": {
     "modal_width": "medium"
   },
-  "buffer_font_family": "Iosevka",
+  "buffer_font_family": "IosevkaTerm Nerd Font",
   // Only show error on tab
   "tabs": {
     "show_diagnostics": "errors"

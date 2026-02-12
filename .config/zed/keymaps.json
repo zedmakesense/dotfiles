@@ -35,12 +35,6 @@
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       // put key-bindings here if you want them to work only in normal mode
-      // Window movement bindings
-      // Ctrl jklk to move between panes
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
 
       // +LSP
       "space c a": "editor::ToggleCodeActions",
@@ -81,8 +75,6 @@
       "space b d": "pane::CloseActiveItem",
       // Close other items
       "space b o": "pane::CloseInactiveItems",
-      // Save file
-      "ctrl-s": "workspace::Save",
       // File finder
       "space space": "file_finder::Toggle",
       // Project search
@@ -110,12 +102,18 @@
       "g c": "editor::ToggleComments"
     }
   },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
   // Better escape
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      "j j": "vim::NormalBefore", // remap jj in insert mode to escape
-      "j k": "vim::NormalBefore" // remap jk in insert mode to escape
+      "ctrl-[": "vim::NormalBefore"
     }
   },
   // Rename
@@ -185,7 +183,8 @@
     "context": "Workspace",
     "bindings": {
       // Map VSCode like keybindings
-      "cmd-b": "workspace::ToggleRightDock"
+      "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-k": ["projects::OpenRecent", { "create_new_window": false }]
     }
   },
   // Run nearest task
@@ -202,7 +201,39 @@
       "s": ["vim::PushSneak", {}],
       "S": ["vim::PushSneakBackward", {}]
     }
+  },
+
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space o": "tab_switcher::Toggle",
+      "space t": "workspace::NewCenterTerminal",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      "space b": "editor::ToggleGitBlame",
+      "space l f": "editor::Format",
+      "space f f": "file_finder::Toggle",
+      "space o": "tab_switcher::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space /": "workspace::NewSearch",
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch",
+      "space t": "workspace::NewCenterTerminal",
+      "g b": "editor::ToggleComments",
+      // "space c": "pane::CloseActiveItem"
+    }
   }
+
   // Subword motion is not working really nice with `ciw`, disable for now
   // {
   //   "context": "VimControl && !menu",

@@ -13,7 +13,6 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local lsps = {
-                'jsonls',
                 'ruff',
                 'ts_ls',
                 'bashls',
@@ -102,7 +101,6 @@ return {
 
             lint.linters_by_ft = {
                 markdown = { 'markdownlint' },
-                -- json = { 'jsonlint' },
                 sh = { 'shellcheck' },
                 javascript = { 'eslint_d' },
                 typescript = { 'eslint_d' },
