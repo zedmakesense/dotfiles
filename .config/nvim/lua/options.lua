@@ -118,3 +118,61 @@ vim.opt.foldenable = true
 
 -- Optional: Customize fold appearance
 -- vim.opt.fillchars = { fold = " ", foldopen = "", foldclose = "", foldsep = " " }
+
+-- Minimal Neovim for quick editing (aggressive disable)
+
+-- Disable built-in plugins
+local disabled_built_ins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "matchit",
+  "matchparen",
+  "netrw",
+  "netrwFileHandlers",
+  "netrwPlugin",
+  "netrwSettings",
+  "rrhelper",
+  "spellfile",
+  "tar",
+  "tarPlugin",
+  "tohtml",
+  "tutor",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "rplugin",
+  "syntax",         -- disable if you truly don't need highlighting
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",       -- disables filetype plugins
+  "editorconfig",   -- if present
+}
+
+for _, plugin in ipairs(disabled_built_ins) do
+  vim.g["loaded_" .. plugin] = 1
+end
+
+-- Disable language providers (big startup win)
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- Disable filetype detection completely (optional, extreme minimal)
+-- Uncomment if you truly want zero language logic
+vim.g.did_load_filetypes = 1
+-- Core minimal settings
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.undofile = false
+vim.opt.modeline = false
+vim.opt.foldenable = false
+vim.opt.spell = false
+vim.opt.syntax = "OFF"
