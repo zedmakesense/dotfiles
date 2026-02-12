@@ -13,16 +13,13 @@ vim.o.statusline = table.concat {
 }
 
 -- Spelling
--- vim.opt.spell = true
--- vim.opt.spelllang = { 'en_us'}
-
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us'}
 -- Netrw Configuration
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_liststyle = 3
-
-vim.opt.autochdir = false
 
 -- UI Configuration
 vim.g.have_nerd_font = true
@@ -93,32 +90,6 @@ vim.opt.autoindent = true -- Copy indent from current line
 vim.opt.redrawtime = 10000
 vim.opt.maxmempattern = 20000
 
--- Disabling unused providers
-vim.g.loaded_python_provider = 0 -- Disable Python 2 (Deprecated)
-vim.g.loaded_ruby_provider = 0 -- Disable Ruby
-vim.g.loaded_node_provider = 0 -- Disable Node
-vim.g.loaded_perl_provider = 0 -- Disable Perl
-
--- Folding setup
--- Enable Tree-sitter-based folding
-vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.wo[0][0].foldmethod = 'expr'
-
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'html', 'css' },
-    callback = function()
-        vim.opt_local.foldmethod = 'manual'
-    end,
-})
-
--- Default to all folds open
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
-
--- Optional: Customize fold appearance
--- vim.opt.fillchars = { fold = " ", foldopen = "", foldclose = "", foldsep = " " }
-
 -- Minimal Neovim for quick editing (aggressive disable)
 
 -- Disable built-in plugins
@@ -167,11 +138,7 @@ vim.g.loaded_ruby_provider = 0
 -- Disable filetype detection completely (optional, extreme minimal)
 -- Uncomment if you truly want zero language logic
 vim.g.did_load_filetypes = 1
--- Core minimal settings
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.undofile = false
+-- Core minimal setting
 vim.opt.modeline = false
 vim.opt.foldenable = false
 vim.opt.spell = false
