@@ -2,6 +2,27 @@
   {
     "context": "Workspace",
     "bindings": {
+      "space D": "workspace::CloseAllDocks",
+    },
+  },
+
+  {
+    "context": "!menu",
+    "bindings": {
+      "ctrl-[": "menu::Cancel",
+    },
+  },
+
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-[": "editor::Cancel",
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
       "space e": "project_panel::ToggleFocus",
       "space g": "git_panel::ToggleFocus",
       "space o": "outline_panel::ToggleFocus",
@@ -10,18 +31,7 @@
       "space c": "collab_panel::ToggleFocus",
     },
   },
-  {
-    "context": "!menu",
-    "bindings": {
-      "ctrl-[": "menu::Cancel",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-[": "editor::Cancel",
-    },
-  },
+
   {
     "context": "Dock",
     "bindings": {
@@ -32,6 +42,7 @@
       // "q": "workspace::CloseActiveDock"
     },
   },
+
   {
     "context": "VimControl && !menu && vim_mode != operator",
     "bindings": {
@@ -41,6 +52,7 @@
       "g e": "vim::PreviousSubwordEnd",
     },
   },
+
   {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
@@ -48,6 +60,7 @@
       "shift-s": "vim::PushSneakBackward",
     },
   },
+
   {
     "context": "Editor && !menu",
     "bindings": {
@@ -55,10 +68,24 @@
       // vim default: show signature
     },
   },
+
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       "space f": "file_finder::Toggle",
+    },
+  },
+
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      // Traditional Vim behavior
+      // "q": "vim::AnyQuotes",
+      // "b": "vim::AnyBrackets",
+
+      // mini.ai plugin behavior
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets",
     },
   },
 ]
