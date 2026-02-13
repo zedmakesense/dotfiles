@@ -13,14 +13,14 @@
     "regex": true,
   },
   "use_smartcase_search": true,
-  "diagnostics": {
-    "inline": {
-      "enabled": true,
-    },
-  },
-  "prettier": {
-    "allowed": true,
-  },
+  // "diagnostics": {
+  //   "inline": {
+  //     "enabled": true,
+  //   },
+  // },
+  // "prettier": {
+  //   "allowed": true,
+  // },
   "middle_click_paste": false,
   "autosave": {
     "after_delay": {
@@ -29,7 +29,7 @@
   },
   "ui_font_family": "IosevkaTerm Nerd Font",
   "theme": "Gruvbox Dark",
-  "icon_theme": "Zed (Default)",
+  // "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "buffer_font_family": "IosevkaTerm Nerd Font",
@@ -58,13 +58,8 @@
     "show": "never",
   },
 
-  // "centered_layout": {
-  //   "left_padding": 0.15,
-  //   "right_padding": 0.15
-  // },
-
   "toolbar": {
-    "code_actions": true,
+    // "code_actions": true,
     "breadcrumbs": false,
     "quick_actions": true,
   },
@@ -76,7 +71,7 @@
   "project_panel": {
     "button": true,
     "dock": "right",
-    "git_status": true,
+    // "git_status": true,
   },
   "outline_panel": {
     "dock": "right",
@@ -93,33 +88,10 @@
     "JSON": ["json", "jsonc", "*.code-snippets"],
   },
 
-  "file_scan_exclusions": [
-    "**/.git",
-    "**/.svn",
-    "**/.hg",
-    "**/CVS",
-    "**/.DS_Store",
-    "**/Thumbs.db",
-    "**/.classpath",
-    "**/.settings",
-    "**/out",
-    "**/dist",
-    "**/.husky",
-    "**/.turbo",
-    "**/.vscode-test",
-    "**/.vscode",
-    "**/.next",
-    "**/.storybook",
-    "**/.tap",
-    "**/.nyc_output",
-    "**/report",
-    "**/node_modules",
-  ],
-
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "indent_aware",
-  },
+  // "indent_guides": {
+  //   "enabled": true,
+  //   "coloring": "indent_aware",
+  // },
 
   "terminal": {
     "button": false,
@@ -129,23 +101,9 @@
     },
   },
 
-  "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434",
-    },
-  },
-
-  "agent": {
-    "play_sound_when_agent_done": true,
-    "default_model": {
-      "provider": "ollama",
-      "model": "llama3.1:latest",
-    },
-  },
-
-  "inlay_hints": {
-    "enabled": true,
-  },
+  // "inlay_hints": {
+  //   "enabled": true,
+  // },
 
   "lsp": {
     "snippet-completion-server": {

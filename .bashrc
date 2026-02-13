@@ -123,8 +123,8 @@ alias c="clear"
 alias x="exit"
 
 alias vim="nvim"
-alias vi="nvim"
-alias v="nvim ."
+alias vi="/usr/bin/vim"
+alias v="/usr/bin/vi"
 
 alias t="tmux"
 alias tns="tmux new-session -s"

@@ -1,0 +1,108 @@
+set nocompatible
+
+syntax enable
+filetype plugin indent on
+set background=dark
+set termguicolors
+
+set number
+set relativenumber
+set nocursorline
+set signcolumn=no
+set scrolloff=8
+set sidescrolloff=8
+set splitright
+set splitbelow
+set wrap
+set list
+set listchars=tab:»\ ,trail:·,nbsp:␣
+set statusline=%#Normal#\ %F\ %h%w%m%r\ %=\ %l/%L
+
+let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
+let &t_EI = "\e[2 q"
+
+set clipboard=unnamedplus
+set mouse=a
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set smartindent
+set autoindent
+set breakindent
+set path+=**
+
+set timeoutlen=500
+set updatetime=300
+set lazyredraw
+set redrawtime=10000
+set maxmempattern=20000
+set synmaxcol=300
+
+set nobackup
+set writebackup
+set swapfile
+
+if !isdirectory(expand('~/.vim/swap'))
+  call mkdir(expand('~/.vim/swap'), 'p')
+endif
+set directory^=~/.vim/swap//
+
+if !isdirectory(expand('~/.vim/undo'))
+  call mkdir(expand('~/.vim/undo'), 'p')
+endif
+set undodir=~/.vim/undo
+set undofile
+
+set nofoldenable
+set nomodeline
+set nospell
+let g:spelllang = 'en_us'
+set shortmess+=c
+
+hi Normal       guifg=#d4be98 guibg=#282828
+hi EndOfBuffer  guifg=#282828 guibg=#282828
+hi CursorLine   guibg=#32302f
+hi LineNr       guifg=#665c54 guibg=#282828
+hi CursorLineNr guifg=#d8a657 guibg=#282828 gui=bold
+hi VertSplit    guifg=#32302f guibg=#282828
+hi StatusLine   guifg=#d4be98 guibg=#282828
+hi StatusLineNC guifg=#665c54 guibg=#282828
+hi Comment      guifg=#928374 gui=italic
+hi String       guifg=#a9b665
+hi Keyword      guifg=#d3869b gui=italic
+hi Function     guifg=#d8a657 gui=bold
+hi Type         guifg=#d3869b
+
+let g:mapleader = " "
+let g:maplocalleader = " "
+
+nnoremap <silent> <leader>s :set spell!<CR>
+nnoremap <silent> <Esc> :nohlsearch<CR>
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <C-o>:w<CR>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap < <gv
+vnoremap > >gv
+xnoremap gy "+y
+xnoremap gp "+P
+
+augroup UserConfig
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
+augroup END
