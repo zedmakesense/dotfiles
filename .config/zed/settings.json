@@ -13,11 +13,11 @@
     "regex": true,
   },
   "use_smartcase_search": true,
-  // "diagnostics": {
-  //   "inline": {
-  //     "enabled": true,
-  //   },
-  // },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
   // "prettier": {
   //   "allowed": true,
   // },
@@ -59,7 +59,7 @@
   },
 
   "toolbar": {
-    // "code_actions": true,
+    "code_actions": true,
     "breadcrumbs": false,
     "quick_actions": true,
   },
@@ -71,7 +71,6 @@
   "project_panel": {
     "button": true,
     "dock": "right",
-    // "git_status": true,
   },
   "outline_panel": {
     "dock": "right",
@@ -145,7 +144,7 @@
         // "java_home": "/path/to/your/JDK21+",
         "jdk_auto_download": true,
         "check_updates": "always",
-        // "java_debug_jar": "/path/to/your/com.microsoft.java.debug.plugin.jar",
+        "java_debug_jar": "/home/zed/.local/share/java-debug/server.jar",
       },
     },
   },

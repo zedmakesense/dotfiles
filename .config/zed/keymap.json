@@ -29,6 +29,14 @@
       "space d": "diagnostics::Deploy",
       "space t": "terminal_panel::ToggleFocus",
       "space c": "collab_panel::ToggleFocus",
+      "space f": "file_finder::Toggle",
+    },
+  },
+
+  {
+    "context": "Workspace && !menu && !Dock",
+    "bindings": {
+      "space f": "file_finder::Toggle",
     },
   },
 
@@ -66,13 +74,6 @@
     "bindings": {
       "ctrl-s": "workspace::Save",
       // vim default: show signature
-    },
-  },
-
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
-    "bindings": {
-      "space f": "file_finder::Toggle",
     },
   },
 
