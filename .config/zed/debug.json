@@ -11,4 +11,16 @@
     // the working directory for the debug process
     "cwd": "$ZED_WORKTREE_ROOT",
   },
+
+  {
+    "label": "Debug native binary",
+    "build": {
+      "command": "make",
+      "args": ["-j8"],
+      "cwd": "$ZED_WORKTREE_ROOT",
+    },
+    "program": "$ZED_WORKTREE_ROOT/build/prog",
+    "request": "launch",
+    "adapter": "CodeLLDB",
+  },
 ]

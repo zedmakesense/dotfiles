@@ -212,8 +212,8 @@ client.placeholder      #b19565 #101010 #101010 #917a53  #b19565
 # exec wl-paste --type text --watch cliphist store &
 # exec wl-paste --type image --watch cliphist store &
 exec wl-clip-persist --clipboard both --reconnect-tries 0 &
-exec wl-paste --type text --watch clipvault store # Forward text data
-exec wl-paste --type image --watch clipvault store # Forward raw image data
+exec wl-paste --type text --watch clipvault store --max-entry-age 2d
+exec wl-paste --type image --watch clipvault store --max-entry-age 2d
 
 exec poweralertd &
 exec mako &

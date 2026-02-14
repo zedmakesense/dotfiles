@@ -139,6 +139,14 @@
         },
       },
     },
+    "SQL": {
+      "formatter": {
+        "external": {
+          "command": "sql-formatter",
+          "arguments": ["--language", "postgresql"],
+        },
+      },
+    },
   },
 
   "lsp": {
@@ -163,5 +171,7 @@
     "html": true,
     "dockerfile": true,
     "java": true,
+    "make": true,
+    "sql": true,
   },
 }
