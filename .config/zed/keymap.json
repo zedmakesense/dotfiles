@@ -1,18 +1,31 @@
 [
   {
-    "context": "Workspace",
+    "context": "Workspace && !menu",
     "bindings": {
       "space D": "workspace::CloseAllDocks",
+      "space f": "file_finder::Toggle",
     },
   },
 
+  // {
+  //   "context": "menu",
+  //   "bindings": {
+  //     "ctrl-[": "menu::Cancel",
+  //   },
+  // },
+
   {
-    "context": "!menu",
+    "context": "CommandPalette",
     "bindings": {
       "ctrl-[": "menu::Cancel",
     },
   },
-
+  {
+    "context": "FileFinder",
+    "bindings": {
+      "ctrl-[": "menu::Cancel",
+    },
+  },
   {
     "context": "Editor",
     "bindings": {
@@ -26,17 +39,10 @@
       "space e": "project_panel::ToggleFocus",
       "space g": "git_panel::ToggleFocus",
       "space o": "outline_panel::ToggleFocus",
-      "space d": "diagnostics::Deploy",
+      "space d d": "diagnostics::Deploy",
+      "space d p": "debug_panel::ToggleFocus",
       "space t": "terminal_panel::ToggleFocus",
       "space c": "collab_panel::ToggleFocus",
-      "space f": "file_finder::Toggle",
-    },
-  },
-
-  {
-    "context": "Workspace && !menu && !Dock",
-    "bindings": {
-      "space f": "file_finder::Toggle",
     },
   },
 
@@ -47,7 +53,6 @@
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
-      // "q": "workspace::CloseActiveDock"
     },
   },
 
@@ -73,18 +78,12 @@
     "context": "Editor && !menu",
     "bindings": {
       "ctrl-s": "workspace::Save",
-      // vim default: show signature
     },
   },
 
   {
     "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
     "bindings": {
-      // Traditional Vim behavior
-      // "q": "vim::AnyQuotes",
-      // "b": "vim::AnyBrackets",
-
-      // mini.ai plugin behavior
       "q": "vim::MiniQuotes",
       "b": "vim::MiniBrackets",
     },

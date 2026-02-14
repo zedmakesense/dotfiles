@@ -1,146 +1,92 @@
-#!/usr/bin/env bash
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XCOMPOSEFILE="$HOME/.XCompose"
 
-export PATH="$HOME/.local/bin:$PATH"
-
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
-export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export GOPATH="$XDG_DATA_HOME"/go
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
-export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+
+export GOPATH="$XDG_DATA_HOME/go"
+
+export JAVA_HOME="/usr/lib/jvm/java-21-temurin-jdk"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
+
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export W3M_DIR="$XDG_STATE_HOME/w3m"
-export PYTHON_HISTORY=$XDG_STATE_HOME/python_history
-export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
-export PYTHONUSERBASE=$XDG_DATA_HOME/python
+
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/pip.conf"
-# export MOZ_LEGACY_HOME=1
-export PATH="$PATH:$GOPATH/bin"
 
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_STYLE_OVERRIDE=kvantum
+export XDG_CURRENT_DESKTOP="sway"
+export XDG_SESSION_DESKTOP="sway"
+export XDG_SESSION_TYPE="wayland"
 
-# export MOZ_ENABLE_WAYLAND=1
-# export SDL_VIDEODRIVER=wayland
-# export _JAVA_AWT_WM_NONREPARENTING=1
-# export GTK_IM_MODULE=wayland
-# export QT_IM_MODULE=wayland
-# export XMODIFIERS="@im=wayland"
+export QT_QPA_PLATFORM="wayland"
+export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_STYLE_OVERRIDE="kvantum"
 
-export TERMINAL=foot
-export COLORTERM=truecolor
+export TERMINAL="foot"
+export COLORTERM="truecolor"
 
-export EDITOR=nvim
-export VISUAL=nvim
-export SYSTEMD_EDITOR=nvim
+export EDITOR="nvim"
+export VISUAL="nvim"
+export SYSTEMD_EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+
+export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$GOPATH/bin:$XDG_DATA_HOME/cargo/bin:$PNPM_HOME:$PATH"
 
 [[ $- != *i* ]] && return
 
-PS1='\n\033[1;36m[ \u@\h |\033[m \033[1;32m\w\033[m \033[1;36m]\033[m \n\[\e[38;5;51m\]>\[\e[0m\] '
-
-PROMPT_COMMAND='history -a'
-
-# History configuration
-shopt -s histverify
-shopt -s histappend
-shopt -s cmdhist
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 HISTSIZE=500000
 HISTFILESIZE=100000
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:x:t:ls:l:ll:c:bg:fg:history:clear"
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
 # HISTTIMEFORMAT='%F %T '
 
-export HISTFILE="$XDG_STATE_HOME"/bash/history
-export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+shopt -s histverify
+shopt -s histappend
+shopt -s cmdhist
 
-# set -o vi
+PROMPT_COMMAND='history -a'
 
-# bind stuff
-bind 'set meta-flag on'
-bind 'set input-meta on'
-bind 'set output-meta on'
-bind 'set convert-meta off'
-bind 'set mark-symlinked-directories on'
-bind 'set skip-completed-text on'
-bind 'set colored-stats on'
-# Prevent file overwrite on stdout redirection, Use `>|` to force redirection to an existing file
 set -o noclobber
-# Turn on recursive globbing (enables ** to recurse all directories)
 shopt -s globstar
 shopt -s checkwinsize
 shopt -s dirspell
 shopt -s cdspell
-bind "set completion-ignore-case on"
-bind "set show-all-if-unmodified on"
-bind "set show-all-if-ambiguous on"
-bind "set completion-prefix-display-length 2"
-bind "set completion-map-case on"
-bind "set page-completions off"
-bind "set mark-symlinked-directories on"
 
-alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
-alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
-alias ltree="l --tree"
-alias lltree="ll --tree"
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
 
-# alias ls='ls --color=auto'
-alias ip='ip -color=auto'
-# alias grep='grep --color=auto'
-# alias df="df -h"
+bind 'set meta-flag on'
+bind 'set input-meta on'
+bind 'set output-meta on'
+bind 'set convert-meta off'
+bind 'set skip-completed-text on'
+bind 'set colored-stats on'
+bind 'set completion-ignore-case on'
+bind 'set show-all-if-unmodified on'
+bind 'set show-all-if-ambiguous on'
+bind 'set completion-prefix-display-length 2'
+bind 'set completion-map-case on'
+bind 'set page-completions off'
+bind 'set mark-symlinked-directories on'
 
-alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
-alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completion"
 
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias trash="trash -v"
-alias cd="zd"
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-alias c="clear"
-alias x="exit"
-
-alias vim="nvim"
-alias vi="/usr/bin/vim"
-alias v="/usr/bin/vi"
-
-alias t="tmux"
-alias tns="tmux new-session -s"
-alias tks="tmux kill-session -t"
-alias tas="tmux attach-session -t"
-alias ta="tmux attach-session"
-alias tls="tmux ls"
-
-alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
-alias diffl='export DELTA_FEATURES=+; git diff'
-
-alias img="swayimg"
-alias open="xdg-open"
-
-# alias jrctl="journalctl -p 3 -xb"
-# alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+PS1=$'\n\[\e[1;36m\][ \u@\h | \[\e[1;32m\]\w\[\e[1;36m\] ]\[\e[0m\]\n\[\e[38;5;51m\]>\[\e[0m\] '
 
 __fzf_history__() {
   local selected
@@ -154,7 +100,7 @@ __fzf_history__() {
 }
 bind -x '"\C-r":__fzf_history__'
 
-function y() {
+y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   yazi "$@" --cwd-file="$tmp"
   IFS= read -r -d '' cwd <"$tmp"
@@ -171,46 +117,19 @@ ex() {
   fi
   mkdir -p "$dest"
   case "$archive" in
-  *.tar.bz2 | *.tbz2)
-    tar -xvjf "$archive" -C "$dest"
-    ;;
-  *.tar.gz | *.tgz)
-    tar -xvzf "$archive" -C "$dest"
-    ;;
-  *.tar.xz)
-    tar -xvJf "$archive" -C "$dest"
-    ;;
-  *.tar.zst)
-    tar --zstd -xvf "$archive" -C "$dest"
-    ;;
-  *.tar)
-    tar -xvf "$archive" -C "$dest"
-    ;;
-  *.bz2)
-    bunzip2 -vk "$archive"
-    ;;
-  *.gz)
-    gunzip -vk "$archive"
-    ;;
-  *.zip)
-    unzip -q "$archive" -d "$dest"
-    ;;
-  *.rar)
-    unrar x -v "$archive" "$dest"
-    ;;
-  *.7z)
-    7z x -bsp1 "$archive" -o"$dest"
-    ;;
-  *.Z)
-    uncompress -v "$archive"
-    ;;
-  *.deb)
-    ar xv "$archive"
-    ;;
-  *)
-    echo "'$archive' cannot be extracted"
-    return 1
-    ;;
+    *.tar.bz2|*.tbz2) tar -xvjf "$archive" -C "$dest" ;;
+    *.tar.gz|*.tgz)   tar -xvzf "$archive" -C "$dest" ;;
+    *.tar.xz)         tar -xvJf "$archive" -C "$dest" ;;
+    *.tar.zst)        tar --zstd -xvf "$archive" -C "$dest" ;;
+    *.tar)            tar -xvf "$archive" -C "$dest" ;;
+    *.bz2)            bunzip2 -vk "$archive" ;;
+    *.gz)             gunzip -vk "$archive" ;;
+    *.zip)            unzip -q "$archive" -d "$dest" ;;
+    *.rar)            unrar x -v "$archive" "$dest" ;;
+    *.7z)             7z x -bsp1 "$archive" -o"$dest" ;;
+    *.Z)              uncompress -v "$archive" ;;
+    *.deb)            ar xv "$archive" ;;
+    *) echo "'$archive' cannot be extracted"; return 1 ;;
   esac
 }
 
@@ -224,7 +143,39 @@ zd() {
   fi
 }
 
+alias l="eza -l -o --no-permissions --icons=always --group-directories-first"
+alias ll="eza -la -o --no-permissions --icons=always --group-directories-first"
+alias ltree="l --tree"
+alias lltree="ll --tree"
+
+alias mute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1"
+alias unmute="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0"
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias trash="trash -v"
+
+alias cd="zd"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias c="clear"
+alias x="exit"
+
+alias t="tmux"
+alias tns="tmux new-session -s"
+alias tks="tmux kill-session -t"
+alias tas="tmux attach-session -t"
+alias ta="tmux attach-session"
+alias tls="tmux ls"
+
+alias diffs='export DELTA_FEATURES=+side-by-side; git diff'
+alias diffl='export DELTA_FEATURES=+; git diff'
+
+alias img="swayimg"
+alias open="xdg-open"
+
 source /usr/share/bash-completion/bash_completion
-# eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 . "/home/piyush/.local/share/cargo/env"

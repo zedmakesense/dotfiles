@@ -29,7 +29,6 @@
   },
   "ui_font_family": "IosevkaTerm Nerd Font",
   "theme": "Gruvbox Dark",
-  // "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "buffer_font_family": "IosevkaTerm Nerd Font",
@@ -59,10 +58,13 @@
   },
 
   "toolbar": {
-    "code_actions": true,
     "breadcrumbs": false,
-    "quick_actions": true,
+    "quick_actions": false,
+    "selections_menu": false,
+    "agent_review": false,
+    "code_actions": false,
   },
+  // "inline_code_actions": false,
 
   "git_panel": {
     "dock": "right",
@@ -76,10 +78,10 @@
     "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "left",
+    "dock": "right",
   },
   "notification_panel": {
-    "dock": "left",
+    "dock": "right",
   },
 
   "file_types": {
@@ -87,10 +89,9 @@
     "JSON": ["json", "jsonc", "*.code-snippets"],
   },
 
-  // "indent_guides": {
-  //   "enabled": true,
-  //   "coloring": "indent_aware",
-  // },
+  "indent_guides": {
+    "coloring": "indent_aware",
+  },
 
   "terminal": {
     "button": false,
@@ -100,16 +101,8 @@
     },
   },
 
-  // "inlay_hints": {
-  //   "enabled": true,
-  // },
-
-  "lsp": {
-    "snippet-completion-server": {
-      "settings": {
-        "feature_paths": true,
-      },
-    },
+  "inlay_hints": {
+    "enabled": true,
   },
 
   "languages": {
@@ -123,7 +116,6 @@
     },
     "Python": {
       "tab_size": 4,
-      "format_on_save": "on",
       "formatter": {
         "language_server": {
           "name": "ruff",
@@ -137,14 +129,23 @@
           "command": "goimports",
         },
       },
-      "format_on_save": "on",
     },
+    "Shell Script": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": ["--filename", "{buffer_path}", "--indent", "2"],
+        },
+      },
+    },
+  },
+
+  "lsp": {
     "jdtls": {
       "settings": {
-        // "java_home": "/path/to/your/JDK21+",
+        "java_home": "/usr/lib/jvm/java-17-temurin-jdk",
         "jdk_auto_download": true,
-        "check_updates": "always",
-        "java_debug_jar": "/home/zed/.local/share/java-debug/server.jar",
       },
     },
   },
